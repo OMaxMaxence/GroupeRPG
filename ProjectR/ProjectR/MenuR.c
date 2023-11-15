@@ -11,6 +11,7 @@ sfSprite* SpritePlayMenu;
 sfTexture* TexturePlayMenu;
 sfVector2f originPlay = { 143.0f, 46.5f };
 sfVector2f posPlay = { 400.0f, 300.0f };
+sfVector2i mousePosMenu; 
 
 
 void initMenu()
@@ -28,9 +29,17 @@ void initMenu()
 	sfSprite_setPosition(SpritePlayMenu, posPlay);
 }
 
-void updateMenu()
+void updateMenu(sfRenderWindow* _window, sfView* _view)
 {
-	
+	if (sfMouse_isButtonPressed(sfMouseLeft))
+	{
+		mousePosMenu = sfMouse_getPosition(_window);
+		worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePosMenu, _view);
+		if (worldPos.x < 800 && worldPos.x > 0 && worldPos.y < 600 && worldPos.y > 0)
+		{
+			exit(EXIT_SUCCESS);
+		}
+	}
 }
 
 void displayMenu(sfRenderWindow* _window)
