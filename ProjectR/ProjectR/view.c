@@ -1,7 +1,7 @@
 #include "view.h"
 
-sfVector2f posView = { 200.0f, 200.0f };
-sfFloatRect rectView = { 100.0f, 100.0f, 250.0f, 125.0f };
+sfVector2f posView = { 480.0f, 240.0f };
+sfFloatRect rectView = { 100.0f, 100.0f, 230.0f, 170.0f };
 
 void initView()
 {
