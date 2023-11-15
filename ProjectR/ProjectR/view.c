@@ -25,8 +25,9 @@ void displayView(sfRenderWindow* _window)
 
 // EDIT VIEW
 
-sfVector2f posEditView = { 480.0f, 240.0f };
-sfFloatRect rectEditView = { 800.0f,600.0f, 200.0f, 200.0f };
+sfVector2f posEditView = { 100.0f, 100.0f };
+sfFloatRect rectEditView = { 800.0f,600.0f, 1200.0f, 1200.0f };
+sfVector2f speedEditView = { 200.0f, 200.0f };
 
 void initEditView()
 {
@@ -37,7 +38,26 @@ void initEditView()
 
 void updateEditView(sfVector2f _viewpos)
 {
-	
+	if (sfKeyboard_isKeyPressed(sfKeyD))
+	{
+		posEditView.x += speedEditView.x * getDeltaTime();
+		sfView_setCenter(editView, posEditView);
+	}
+	else if (sfKeyboard_isKeyPressed(sfKeyZ))
+	{
+		posEditView.y -= speedEditView.y * getDeltaTime();
+		sfView_setCenter(editView, posEditView);
+	}
+	else if (sfKeyboard_isKeyPressed(sfKeyQ))
+	{
+		posEditView.x -= speedEditView.x * getDeltaTime();
+		sfView_setCenter(editView, posEditView);
+	}
+	else if (sfKeyboard_isKeyPressed(sfKeyS))
+	{
+		posEditView.y += speedEditView.y * getDeltaTime();
+		sfView_setCenter(editView, posEditView);
+	}
 }
 
 void displayEditView(sfRenderWindow* _window)
