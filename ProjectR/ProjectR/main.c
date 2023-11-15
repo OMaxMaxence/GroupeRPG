@@ -18,7 +18,8 @@ int main()
 	initPlayer();
 	initMenu();
 	initMap();
-	initView();
+	//initView();
+	initEditView();
 	while (sfRenderWindow_isOpen(window))
 	{
 		restartClock();
@@ -32,7 +33,8 @@ int main()
 
 		updatePlayer();
 		updateMap(window, timerAnim, view);
-		updateView(playerPos);
+		//updateView(playerPos);
+		updateEditView(posEditView);
 		
 
 
@@ -42,7 +44,8 @@ int main()
 		if (timerAnim >= 4.0f) timerAnim = 0;*/
 		sfRenderWindow_clear(window, sfBlack);
 		displayMenu(window);
-		displayView(window);
+		//displayView(window);
+		displayEditView(window);
 		displayMap(window, timerAnim);
 		displayPlayer(window);
 		sfRenderWindow_display(window);
