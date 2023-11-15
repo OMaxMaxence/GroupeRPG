@@ -1,2 +1,3 @@
-﻿  main.c
+﻿  MenuR.c
+C:\Users\m.maurel\Documents\GitHub\GroupeRPG\ProjectR\ProjectR\MenuR.c(26,21): warning C4133: 'fonction' : types incompatibles - de 'sfRectangleShape *' à 'sfSprite *'
   ProjectR.vcxproj -> C:\Users\m.maurel\Documents\GitHub\GroupeRPG\ProjectR\Debug\ProjectR.exe

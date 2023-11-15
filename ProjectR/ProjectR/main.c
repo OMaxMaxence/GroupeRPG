@@ -9,8 +9,11 @@ int main()
 	sprintf_s(titre, 100, "TEST");
 
 	sfRenderWindow* window;
-	window = sfRenderWindow_create(mode, titre, sfFullscreen, NULL);
+	window = sfRenderWindow_create(mode, titre, sfDefaultStyle, NULL);
 	sfEvent event;
+
+	
+	
 	while (sfRenderWindow_isOpen(window))
 	{
 
@@ -21,8 +24,10 @@ int main()
 				sfRenderWindow_close(window);
 			}
 		}
-
+		initMenu();
+		
 		sfRenderWindow_clear(window, sfBlack);
+		displayMenu(window);
 		sfRenderWindow_display(window);
 	}
 }

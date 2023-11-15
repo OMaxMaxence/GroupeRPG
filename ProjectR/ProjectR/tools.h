@@ -6,3 +6,4 @@
 #include <time.h>
 #include "SFML/Window.h"
 #include"SFML/Audio.h"
+#include "MenuR.h"
