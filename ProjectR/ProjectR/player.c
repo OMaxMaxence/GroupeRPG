@@ -93,7 +93,7 @@ void updatePlayer()
 		sfSprite_setTextureRect(player, iRect);
 	}
 
-	sfSprite_setPosition(player, playerpos);
+	sfSprite_setPosition(player, playerPos);
 
 }
 
