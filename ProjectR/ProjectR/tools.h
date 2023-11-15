@@ -7,3 +7,10 @@
 #include "SFML/Window.h"
 #include"SFML/Audio.h"
 #include "MenuR.h"
+
+sfRenderWindow* window;
+
+void initTools();
+float getDeltaTime();
+void restartClock();
+sfVector2f vector2f(float _x, float _y);
