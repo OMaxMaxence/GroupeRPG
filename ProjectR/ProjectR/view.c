@@ -8,6 +8,7 @@ void initView()
 	view = sfView_create();
 	sfView_reset(view, rectView);
 	sfView_setCenter(view, posView);
+	printf("initview");
 }
 
 void updateView(sfVector2f _playerpos)
