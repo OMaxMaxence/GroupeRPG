@@ -36,7 +36,7 @@ int main()
 		if (timerAnim >= 4.0f) timerAnim = 0;*/
 		sfRenderWindow_clear(window, sfBlack);
 		displayMenu(window);
-		displayMap(window, timerAnim);
+		//displayMap(window, timerAnim);
 		sfRenderWindow_display(window);
 	}
 }
