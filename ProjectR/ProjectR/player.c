@@ -44,7 +44,7 @@ void updatePlayer()
 	{
 		frameY = 1; // DROITE
 		// if !collision
-		playerPos.y -= playerSpeed.y * getDeltaTime();
+		playerPos.x += playerSpeed.x * getDeltaTime();
 		isMoving = sfTrue;
 		animTime += getDeltaTime();
 	}
@@ -60,7 +60,7 @@ void updatePlayer()
 	{
 		frameY = 2; // GAUCHE
 		// if !collision
-		playerPos.y -= playerSpeed.y * getDeltaTime();
+		playerPos.x -= playerSpeed.x * getDeltaTime();
 		isMoving = sfTrue;
 		animTime += getDeltaTime();
 	}
@@ -68,7 +68,7 @@ void updatePlayer()
 	{
 		frameY = 0; // BAS
 		// if !collision
-		playerPos.y -= playerSpeed.y * getDeltaTime();
+		playerPos.y += playerSpeed.y * getDeltaTime();
 		isMoving = sfTrue;
 		animTime += getDeltaTime();
 	}
