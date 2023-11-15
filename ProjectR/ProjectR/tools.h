@@ -7,6 +7,10 @@
 #include "SFML/Window.h"
 #include"SFML/Audio.h"
 #include "MenuR.h"
+#include "map.h"
+#include "MenuR.h"
+#include "player.h"
+#include "view.h"
 
 sfRenderWindow* window;
 

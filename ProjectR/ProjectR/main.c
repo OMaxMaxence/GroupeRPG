@@ -15,6 +15,10 @@ int main()
 	float timer = 0;
 	float timerAnim = 0;
 	initTools();
+	initPlayer();
+	initMenu();
+	initMap();
+	initView();
 	while (sfRenderWindow_isOpen(window))
 	{
 		restartClock();
@@ -25,8 +29,10 @@ int main()
 				sfRenderWindow_close(window);
 			}
 		}
-		initMenu();
-		initMap();
+
+		updatePlayer();
+		updateMap(window, timerAnim, view);
+		updateView(playerPos);
 		
 
 
@@ -36,7 +42,11 @@ int main()
 		if (timerAnim >= 4.0f) timerAnim = 0;*/
 		sfRenderWindow_clear(window, sfBlack);
 		displayMenu(window);
+		displayView(window);
 		displayMap(window, timerAnim);
+		displayPlayer(window);
 		sfRenderWindow_display(window);
 	}
+
+	return 0;
 }
