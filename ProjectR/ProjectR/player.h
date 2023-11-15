@@ -1,6 +1,5 @@
 #pragma once
 
-#pragma once
 #include "tools.h"
 
 #define ANIM_SPEED 0.08f
@@ -10,8 +9,8 @@
 
 int frameX;
 int frameY;
-sfVector2f playerpos;
-sfVector2f playervitesse;
+sfVector2f playerPos;
+sfVector2f playerSpeed;
 
 //typedef enum Direction Direction;
 //enum Direction {BAS = 0, DROITE, GAUCHE, HAUT};
