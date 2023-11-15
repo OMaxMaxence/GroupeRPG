@@ -1,6 +1,6 @@
 #include "tools.h"
 typedef enum Menu Menu;
-enum Menu 
+enum Menu
 {
 	JOUER = 1,
 	EDITER,
@@ -49,7 +49,7 @@ int main()
 		//updateView(playerPos);
 		//updateEditView(posEditView);
 
-		
+
 
 
 		/*timer += 0.1f * getDeltaTime();
