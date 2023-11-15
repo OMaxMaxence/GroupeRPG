@@ -23,8 +23,10 @@ int main()
 	initTools();
 	//initPlayer();
 	initMenu();
+
 	//initMap();
 	//initView();
+
 	while (sfRenderWindow_isOpen(window))
 	{
 		restartClock();
@@ -36,10 +38,12 @@ int main()
 			}
 		}
 
+
 		updateMenu(window, view);
 		//updatePlayer();
 		//updateMap(window, timerAnim, view);
 		//updateView(playerPos);
+
 		
 
 
@@ -50,8 +54,10 @@ int main()
 		sfRenderWindow_clear(window, sfBlack);
 		displayMenu(window);
 		//displayView(window);
-		//displayMap(window, timerAnim);
-		//displayPlayer(window);
+		displayEditView(window);
+		displayMap(window, timerAnim);
+		displayPlayer(window);
+
 		sfRenderWindow_display(window);
 	}
 
