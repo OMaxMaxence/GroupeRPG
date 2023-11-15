@@ -42,7 +42,7 @@ void updatePlayer()
 
 	if (sfKeyboard_isKeyPressed(sfKeyD))
 	{
-		frameY = 1; // DROITE
+		frameY = DROITE;
 		// if !collision
 		playerPos.x += playerSpeed.x * getDeltaTime();
 		isMoving = sfTrue;
@@ -50,7 +50,7 @@ void updatePlayer()
 	}
 	else if (sfKeyboard_isKeyPressed(sfKeyZ))
 	{
-		frameY = 3; // HAUT
+		frameY = HAUT;
 		// if !collision
 		playerPos.y -= playerSpeed.y * getDeltaTime();
 		isMoving = sfTrue;
@@ -58,7 +58,7 @@ void updatePlayer()
 	}
 	else if (sfKeyboard_isKeyPressed(sfKeyQ))
 	{
-		frameY = 2; // GAUCHE
+		frameY = GAUCHE;
 		// if !collision
 		playerPos.x -= playerSpeed.x * getDeltaTime();
 		isMoving = sfTrue;
@@ -66,7 +66,7 @@ void updatePlayer()
 	}
 	else if (sfKeyboard_isKeyPressed(sfKeyS))
 	{
-		frameY = 0; // BAS
+		frameY = BAS;
 		// if !collision
 		playerPos.y += playerSpeed.y * getDeltaTime();
 		isMoving = sfTrue;

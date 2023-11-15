@@ -150,3 +150,51 @@ void displayMap(sfRenderWindow* _window, float _t)
 	}
 }
 
+sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f _vitesse)
+{
+
+	if (_direction == HAUT)
+	{
+		sfVector2i nextPosInTab = { _sprite.left / 32, (_sprite.top - _vitesse.y * getDeltaTime()) / 32 };
+		sfVector2i nextPosInTab2 = { (_sprite.left + _sprite.width) / 32, (_sprite.top - _vitesse.y * getDeltaTime()) / 32 };
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 3 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 6 ||
+			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 6)
+		{
+			return sfTrue;
+		}
+	}
+
+	else if (_direction == BAS)
+	{
+		sfVector2i nextPosInTab = { _sprite.left / 32, (_sprite.top + _sprite.height + _vitesse.y * getDeltaTime()) / 32 };
+		sfVector2i nextPosInTab2 = { (_sprite.left + _sprite.width) / 32, (_sprite.top + _sprite.height + _vitesse.y * getDeltaTime()) / 32 };
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 3 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 6 ||
+			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 6)
+		{
+			return sfTrue;
+		}
+	}
+
+	else if (_direction == GAUCHE)
+	{
+		sfVector2i nextPosInTab = { (_sprite.left - _vitesse.x * getDeltaTime()) / 32, (_sprite.top) / 32 };
+		sfVector2i nextPosInTab2 = { (_sprite.left - _vitesse.x * getDeltaTime()) / 32, (_sprite.top + _sprite.height) / 32 };
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 3 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 6 ||
+			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 6)
+		{
+			return sfTrue;
+		}
+	}
+
+	else if (_direction == DROITE)
+	{
+		sfVector2i nextPosInTab = { (_sprite.left + _sprite.width + _vitesse.x * getDeltaTime()) / 32, _sprite.top / 32 };
+		sfVector2i nextPosInTab2 = { (_sprite.left + _sprite.width + _vitesse.x * getDeltaTime()) / 32, (_sprite.top + _sprite.height) / 32 };
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 3 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 6 ||
+			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 6)
+		{
+			return sfTrue;
+		}
+	}
+	return sfFalse;
+}
