@@ -30,7 +30,7 @@ sfVector2i pixelPos;
 sfVector2f worldPos;
 FILE* fichier;
 
-char tileMap[34][60] = {
+char tileMap[75][100]; /* = {
 	{4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4},
 	{ 0,0,4,4,0,0,0,0,0,0,0,0,0,3,0,0,4,4,0,0,0,0,4,4,0,0,0,0,0,0,0,0,0,3,0,0,4,4,0,0,0,0,4,4,0,0,0,0,0,0,0,0,0,3,0,0,4,4,0,0 },
 	{ 0,0,4,4,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,4,4,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,4,4,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0 },
@@ -65,7 +65,7 @@ char tileMap[34][60] = {
 	{ 3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3 },
 	{ 3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3 },
 	{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 }
-};
+};*/
 
 void initMap()
 {
@@ -76,19 +76,34 @@ void initMap()
 	tileSprite2 = sfSprite_create();
 	sfSprite_setTexture(tileSprite2, tileTexture2, sfTrue);
 	tile = 0;
-	//fichier = fopen("map.bin", "rb");
-	//fread(tileMap, sizeof(char), 2040, fichier);
+	/*if (save = 1)
+	{
+		fichier = fopen("savemap1.bin", "rb");
+		fread(tileMap, sizeof(char), 7500, fichier);
+	}
+	else if (save = 2)
+	{
+		fichier = fopen("savemap2.bin", "rb");
+		fread(tileMap, sizeof(char), 7500, fichier);
+	}*/
+	
 }
 
 void updateMap(sfRenderWindow* _window, float _t, sfView* _view)
 {
+	if (sfKeyboard_isKeyPressed(sfKeyM)) 
+	{ 
+		fichier = fopen("savemap1.bin", "wt"); 
+		fwrite(tileMap, sizeof(char), 7500, fichier); 
+		fclose(fichier); 
+	}
 }
 
 void displayMap(sfRenderWindow* _window, float _t)
 {
-	for (int y = 0; y < 34; y++)
+	for (int y = 0; y < 75; y++)
 	{
-		for (int x = 0; x < 60; x++)
+		for (int x = 0; x < 100; x++)
 		{
 			tilePos.x = x * 32;
 			tilePos.y = y * 32;
@@ -98,10 +113,10 @@ void displayMap(sfRenderWindow* _window, float _t)
 			switch (tileMap[y][x])
 			{
 			case 0:
-				sfSprite_setTextureRect(tileSprite, T_BOIS);
+				sfSprite_setTextureRect(tileSprite, T_TERRE); 
 				break;
 			case 1:
-				sfSprite_setTextureRect(tileSprite, T_TERRE);
+				sfSprite_setTextureRect(tileSprite, T_BOIS); 
 				break;
 			case 2:
 				sfSprite_setTextureRect(tileSprite, T_EAU);
@@ -120,19 +135,12 @@ void displayMap(sfRenderWindow* _window, float _t)
 				sfRenderWindow_drawSprite(_window, tileSprite, NULL);
 				sfSprite_setTextureRect(tileSprite, T_COFFRE);
 				break;
-			case 7:
-				//if (sfKeyboard_isKeyPressed(sfKeySpace))
-				//{
-
+			case 7:				
 				if (_t >= 0 && _t < 1) sfSprite_setTextureRect(tileSprite2, T_FERMER);
-
 				else if (_t >= 1 && _t < 2) sfSprite_setTextureRect(tileSprite2, T_QUART);
-
 				else if (_t >= 2 && _t < 3)sfSprite_setTextureRect(tileSprite2, T_DEMI);
-
 				else if (_t >= 3 && _t < 4)sfSprite_setTextureRect(tileSprite2, T_OUVERT);
 				break;
-				//}
 			}
 			if (tileMap[y][x] == 7) sfRenderWindow_drawSprite(_window, tileSprite2, NULL);
 
