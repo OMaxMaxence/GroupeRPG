@@ -43,34 +43,43 @@ void updatePlayer()
 	if (sfKeyboard_isKeyPressed(sfKeyD))
 	{
 		frameY = DROITE;
-		// if !collision
-		playerPos.x += playerSpeed.x * getDeltaTime();
-		isMoving = sfTrue;
-		animTime += getDeltaTime();
+		if (!collisionMapPlayer(frect, DROITE, playerSpeed))
+		{
+			playerPos.x += playerSpeed.x * getDeltaTime();
+			isMoving = sfTrue;
+			animTime += getDeltaTime();
+		}
 	}
 	else if (sfKeyboard_isKeyPressed(sfKeyZ))
 	{
 		frameY = HAUT;
-		// if !collision
-		playerPos.y -= playerSpeed.y * getDeltaTime();
-		isMoving = sfTrue;
-		animTime += getDeltaTime();
+		if (!collisionMapPlayer(frect, HAUT, playerSpeed))
+		{
+			playerPos.y -= playerSpeed.y * getDeltaTime();
+			isMoving = sfTrue;
+			animTime += getDeltaTime();
+		}
 	}
 	else if (sfKeyboard_isKeyPressed(sfKeyQ))
 	{
 		frameY = GAUCHE;
-		// if !collision
-		playerPos.x -= playerSpeed.x * getDeltaTime();
-		isMoving = sfTrue;
-		animTime += getDeltaTime();
+		if (!collisionMapPlayer(frect, GAUCHE, playerSpeed))
+		{
+			playerPos.x -= playerSpeed.x * getDeltaTime();
+			isMoving = sfTrue;
+			animTime += getDeltaTime();
+		}
 	}
 	else if (sfKeyboard_isKeyPressed(sfKeyS))
 	{
 		frameY = BAS;
-		// if !collision
-		playerPos.y += playerSpeed.y * getDeltaTime();
-		isMoving = sfTrue;
-		animTime += getDeltaTime();
+		if (!collisionMapPlayer(frect, BAS, playerSpeed))
+		{
+			playerPos.y += playerSpeed.y * getDeltaTime();
+			isMoving = sfTrue;
+			animTime += getDeltaTime();
+		}
+
 	}
 
 	// bord de map
