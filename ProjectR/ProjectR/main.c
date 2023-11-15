@@ -24,9 +24,11 @@ int main()
 	//initPlayer();
 	initMenu();
 
+
 	//initMap();
 	//initView();
 	//initEditView();
+
 
 	while (sfRenderWindow_isOpen(window))
 	{
@@ -38,6 +40,7 @@ int main()
 				sfRenderWindow_close(window);
 			}
 		}
+
 
 
 		updateMenu(window, view);
@@ -59,7 +62,6 @@ int main()
 		//displayEditView(window);
 		//displayMap(window, timerAnim);
 		//displayPlayer(window);
-
 		sfRenderWindow_display(window);
 	}
 
