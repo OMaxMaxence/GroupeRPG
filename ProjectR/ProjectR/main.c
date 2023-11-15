@@ -26,6 +26,7 @@ int main()
 
 	//initMap();
 	//initView();
+	//initEditView();
 
 	while (sfRenderWindow_isOpen(window))
 	{
@@ -43,6 +44,7 @@ int main()
 		//updatePlayer();
 		//updateMap(window, timerAnim, view);
 		//updateView(playerPos);
+		//updateEditView(posEditView);
 
 		
 
@@ -54,9 +56,9 @@ int main()
 		sfRenderWindow_clear(window, sfBlack);
 		displayMenu(window);
 		//displayView(window);
-		displayEditView(window);
-		displayMap(window, timerAnim);
-		displayPlayer(window);
+		//displayEditView(window);
+		//displayMap(window, timerAnim);
+		//displayPlayer(window);
 
 		sfRenderWindow_display(window);
 	}
