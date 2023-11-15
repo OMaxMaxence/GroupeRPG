@@ -2,6 +2,6 @@
 #include "tools.h"
 
 void initMenu();
-void updateMenu();
+void updateMenu(sfRenderWindow* _window, sfView* _view);
 void displayMenu(sfRenderWindow* _window);
 

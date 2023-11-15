@@ -1,5 +1,11 @@
 #include "tools.h"
-
+typedef enum Menu Menu;
+enum Menu 
+{
+	JOUER = 1,
+	EDITER,
+	QUITTER
+};
 
 int main()
 {
@@ -17,8 +23,13 @@ int main()
 	initTools();
 	//initPlayer();
 	initMenu();
+
+
 	//initMap();
 	//initView();
+	//initEditView();
+
+
 	while (sfRenderWindow_isOpen(window))
 	{
 		restartClock();
@@ -30,9 +41,14 @@ int main()
 			}
 		}
 
+
+
+		updateMenu(window, view);
 		//updatePlayer();
 		//updateMap(window, timerAnim, view);
 		//updateView(playerPos);
+		//updateEditView(posEditView);
+
 		
 
 
@@ -43,6 +59,7 @@ int main()
 		sfRenderWindow_clear(window, sfBlack);
 		displayMenu(window);
 		//displayView(window);
+		//displayEditView(window);
 		//displayMap(window, timerAnim);
 		//displayPlayer(window);
 		sfRenderWindow_display(window);
