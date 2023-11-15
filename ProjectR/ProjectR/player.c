@@ -22,7 +22,7 @@ void initPlayer()
 
 	animTime = 0.0f;
 	frameX = 0;
-	frameY;
+	frameY = 0;
 	isMoving = sfFalse;
 
 	sfVector2f playerpos = vector2f(0.0f, 0.0f);
@@ -48,8 +48,56 @@ void updatePlayer()
 		isMoving = sfTrue;
 		animTime += getDeltaTime();
 	}
+	else if (sfKeyboard_isKeyPressed(sfKeyZ))
+	{
+		frameY = 3; // HAUT
+		// if !collision
+		playerPos.y -= playerSpeed.y * getDeltaTime();
+		isMoving = sfTrue;
+		animTime += getDeltaTime();
+	}
+	else if (sfKeyboard_isKeyPressed(sfKeyQ))
+	{
+		frameY = 2; // GAUCHE
+		// if !collision
+		playerPos.y -= playerSpeed.y * getDeltaTime();
+		isMoving = sfTrue;
+		animTime += getDeltaTime();
+	}
+	else if (sfKeyboard_isKeyPressed(sfKeyS))
+	{
+		frameY = 0; // BAS
+		// if !collision
+		playerPos.y -= playerSpeed.y * getDeltaTime();
+		isMoving = sfTrue;
+		animTime += getDeltaTime();
+	}
+
+	// bord de map
+
+	if (isMoving)
+	{
+		if (animTime > ANIM_SPEED)
+		{
+			frameX++;
+			if (frameX > 8) frameX = 0;
+			iRect.left = frameX * iRect.width;
+			iRect.top = frameY * iRect.height;
+			sfSprite_setTextureRect(player, iRect);
+			animTime = 0.0f;
+		}
+	}
+	else {
+		frameX = 0;
+		iRect.left = frameX * iRect.width;
+		sfSprite_setTextureRect(player, iRect);
+	}
+
+	sfSprite_setPosition(player, playerpos);
+
 }
 
 void displayPlayer(sfRenderWindow* _window)
 {
+	sfRenderWindow_drawSprite(_window, player, NULL);
 }
