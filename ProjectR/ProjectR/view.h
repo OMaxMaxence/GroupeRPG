@@ -4,6 +4,15 @@
 #define VIEW_HEIGHT 230.0f
 #define VIEW_LENGTH 170.0f
 
+// MENU VIEW
+
+sfView* menuView;
+sfVector2f posMenuView;
+sfFloatRect rectMenuView;
+
+void initMenuView();
+void displayMenuView(sfRenderWindow* _window);
+
 // GAME VIEW
 
 sfView* view;
