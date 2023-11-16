@@ -14,9 +14,6 @@
 #define T_DEMI (sfIntRect){64,0,32,32}
 #define T_OUVERT (sfIntRect){ 96,0,32,32}
 
-#define MAP_HEIGHT 75
-#define MAP_LENGTH 100
-
 #pragma warning (disable: 4244)
 
 sfSprite* tileSpriteMap;

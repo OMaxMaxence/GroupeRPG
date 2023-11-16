@@ -1,6 +1,9 @@
 #pragma once
 #include "tools.h"
 
+#define MAP_HEIGHT 75
+#define MAP_LENGTH 100
+
 typedef enum
 {
 	BAS = 0,
