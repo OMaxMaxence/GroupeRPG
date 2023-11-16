@@ -22,7 +22,7 @@ sfTexture* TextureQuitterMenu;
 sfVector2f posQuitter = { 700.0f, 450.0f };
 sfVector2i mousePosMenu;
 sfFloatRect rectQuitter;
-sfMusic* musicMenu;
+
 
 
 void initMenu()
@@ -51,6 +51,8 @@ void initMenu()
 	sfSprite_setPosition(SpriteQuitterMenu, posQuitter);
 	musicMenu = sfMusic_createFromFile("..\\Ressources\\Musics\\Musique-libre-de-droits_-Epic-Music-CELTIC-FANTASY-MUSIC-Dark-Ambience-Medieval-_No-Copyright_.ogg");
 	sfMusic_play(musicMenu);
+	musicEdit = sfMusic_createFromFile("..\\Ressources\\Musics\\Geometry-Dash-Practice-Mode-Song-1-Hour.ogg");
+	musicJouer = sfMusic_createFromFile("..\\Ressources\\Musics\\Crazy-Frog-Axel-F-1-Hour.ogg");
 }
 
 void updateMenu(sfRenderWindow* _window, sfView* _view)
@@ -68,6 +70,7 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
 			sfMusic_stop(musicMenu);
+			sfMusic_play(musicJouer);
 			choixJoueurMenu = JOUER;
 			printf("%d\n", choixJoueurMenu);
 		}
@@ -79,6 +82,7 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
 			sfMusic_stop(musicMenu);
+			sfMusic_play(musicEdit);
 			choixJoueurMenu = EDITER;
 			printf("%d\n", choixJoueurMenu);
 		}
