@@ -3,10 +3,10 @@
 
 sfTexture* spritesheetpnj;
 sfSprite* pnj;
-sfIntRect iRectpnj = {0,0,31,32};
+sfIntRect iRectpnj = {0,0,32,32};
 float animTimepnj = 0.0f;
 
-sfVector2f pnjPos = { 164.0f, 164.0f };
+sfVector2f pnjPos = { 40.0f, 75.0f };
 void initPnj()
 {
 	spritesheetpnj = sfTexture_createFromFile(TEXTURE_PATH"npc.png", NULL);
@@ -28,6 +28,17 @@ void initPnj()
 
 void updatePnj()
 {
+	animTimepnj += getDeltaTime();
+	if (animTimepnj >= 1)
+	{
+		framepnjX++;
+		if (framepnjX > 9) framepnjX = 0;
+
+		iRectpnj.left = framepnjX * iRectpnj.width;
+		sfSprite_setTextureRect(pnj, iRectpnj);
+		animTimepnj = 0;
+	}
+
 	sfSprite_setPosition(pnj, pnjPos);
 
 	
