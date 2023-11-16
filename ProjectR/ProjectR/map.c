@@ -96,7 +96,7 @@ void initMap()
 void updateMap(sfRenderWindow* _window, float _t, sfView* _view)
 {
 	mousePos = sfMouse_getPosition(_window);
-	worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePos, editView);
+	worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePos, editView);  
 	blocpos.x = worldPos.x / 32;
 	blocpos.y = worldPos.y / 32;
 	delai += getDeltaTime();
@@ -133,10 +133,115 @@ void updateMap(sfRenderWindow* _window, float _t, sfView* _view)
 	}
 
 }
-
-
+void updateGameMap(sfRenderWindow* _window, float _t, sfView* _view)
+{
+}
 
 void displayMap(sfRenderWindow* _window, float _t)
+{
+	
+	if (editeur = sfTrue)
+	{
+		for (int y = 0; y < MAP_HEIGHT; y++)
+		{
+			for (int x = 0; x < MAP_LENGTH; x++)
+			{
+				tilePos.x = x * 32;
+				tilePos.y = y * 32;
+
+				sfSprite_setPosition(tileSpriteMap, tilePos);
+				sfSprite_setPosition(tileSpriteCoffre, tilePos);
+				switch (tileMap[y][x])
+				{
+				case 0:
+					sfSprite_setTextureRect(tileSpriteMap, T_TERRE);
+					break;
+				case 1:
+					sfSprite_setTextureRect(tileSpriteMap, T_BOIS);
+					break;
+				case 2:
+					sfSprite_setTextureRect(tileSpriteMap, T_EAU);
+					break;
+				case 3:
+					sfSprite_setTextureRect(tileSpriteMap, T_ARBRE);
+					break;
+				case 4:
+					sfSprite_setTextureRect(tileSpriteMap, T_PIERRE);
+					break;
+				case 5:
+					sfSprite_setTextureRect(tileSpriteMap, T_COFFRE);
+					break;
+				case 6:
+					sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU);
+					break;
+					/*case 6:
+						if (_t >= 0 && _t < 1) sfSprite_setTextureRect(tileSpriteCoffre, T_FERMER);
+						else if (_t >= 1 && _t < 2) sfSprite_setTextureRect(tileSpriteCoffre, T_QUART);
+						else if (_t >= 2 && _t < 3)sfSprite_setTextureRect(tileSpriteCoffre, T_DEMI);
+						else if (_t >= 3 && _t < 4)sfSprite_setTextureRect(tileSpriteCoffre, T_OUVERT);
+						break;*/
+				}
+				//if (tileMap[y][x] == 5) sfRenderWindow_drawSprite(_window, tileSpriteCoffre, NULL);
+
+				/*else*/ sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
+
+			}
+		}
+		switch (bloc)
+		{ 
+		case 0:
+			tilePos.x = worldPos.x; 
+			tilePos.y = worldPos.y; 
+			sfSprite_setPosition(tileSpriteMap, tilePos);
+			sfSprite_setTextureRect(tileSpriteMap, T_TERRE);  
+			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
+			break;
+		case 1:
+			tilePos.x = worldPos.x;
+			tilePos.y = worldPos.y;
+			sfSprite_setPosition(tileSpriteMap, tilePos);
+			sfSprite_setTextureRect(tileSpriteMap, T_BOIS);  
+			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
+			break;
+		case 2:
+			tilePos.x = worldPos.x;
+			tilePos.y = worldPos.y;
+			sfSprite_setPosition(tileSpriteMap, tilePos);
+			sfSprite_setTextureRect(tileSpriteMap, T_EAU);
+			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
+			break;
+		case 3:
+			tilePos.x = worldPos.x;
+			tilePos.y = worldPos.y;
+			sfSprite_setPosition(tileSpriteMap, tilePos);
+			sfSprite_setTextureRect(tileSpriteMap, T_ARBRE);
+			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
+			break;
+		case 4:
+			tilePos.x = worldPos.x;
+			tilePos.y = worldPos.y;
+			sfSprite_setPosition(tileSpriteMap, tilePos);
+			sfSprite_setTextureRect(tileSpriteMap, T_PIERRE);
+			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
+			break;
+		case 5:
+			tilePos.x = worldPos.x;
+			tilePos.y = worldPos.y;
+			sfSprite_setPosition(tileSpriteMap, tilePos);
+			sfSprite_setTextureRect(tileSpriteMap, T_COFFRE);
+			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
+			break;
+		case 6:
+			tilePos.x = worldPos.x; 
+			tilePos.y = worldPos.y; 
+			sfSprite_setPosition(tileSpriteMap, tilePos); 
+			sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU);  
+			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
+			break;
+	}
+	}
+}
+void displayGameMap(sfRenderWindow* _window, float _t)
 {
 	for (int y = 0; y < MAP_HEIGHT; y++)
 	{
@@ -150,10 +255,10 @@ void displayMap(sfRenderWindow* _window, float _t)
 			switch (tileMap[y][x])
 			{
 			case 0:
-				sfSprite_setTextureRect(tileSpriteMap, T_TERRE); 
+				sfSprite_setTextureRect(tileSpriteMap, T_TERRE);
 				break;
 			case 1:
-				sfSprite_setTextureRect(tileSpriteMap, T_BOIS); 
+				sfSprite_setTextureRect(tileSpriteMap, T_BOIS);
 				break;
 			case 2:
 				sfSprite_setTextureRect(tileSpriteMap, T_EAU);
@@ -162,82 +267,28 @@ void displayMap(sfRenderWindow* _window, float _t)
 				sfSprite_setTextureRect(tileSpriteMap, T_ARBRE);
 				break;
 			case 4:
-				sfSprite_setTextureRect(tileSpriteMap, T_PIERRE);
+				sfSprite_setTextureRect(tileSpriteMap, T_PIERRE); 
 				break;
 			case 5:
-				sfSprite_setTextureRect(tileSpriteMap, T_COFFRE);
-				break;
+				sfSprite_setTextureRect(tileSpriteMap, T_COFFRE); 
+				break; 
 			case 6:
-				sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU);  
+				sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU); 
 				break;
-			/*case 6:			
-				if (_t >= 0 && _t < 1) sfSprite_setTextureRect(tileSpriteCoffre, T_FERMER);
-				else if (_t >= 1 && _t < 2) sfSprite_setTextureRect(tileSpriteCoffre, T_QUART);
-				else if (_t >= 2 && _t < 3)sfSprite_setTextureRect(tileSpriteCoffre, T_DEMI);
-				else if (_t >= 3 && _t < 4)sfSprite_setTextureRect(tileSpriteCoffre, T_OUVERT);
-				break;*/
+				/*case 6:
+					if (_t >= 0 && _t < 1) sfSprite_setTextureRect(tileSpriteCoffre, T_FERMER);
+					else if (_t >= 1 && _t < 2) sfSprite_setTextureRect(tileSpriteCoffre, T_QUART);
+					else if (_t >= 2 && _t < 3)sfSprite_setTextureRect(tileSpriteCoffre, T_DEMI);
+					else if (_t >= 3 && _t < 4)sfSprite_setTextureRect(tileSpriteCoffre, T_OUVERT);
+					break;*/
 			}
 			//if (tileMap[y][x] == 5) sfRenderWindow_drawSprite(_window, tileSpriteCoffre, NULL);
-
+			 
 			/*else*/ sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
 
 		}
 	}
-
-	switch (bloc)
-	{ 
-	case 0:
-		tilePos.x = worldPos.x; 
-		tilePos.y = worldPos.y; 
-		sfSprite_setPosition(tileSpriteMap, tilePos);
-		sfSprite_setTextureRect(tileSpriteMap, T_TERRE);  
-		sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
-		break;
-	case 1:
-		tilePos.x = worldPos.x;
-		tilePos.y = worldPos.y;
-		sfSprite_setPosition(tileSpriteMap, tilePos);
-		sfSprite_setTextureRect(tileSpriteMap, T_BOIS);  
-		sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
-		break;
-	case 2:
-		tilePos.x = worldPos.x;
-		tilePos.y = worldPos.y;
-		sfSprite_setPosition(tileSpriteMap, tilePos);
-		sfSprite_setTextureRect(tileSpriteMap, T_EAU);
-		sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
-		break;
-	case 3:
-		tilePos.x = worldPos.x;
-		tilePos.y = worldPos.y;
-		sfSprite_setPosition(tileSpriteMap, tilePos);
-		sfSprite_setTextureRect(tileSpriteMap, T_ARBRE);
-		sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
-		break;
-	case 4:
-		tilePos.x = worldPos.x;
-		tilePos.y = worldPos.y;
-		sfSprite_setPosition(tileSpriteMap, tilePos);
-		sfSprite_setTextureRect(tileSpriteMap, T_PIERRE);
-		sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
-		break;
-	case 5:
-		tilePos.x = worldPos.x;
-		tilePos.y = worldPos.y;
-		sfSprite_setPosition(tileSpriteMap, tilePos);
-		sfSprite_setTextureRect(tileSpriteMap, T_COFFRE);
-		sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
-		break;
-	case 6:
-		tilePos.x = worldPos.x; 
-		tilePos.y = worldPos.y; 
-		sfSprite_setPosition(tileSpriteMap, tilePos); 
-		sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU);  
-		sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
-		break;
-	}
 }
-
 
 
 sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f _vitesse)

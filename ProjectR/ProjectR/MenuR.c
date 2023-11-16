@@ -25,6 +25,7 @@ sfFloatRect rectQuitter;
 sfSprite* SpriteTitreMenu;
 sfTexture* TextureTitreMenu;
 sfVector2f posTitre = { 400.0f, 200.0f };
+sfBool editeur = sfFalse;
 
 
 void initMenu()
@@ -87,6 +88,7 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 		printf("yolo\n");
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
+			editeur = sfTrue;
 			sfMusic_stop(musicMenu);
 			sfMusic_play(musicEdit);
 			choixJoueurMenu = EDITER;

@@ -61,6 +61,8 @@ int main()
 
 		else if (choixJoueurMenu == JOUER)
 		{
+			initMap();
+			updateGameMap(window, timerAnim, view); 
 			updatePnj();
 			updatePlayer();
 			updateView(playerPos);
@@ -88,7 +90,7 @@ int main()
 		else if (choixJoueurMenu == JOUER)
 		{
 			displayView(window);
-			displayMap(window, timerAnim);
+			displayGameMap(window, timerAnim); 
 			displayPnj(window);
 			displayPlayer(window);
 		}
