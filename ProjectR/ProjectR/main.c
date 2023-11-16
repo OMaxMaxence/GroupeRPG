@@ -67,7 +67,7 @@ int main()
 
 		else if (choixJoueurMenu == JOUER)
 		{
-			displayPnj(window);
+			updatePnj();
 			updatePlayer();
 			updateView(playerPos);
 		}
