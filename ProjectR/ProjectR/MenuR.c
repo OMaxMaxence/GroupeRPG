@@ -22,7 +22,9 @@ sfTexture* TextureQuitterMenu;
 sfVector2f posQuitter = { 700.0f, 450.0f };
 sfVector2i mousePosMenu;
 sfFloatRect rectQuitter;
-
+sfSprite* SpriteTitreMenu;
+sfTexture* TextureTitreMenu;
+sfVector2f posTitre = { 400.0f, 200.0f };
 
 
 void initMenu()
@@ -53,6 +55,10 @@ void initMenu()
 	sfMusic_play(musicMenu);
 	musicEdit = sfMusic_createFromFile("..\\Ressources\\Musics\\Geometry-Dash-Practice-Mode-Song-1-Hour.ogg");
 	musicJouer = sfMusic_createFromFile("..\\Ressources\\Musics\\Crazy-Frog-Axel-F-1-Hour.ogg");
+	SpriteTitreMenu = sfSprite_create();
+	TextureTitreMenu = sfTexture_createFromFile("..\\Ressources\\Textures\\BlockTitre.png", NULL);
+	sfSprite_setTexture(SpriteTitreMenu, TextureTitreMenu, sfTrue);
+	sfSprite_setPosition(SpriteTitreMenu, posTitre);
 }
 
 void updateMenu(sfRenderWindow* _window, sfView* _view)
@@ -105,13 +111,16 @@ void displayMenu(sfRenderWindow* _window)
 	sfSprite_setOrigin(SpritePlayMenu, vector2f(sfSprite_getGlobalBounds(SpritePlayMenu).width / 2, sfSprite_getGlobalBounds(SpritePlayMenu).height / 2));
 	sfSprite_setOrigin(SpriteEditMenu, vector2f(sfSprite_getGlobalBounds(SpriteEditMenu).width / 2, sfSprite_getGlobalBounds(SpriteEditMenu).height / 2));
 	sfSprite_setOrigin(SpriteQuitterMenu, vector2f(sfSprite_getGlobalBounds(SpriteQuitterMenu).width / 2, sfSprite_getGlobalBounds(SpriteQuitterMenu).height / 2));
+	sfSprite_setOrigin(SpriteTitreMenu, vector2f(sfSprite_getGlobalBounds(SpriteTitreMenu).width / 2, sfSprite_getGlobalBounds(SpriteTitreMenu).height / 2));
 	sfSprite_setPosition(SpriteBackgroundMenu, pos);
 	sfSprite_setPosition(SpritePlayMenu, posPlay);
 	sfSprite_setPosition(SpriteEditMenu, posEdit);
 	sfSprite_setPosition(SpriteQuitterMenu, posQuitter);
+	sfSprite_setPosition(SpriteTitreMenu, posTitre);
 	sfSprite_setRotation(SpriteBackgroundMenu, angle);
 	sfRenderWindow_drawSprite(_window, SpriteBackgroundMenu, NULL);
 	sfRenderWindow_drawSprite(_window, SpritePlayMenu, NULL);
 	sfRenderWindow_drawSprite(_window, SpriteEditMenu, NULL);
 	sfRenderWindow_drawSprite(_window, SpriteQuitterMenu, NULL);
+	sfRenderWindow_drawSprite(_window, SpriteTitreMenu, NULL);
 }
