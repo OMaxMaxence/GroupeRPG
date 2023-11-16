@@ -24,6 +24,7 @@ int main()
 	initPlayer();
 	initView();
 	initEditView();
+	initPnj();
 	choixJoueurMenu = MENU;
 
 
@@ -57,13 +58,14 @@ int main()
 			updateMenu(window, view);
 		}
 
-		if (choixJoueurMenu == JOUER)
+		else if (choixJoueurMenu == JOUER)
 		{
+			displayPnj(window);
 			updatePlayer();
 			updateView(playerPos);
 		}
 
-		if (choixJoueurMenu == EDITER)
+		else if (choixJoueurMenu == EDITER)
 		{
 			updateMap(window, timerAnim, view);
 			updateEditView(posEditView);
@@ -80,14 +82,15 @@ int main()
 			displayMenu(window);
 		}
 
-		if (choixJoueurMenu == JOUER)
+		else if (choixJoueurMenu == JOUER)
 		{
 			displayView(window);
 			displayMap(window, timerAnim);
+			displayPnj(window);
 			displayPlayer(window);
 		}
 
-		if (choixJoueurMenu == EDITER)
+		else if (choixJoueurMenu == EDITER)
 		{
 			displayMap(window, timerAnim);
 			displayEditView(window);
