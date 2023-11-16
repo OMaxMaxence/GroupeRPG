@@ -16,6 +16,8 @@ int main()
 	float timer = 0;
 	float timerAnim = 0;
 	
+
+	
 	initTools();
 	initMenu();
 	initMap();
@@ -37,6 +39,21 @@ int main()
 				sfRenderWindow_close(window);
 			}
 		}
+
+
+		if (sfKeyboard_isKeyPressed(sfKeyB))
+		{
+			if (timer == 0)
+			{
+				choixJoueurMenu = MENU;
+			}
+			timer = 1;
+		}
+		else 
+		{
+			timer = 0;
+		}
+
 		if (choixJoueurMenu == MENU)
 		{
 			updateMenu(window, view);
