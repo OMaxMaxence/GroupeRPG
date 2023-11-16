@@ -29,16 +29,19 @@ void initMenu()
 	sfSprite_setTexture(SpritePlayMenu, TexturePlayMenu, sfTrue);
 	sfSprite_setOrigin(SpritePlayMenu, vector2f(sfSprite_getGlobalBounds(SpritePlayMenu).width / 2, sfSprite_getGlobalBounds(SpritePlayMenu).height / 2));
 	sfSprite_setPosition(SpritePlayMenu, posPlay);
-	rectPlay = sfSprite_getGlobalBounds(SpritePlayMenu);
-	mousePosMenu = sfMouse_getPosition(window);
+	
+	
 }
 
 void updateMenu(sfRenderWindow* _window, sfView* _view)
 {
-	
-	worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePosMenu, _view);
-	if (sfFloatRect_contains(&rectPlay, worldPos.x, worldPos.y))
+	mousePosMenu = sfMouse_getPosition(_window);
+	rectPlay = sfSprite_getGlobalBounds(SpritePlayMenu);
+	printf("yo");
+	//worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePosMenu, _view);
+	if (sfFloatRect_contains(&rectPlay, mousePosMenu.x, mousePosMenu.y))
 	{
+		printf("yolo");
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
 			exit(EXIT_SUCCESS);
