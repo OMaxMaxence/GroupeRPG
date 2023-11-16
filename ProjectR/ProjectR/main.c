@@ -1,11 +1,6 @@
 #include "tools.h"
-typedef enum Menu Menu;
-enum Menu
-{
-	JOUER = 1,
-	EDITER,
-	QUITTER
-};
+
+
 
 int main()
 {
@@ -20,14 +15,14 @@ int main()
 
 	float timer = 0;
 	float timerAnim = 0;
+	
 	initTools();
-	//initPlayer();
 	initMenu();
-
-
-	//initMap();
-	//initView();
-	//initEditView();
+	initMap();
+	initPlayer();
+	initView();
+	initEditView();
+	choixJoueurMenu = MENU;
 
 
 	while (sfRenderWindow_isOpen(window))
@@ -40,16 +35,22 @@ int main()
 				sfRenderWindow_close(window);
 			}
 		}
+		if (choixJoueurMenu == MENU)
+		{
+			updateMenu(window, view);
+		}
 
+		if (choixJoueurMenu == JOUER)
+		{
+			updatePlayer();
+			updateView(playerPos);
+		}
 
-
-		updateMenu(window, view);
-		//updatePlayer();
-		//updateMap(window, timerAnim, view);
-		//updateView(playerPos);
-		//updateEditView(posEditView);
-
-
+		if (choixJoueurMenu == EDITER)
+		{
+			updateMap(window, timerAnim, view);
+			updateEditView(posEditView);
+		}
 
 
 		/*timer += 0.1f * getDeltaTime();
@@ -57,11 +58,24 @@ int main()
 		timerAnim += 0.001f * getDeltaTime();
 		if (timerAnim >= 4.0f) timerAnim = 0;*/
 		sfRenderWindow_clear(window, sfBlack);
-		displayMenu(window);
-		//displayView(window);
-		//displayEditView(window);
-		//displayMap(window, timerAnim);
-		//displayPlayer(window);
+		if (choixJoueurMenu == MENU)
+		{
+			displayMenu(window);
+		}
+
+		if (choixJoueurMenu == JOUER)
+		{
+			displayView(window);
+			displayMap(window, timerAnim);
+			displayPlayer(window);
+		}
+
+		if (choixJoueurMenu == EDITER)
+		{
+			displayMap(window, timerAnim);
+			displayEditView(window);
+		}
+		
 		sfRenderWindow_display(window);
 	}
 
