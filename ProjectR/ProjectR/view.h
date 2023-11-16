@@ -1,11 +1,15 @@
 #pragma once
 #include "tools.h"
 
+#define VIEW_HEIGHT 230.0f
+#define VIEW_LENGTH 170.0f
+
 // GAME VIEW
 
 sfView* view;
 sfVector2f posView;
 sfFloatRect rectView;
+
 
 sfVector2i pixelPos;
 sfVector2f worldPos;

@@ -1,7 +1,7 @@
 #include "view.h"
 
 sfVector2f posView = { 480.0f, 240.0f };
-sfFloatRect rectView = { 800.0f, 600.0f, 230.0f, 170.0f };
+sfFloatRect rectView = { 800.0f, 600.0f, VIEW_HEIGHT, VIEW_LENGTH };
 
 void initView()
 {
@@ -12,8 +12,21 @@ void initView()
 
 void updateView(sfVector2f _playerpos)
 {
-	//if !bord
-	sfView_setCenter(view, _playerpos);
+	if (_playerpos.x <= 115.0f && _playerpos.y <= 85.0f)
+	{
+		sfView_setCenter(view, vector2f(115.0f, 85.0f));
+	}
+	else if (_playerpos.x<=115.0f)
+	{
+		sfView_setCenter(view, vector2f(115.0f, _playerpos.y));
+
+	}
+	else if (_playerpos.y <= 85.0f)
+	{
+		sfView_setCenter(view, vector2f(_playerpos.x, 85.0f));
+	}
+	else sfView_setCenter(view, _playerpos);
+	printf("playerpos.x : %f, playerpos.y : %f\n", _playerpos.x, _playerpos.y);
 }
 
 void displayView(sfRenderWindow* _window)
