@@ -26,6 +26,7 @@ int main()
 	initView();
 	initEditView();
 	initPnj();
+
 	choixJoueurMenu = MENU;
 
 
@@ -41,11 +42,16 @@ int main()
 		}
 
 
-		if (sfKeyboard_isKeyPressed(sfKeyB))
+		if (sfKeyboard_isKeyPressed(sfKeyEscape) && choixJoueurMenu != MENU)
 		{
 			if (timer == 0)
 			{
+				sfMusic_stop(musicMenu);
+				sfMusic_stop(musicEdit);
+				sfMusic_stop(musicJouer);
 				choixJoueurMenu = MENU;
+				initMenu();
+				displayMenuView(window);
 			}
 			timer = 1;
 		}
