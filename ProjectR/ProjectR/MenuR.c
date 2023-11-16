@@ -29,6 +29,7 @@ sfSound* soudBoutonMenu;
 sfSoundBuffer* soundBuffer;
 
 
+
 void initMenu()
 {
 
@@ -92,6 +93,7 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 		printf("yolo\n");
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
+			editeur = sfTrue;
 			sfMusic_stop(musicMenu);
 			sfSound_play(soudBoutonMenu);
 			sfMusic_play(musicEdit);
