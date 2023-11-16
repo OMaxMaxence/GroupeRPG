@@ -22,7 +22,7 @@ sfTexture* TextureQuitterMenu;
 sfVector2f posQuitter = { 700.0f, 450.0f };
 sfVector2i mousePosMenu;
 sfFloatRect rectQuitter;
-
+sfMusic* musicMenu;
 
 
 void initMenu()
@@ -49,11 +49,13 @@ void initMenu()
 	sfSprite_setTexture(SpriteQuitterMenu, TextureQuitterMenu, sfTrue);
 	sfSprite_setOrigin(SpriteQuitterMenu, vector2f(sfSprite_getGlobalBounds(SpriteQuitterMenu).width / 2, sfSprite_getGlobalBounds(SpriteQuitterMenu).height / 2));
 	sfSprite_setPosition(SpriteQuitterMenu, posQuitter);
-	
+	musicMenu = sfMusic_createFromFile("..\\Ressources\\Musics\\Musique-libre-de-droits_-Epic-Music-CELTIC-FANTASY-MUSIC-Dark-Ambience-Medieval-_No-Copyright_.ogg");
+	sfMusic_play(musicMenu);
 }
 
 void updateMenu(sfRenderWindow* _window, sfView* _view)
 {
+	
 	mousePosMenu = sfMouse_getPosition(_window);
 	rectPlay = sfSprite_getGlobalBounds(SpritePlayMenu);
 	rectEdit = sfSprite_getGlobalBounds(SpriteEditMenu);
@@ -65,6 +67,7 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 		printf("yolo\n");
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
+			sfMusic_stop(musicMenu);
 			choixJoueurMenu = JOUER;
 			printf("%d\n", choixJoueurMenu);
 		}
@@ -75,6 +78,7 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 		printf("yolo\n");
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
+			sfMusic_stop(musicMenu);
 			choixJoueurMenu = EDITER;
 			printf("%d\n", choixJoueurMenu);
 		}
