@@ -21,12 +21,13 @@ int main()
 	float timer = 0;
 	float timerAnim = 0;
 	initTools();
-	//initPlayer();
-	initMenu();
+	initPlayer();
+	initPnj(); 
+	//initMenu();
 
 
-	//initMap();
-	//initView();
+	initMap();
+	initView();
 	//initEditView();
 
 
@@ -43,10 +44,11 @@ int main()
 
 
 
-		updateMenu(window, view);
-		//updatePlayer();
-		//updateMap(window, timerAnim, view);
-		//updateView(playerPos);
+		//updateMenu(window, view);
+		updatePlayer();
+		updatePnj(); 
+		updateMap(window, timerAnim, view);
+		updateView(playerPos);
 		//updateEditView(posEditView);
 
 		
@@ -57,11 +59,12 @@ int main()
 		timerAnim += 0.001f * getDeltaTime();
 		if (timerAnim >= 4.0f) timerAnim = 0;*/
 		sfRenderWindow_clear(window, sfBlack);
-		displayMenu(window);
-		//displayView(window);
+		//displayMenu(window);
+		displayView(window);
 		//displayEditView(window);
-		//displayMap(window, timerAnim);
-		//displayPlayer(window);
+		displayMap(window, timerAnim);
+		displayPlayer(window);
+		displayPnj(window); 
 		sfRenderWindow_display(window);
 	}
 
