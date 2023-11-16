@@ -9,10 +9,20 @@ sfVector2f pos = { 400.0f, 300.0f };
 float angle = 0.0f;
 sfSprite* SpritePlayMenu;
 sfTexture* TexturePlayMenu;
-sfVector2f originPlay = { 143.0f, 46.5f };
-sfVector2f posPlay = { 400.0f, 300.0f };
+sfVector2f posPlay = { 100.0f, 450.0f };
 sfVector2i mousePosMenu; 
 sfFloatRect rectPlay;
+sfSprite* SpriteEditMenu;
+sfTexture* TextureEditMenu;
+sfVector2f posEdit = { 400.0f, 450.0f };
+sfVector2i mousePosMenu;
+sfFloatRect rectEdit;
+sfSprite* SpriteQuitterMenu;
+sfTexture* TextureQuitterMenu;
+sfVector2f posQuitter = { 700.0f, 450.0f };
+sfVector2i mousePosMenu;
+sfFloatRect rectQuitter;
+
 
 
 void initMenu()
@@ -29,7 +39,16 @@ void initMenu()
 	sfSprite_setTexture(SpritePlayMenu, TexturePlayMenu, sfTrue);
 	sfSprite_setOrigin(SpritePlayMenu, vector2f(sfSprite_getGlobalBounds(SpritePlayMenu).width / 2, sfSprite_getGlobalBounds(SpritePlayMenu).height / 2));
 	sfSprite_setPosition(SpritePlayMenu, posPlay);
-	
+	SpriteEditMenu = sfSprite_create();
+	TextureEditMenu = sfTexture_createFromFile("..\\Ressources\\Textures\\BlockEditer.png", NULL);
+	sfSprite_setTexture(SpriteEditMenu, TextureEditMenu, sfTrue);
+	sfSprite_setOrigin(SpriteEditMenu, vector2f(sfSprite_getGlobalBounds(SpriteEditMenu).width / 2, sfSprite_getGlobalBounds(SpriteEditMenu).height / 2));
+	sfSprite_setPosition(SpriteEditMenu, posEdit);
+	SpriteQuitterMenu = sfSprite_create();
+	TextureQuitterMenu = sfTexture_createFromFile("..\\Ressources\\Textures\\BlockQuitter.png", NULL);
+	sfSprite_setTexture(SpriteQuitterMenu, TextureQuitterMenu, sfTrue);
+	sfSprite_setOrigin(SpriteQuitterMenu, vector2f(sfSprite_getGlobalBounds(SpriteQuitterMenu).width / 2, sfSprite_getGlobalBounds(SpriteQuitterMenu).height / 2));
+	sfSprite_setPosition(SpriteQuitterMenu, posQuitter);
 	
 }
 
@@ -37,26 +56,54 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 {
 	mousePosMenu = sfMouse_getPosition(_window);
 	rectPlay = sfSprite_getGlobalBounds(SpritePlayMenu);
-	printf("yo");
+	rectEdit = sfSprite_getGlobalBounds(SpriteEditMenu);
+	rectQuitter = sfSprite_getGlobalBounds(SpriteQuitterMenu);
+	printf("yo\n");
 	//worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePosMenu, _view);
 	if (sfFloatRect_contains(&rectPlay, mousePosMenu.x, mousePosMenu.y))
 	{
-		printf("yolo");
+		printf("yolo\n");
+		if (sfMouse_isButtonPressed(sfMouseLeft))
+		{
+			choixJoueurMenu = JOUER;
+			printf("%d\n", choixJoueurMenu);
+		}
+	}
+
+	if (sfFloatRect_contains(&rectEdit, mousePosMenu.x, mousePosMenu.y))
+	{
+		printf("yolo\n");
+		if (sfMouse_isButtonPressed(sfMouseLeft))
+		{
+			choixJoueurMenu = EDITER;
+			printf("%d\n", choixJoueurMenu);
+		}
+	}
+
+	if (sfFloatRect_contains(&rectQuitter, mousePosMenu.x, mousePosMenu.y))
+	{
+		printf("yolo\n");
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
 			exit(EXIT_SUCCESS);
 		}
 	}
+
 }
 
 void displayMenu(sfRenderWindow* _window)
 {
 	sfSprite_setOrigin(SpriteBackgroundMenu, origin);
-
 	sfSprite_setOrigin(SpritePlayMenu, vector2f(sfSprite_getGlobalBounds(SpritePlayMenu).width / 2, sfSprite_getGlobalBounds(SpritePlayMenu).height / 2));
+	sfSprite_setOrigin(SpriteEditMenu, vector2f(sfSprite_getGlobalBounds(SpriteEditMenu).width / 2, sfSprite_getGlobalBounds(SpriteEditMenu).height / 2));
+	sfSprite_setOrigin(SpriteQuitterMenu, vector2f(sfSprite_getGlobalBounds(SpriteQuitterMenu).width / 2, sfSprite_getGlobalBounds(SpriteQuitterMenu).height / 2));
 	sfSprite_setPosition(SpriteBackgroundMenu, pos);
 	sfSprite_setPosition(SpritePlayMenu, posPlay);
+	sfSprite_setPosition(SpriteEditMenu, posEdit);
+	sfSprite_setPosition(SpriteQuitterMenu, posQuitter);
 	sfSprite_setRotation(SpriteBackgroundMenu, angle);
 	sfRenderWindow_drawSprite(_window, SpriteBackgroundMenu, NULL);
 	sfRenderWindow_drawSprite(_window, SpritePlayMenu, NULL);
+	sfRenderWindow_drawSprite(_window, SpriteEditMenu, NULL);
+	sfRenderWindow_drawSprite(_window, SpriteQuitterMenu, NULL);
 }
