@@ -9,6 +9,7 @@
 #define T_ARBRE (sfIntRect){128,0,32,32}
 #define T_PIERRE (sfIntRect){160,0,32,32}
 #define T_COFFRE (sfIntRect){192,0,32,32}
+#define T_DRAPEAU (sfIntRect){224,0,32,32} 
 #define T_FERMER (sfIntRect){0,0,32,32}
 #define T_QUART (sfIntRect){32,0,32,32}
 #define T_DEMI (sfIntRect){64,0,32,32}
@@ -95,7 +96,7 @@ void initMap()
 void updateMap(sfRenderWindow* _window, float _t, sfView* _view)
 {
 	mousePos = sfMouse_getPosition(_window);
-	worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePos, view);
+	worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePos, view); 
 	blocpos.x = worldPos.x / 32;
 	blocpos.y = worldPos.y / 32;
 	delai += getDeltaTime();
@@ -166,12 +167,15 @@ void displayMap(sfRenderWindow* _window, float _t)
 			case 5:
 				sfSprite_setTextureRect(tileSpriteMap, T_COFFRE);
 				break;
-			case 6:			
+			case 6:
+				sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU); 
+				break;
+			/*case 6:			
 				if (_t >= 0 && _t < 1) sfSprite_setTextureRect(tileSpriteCoffre, T_FERMER);
 				else if (_t >= 1 && _t < 2) sfSprite_setTextureRect(tileSpriteCoffre, T_QUART);
 				else if (_t >= 2 && _t < 3)sfSprite_setTextureRect(tileSpriteCoffre, T_DEMI);
 				else if (_t >= 3 && _t < 4)sfSprite_setTextureRect(tileSpriteCoffre, T_OUVERT);
-				break;
+				break;*/
 			}
 			if (tileMap[y][x] == 6) sfRenderWindow_drawSprite(_window, tileSpriteCoffre, NULL);
 
@@ -222,6 +226,13 @@ void displayMap(sfRenderWindow* _window, float _t)
 		tilePos.y = worldPos.y;
 		sfSprite_setPosition(tileSpriteMap, tilePos);
 		sfSprite_setTextureRect(tileSpriteMap, T_COFFRE);
+		sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
+		break;
+	case 6: 
+		tilePos.x = worldPos.x; 
+		tilePos.y = worldPos.y; 
+		sfSprite_setPosition(tileSpriteMap, tilePos); 
+		sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU); 
 		sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
 		break;
 	}
