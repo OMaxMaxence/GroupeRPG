@@ -1,5 +1,24 @@
 #include "view.h"
 
+// MENU VIEW
+
+sfVector2f posMenuView = { 400.0f,300.0f };
+sfFloatRect rectMenuView = { 800.0f, 600.0f, 800.0f, 600.0f };
+
+void initMenuView()
+{
+	menuView = sfView_create();
+	sfView_reset(menuView, rectMenuView);
+	sfView_setCenter(menuView, posMenuView);
+}
+
+void displayMenuView(sfRenderWindow* _window)
+{
+	sfRenderWindow_setView(_window, menuView);
+}
+
+// GAME VIEW
+
 sfVector2f posView = { 480.0f, 240.0f };
 sfFloatRect rectView = { 800.0f, 600.0f, VIEW_HEIGHT, VIEW_LENGTH };
 

@@ -20,6 +20,7 @@ int main()
 	initMenu();
 	initMap();
 	initPlayer();
+	initMenuView();
 	initView();
 	initEditView();
 	initPnj();
@@ -63,6 +64,7 @@ int main()
 		if (choixJoueurMenu == MENU)
 		{
 			displayMenu(window);
+			displayMenuView(window);
 		}
 
 		else if (choixJoueurMenu == JOUER)
