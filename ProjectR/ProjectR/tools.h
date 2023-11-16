@@ -11,7 +11,15 @@
 #include "MenuR.h"
 #include "player.h"
 #include "view.h"
-
+typedef enum Menu Menu;
+enum Menu
+{
+	MENU = 0,
+	JOUER = 1,
+	EDITER,
+	QUITTER
+};
+Menu choixJoueurMenu;
 sfRenderWindow* window;
 
 void initTools();

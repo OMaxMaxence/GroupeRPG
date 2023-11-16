@@ -8,7 +8,7 @@ float animTime = 0.0f;
 sfBool isMoving;
 
 sfVector2f playerPos = { 100.0f, 100.0f };
-sfVector2f playerSpeed = { 150.0f, 150.0 };
+sfVector2f playerSpeed = { 150.0f, 150.0f };
 
 void initPlayer()
 {
@@ -40,40 +40,47 @@ void updatePlayer()
 	frect = sfSprite_getGlobalBounds(player);
 	isMoving = sfFalse;
 
-	if (sfKeyboard_isKeyPressed(sfKeyD))
+	if (sfKeyboard_isKeyPressed(sfKeyD) && playerPos.x < MAP_LENGTH*32 - PLAYER_LENGTH/2)
 	{
-		frameY = 1; // DROITE
-		// if !collision
-		playerPos.x += playerSpeed.x * getDeltaTime();
-		isMoving = sfTrue;
-		animTime += getDeltaTime();
+		frameY = DROITE;
+		if (!collisionMapPlayer(frect, DROITE, playerSpeed))
+		{
+			playerPos.x += playerSpeed.x * getDeltaTime();
+			isMoving = sfTrue;
+			animTime += getDeltaTime();
+		}
 	}
-	else if (sfKeyboard_isKeyPressed(sfKeyZ))
+	else if (sfKeyboard_isKeyPressed(sfKeyZ) && playerPos.y > PLAYER_HEIGHT/2)
 	{
-		frameY = 3; // HAUT
-		// if !collision
-		playerPos.y -= playerSpeed.y * getDeltaTime();
-		isMoving = sfTrue;
-		animTime += getDeltaTime();
+		frameY = HAUT;
+		if (!collisionMapPlayer(frect, HAUT, playerSpeed))
+		{
+			playerPos.y -= playerSpeed.y * getDeltaTime();
+			isMoving = sfTrue;
+			animTime += getDeltaTime();
+		}
 	}
-	else if (sfKeyboard_isKeyPressed(sfKeyQ))
+	else if (sfKeyboard_isKeyPressed(sfKeyQ) && playerPos.x > PLAYER_LENGTH/2)
 	{
-		frameY = 2; // GAUCHE
-		// if !collision
-		playerPos.x -= playerSpeed.x * getDeltaTime();
-		isMoving = sfTrue;
-		animTime += getDeltaTime();
+		frameY = GAUCHE;
+		if (!collisionMapPlayer(frect, GAUCHE, playerSpeed))
+		{
+			playerPos.x -= playerSpeed.x * getDeltaTime();
+			isMoving = sfTrue;
+			animTime += getDeltaTime();
+		}
 	}
-	else if (sfKeyboard_isKeyPressed(sfKeyS))
+	else if (sfKeyboard_isKeyPressed(sfKeyS) && playerPos.y < MAP_HEIGHT*32 - PLAYER_HEIGHT/2)
 	{
-		frameY = 0; // BAS
-		// if !collision
-		playerPos.y += playerSpeed.y * getDeltaTime();
-		isMoving = sfTrue;
-		animTime += getDeltaTime();
-	}
+		frameY = BAS;
+		if (!collisionMapPlayer(frect, BAS, playerSpeed))
+		{
+			playerPos.y += playerSpeed.y * getDeltaTime();
+			isMoving = sfTrue;
+			animTime += getDeltaTime();
+		}
 
-	// bord de map
+	}
 
 	if (isMoving)
 	{
