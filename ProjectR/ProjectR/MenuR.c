@@ -22,7 +22,7 @@ sfTexture* TextureQuitterMenu;
 sfVector2f posQuitter = { 700.0f, 450.0f };
 sfVector2i mousePosMenu;
 sfFloatRect rectQuitter;
-int choixJoueurMenu = 0;
+
 
 
 void initMenu()
@@ -58,37 +58,33 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 	rectPlay = sfSprite_getGlobalBounds(SpritePlayMenu);
 	rectEdit = sfSprite_getGlobalBounds(SpriteEditMenu);
 	rectQuitter = sfSprite_getGlobalBounds(SpriteQuitterMenu);
-	printf("yo");
+	printf("yo\n");
 	//worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePosMenu, _view);
 	if (sfFloatRect_contains(&rectPlay, mousePosMenu.x, mousePosMenu.y))
 	{
-		printf("yolo");
+		printf("yolo\n");
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
-			choixJoueurMenu = 1;
-			printf("%d", choixJoueurMenu);
-			exit(EXIT_SUCCESS);
+			choixJoueurMenu = JOUER;
+			printf("%d\n", choixJoueurMenu);
 		}
 	}
 
 	if (sfFloatRect_contains(&rectEdit, mousePosMenu.x, mousePosMenu.y))
 	{
-		printf("yolo");
+		printf("yolo\n");
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
-			choixJoueurMenu = 2;
-			printf("%d", choixJoueurMenu);
-			exit(EXIT_SUCCESS);
+			choixJoueurMenu = EDITER;
+			printf("%d\n", choixJoueurMenu);
 		}
 	}
 
 	if (sfFloatRect_contains(&rectQuitter, mousePosMenu.x, mousePosMenu.y))
 	{
-		printf("yolo");
+		printf("yolo\n");
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
-			choixJoueurMenu = 3;
-			printf("%d", choixJoueurMenu);
 			exit(EXIT_SUCCESS);
 		}
 	}
