@@ -95,7 +95,7 @@ void initMap()
 void updateMap(sfRenderWindow* _window, float _t, sfView* _view)
 {
 	mousePos = sfMouse_getPosition(_window);
-	worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePos, view);
+	worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePos, editView);
 	blocpos.x = worldPos.x / 32;
 	blocpos.y = worldPos.y / 32;
 	delai += getDeltaTime();
@@ -127,7 +127,7 @@ void updateMap(sfRenderWindow* _window, float _t, sfView* _view)
 	if (sfKeyboard_isKeyPressed(sfKeyM)) 
 	{ 
 		fichier = fopen("savemap1.bin", "wt"); 
-		fwrite(tileMap, sizeof(char), 7500, fichier); 
+		fwrite(tileMap, sizeof(char), MAP_HEIGHT*MAP_LENGTH, fichier); 
 		fclose(fichier); 
 	}
 
