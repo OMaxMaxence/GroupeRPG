@@ -8,7 +8,7 @@ float animTime = 0.0f;
 sfBool isMoving;
 
 sfVector2f playerPos = { 100.0f, 100.0f };
-sfVector2f playerSpeed = { 150.0f, 150.0 };
+sfVector2f playerSpeed = { 150.0f, 150.0f };
 
 void initPlayer()
 {
@@ -40,7 +40,7 @@ void updatePlayer()
 	frect = sfSprite_getGlobalBounds(player);
 	isMoving = sfFalse;
 
-	if (sfKeyboard_isKeyPressed(sfKeyD) && playerPos.x < 600)
+	if (sfKeyboard_isKeyPressed(sfKeyD) && playerPos.x < MAP_LENGTH*32 - PLAYER_LENGTH/2)
 	{
 		frameY = DROITE;
 		if (!collisionMapPlayer(frect, DROITE, playerSpeed))
@@ -50,7 +50,7 @@ void updatePlayer()
 			animTime += getDeltaTime();
 		}
 	}
-	else if (sfKeyboard_isKeyPressed(sfKeyZ) && playerPos.y > 11.5)
+	else if (sfKeyboard_isKeyPressed(sfKeyZ) && playerPos.y > PLAYER_HEIGHT/2)
 	{
 		frameY = HAUT;
 		if (!collisionMapPlayer(frect, HAUT, playerSpeed))
@@ -60,7 +60,7 @@ void updatePlayer()
 			animTime += getDeltaTime();
 		}
 	}
-	else if (sfKeyboard_isKeyPressed(sfKeyQ) && playerPos.x > 8.5)
+	else if (sfKeyboard_isKeyPressed(sfKeyQ) && playerPos.x > PLAYER_LENGTH/2)
 	{
 		frameY = GAUCHE;
 		if (!collisionMapPlayer(frect, GAUCHE, playerSpeed))
@@ -70,7 +70,7 @@ void updatePlayer()
 			animTime += getDeltaTime();
 		}
 	}
-	else if (sfKeyboard_isKeyPressed(sfKeyS) && playerPos.y < 600)
+	else if (sfKeyboard_isKeyPressed(sfKeyS) && playerPos.y < MAP_HEIGHT*32 - PLAYER_HEIGHT/2)
 	{
 		frameY = BAS;
 		if (!collisionMapPlayer(frect, BAS, playerSpeed))
@@ -81,8 +81,6 @@ void updatePlayer()
 		}
 
 	}
-
-	// bord de map
 
 	if (isMoving)
 	{
