@@ -44,20 +44,14 @@ int main()
 
 		if (sfKeyboard_isKeyPressed(sfKeyEscape) && choixJoueurMenu != MENU)
 		{
-			if (timer == 0)
-			{
-				sfMusic_stop(musicMenu);
-				sfMusic_stop(musicEdit);
-				sfMusic_stop(musicJouer);
-				choixJoueurMenu = MENU;
-				initMenu();
-				displayMenuView(window);
-			}
-			timer = 1;
-		}
-		else 
-		{
-			timer = 0;
+			sfMusic_stop(musicMenu);
+			sfMusic_stop(musicEdit);
+			sfMusic_stop(musicJouer);
+			sfRenderWindow_setMouseCursorVisible(window, sfTrue);
+			choixJoueurMenu = MENU;
+			initMenu();
+			displayMenuView(window);
+
 		}
 
 		if (choixJoueurMenu == MENU)
@@ -70,6 +64,7 @@ int main()
 			updatePnj();
 			updatePlayer();
 			updateView(playerPos);
+			sfRenderWindow_setMouseCursorVisible(window, sfFalse);
 		}
 
 		else if (choixJoueurMenu == EDITER)
