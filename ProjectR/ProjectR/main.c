@@ -7,7 +7,7 @@ int main()
 	sfVideoMode mode = { 800, 600, 32 };
 
 	char titre[100];
-	sprintf_s(titre, 100, "TEST");
+	sprintf_s(titre, 100, "Plink Quest, the key seeker of the past");
 
 	sfRenderWindow* window;
 	window = sfRenderWindow_create(mode, titre, sfDefaultStyle, NULL);
