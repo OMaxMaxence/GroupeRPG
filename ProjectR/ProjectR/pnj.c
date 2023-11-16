@@ -28,17 +28,8 @@ void initPnj()
 
 void updatePnj()
 {
-	// Animation non fonctionnel
-	/*
-	if (animTimepnj > 0.3f)
-	{
-		for (int i = 0; i < 11; i++)
-		{
-			iRectpnj.left = 0 + 18 * i;
-			sfSprite_setTextureRect(pnj, iRectpnj);
-		}
-		animTimepnj = 0.0f;
-	}*/
+	sfSprite_setPosition(pnj, pnjPos);
+
 	
 }
 

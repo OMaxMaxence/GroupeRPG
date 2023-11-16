@@ -11,6 +11,8 @@
 #include "MenuR.h"
 #include "player.h"
 #include "view.h"
+#include "pnj.h"
+
 typedef enum Menu Menu;
 enum Menu
 {
