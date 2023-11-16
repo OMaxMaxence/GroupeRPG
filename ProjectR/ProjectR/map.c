@@ -14,6 +14,9 @@
 #define T_DEMI (sfIntRect){64,0,32,32}
 #define T_OUVERT (sfIntRect){ 96,0,32,32}
 
+#define MAP_HEIGHT 75
+#define MAP_LENGTH 100
+
 #pragma warning (disable: 4244)
 
 sfSprite* tileSpriteMap;
@@ -28,7 +31,7 @@ float delai;
 sfVector2f worldPos;
 FILE* fichier;
 
-char tileMap[75][100]; /* = {
+char tileMap[MAP_HEIGHT][MAP_LENGTH]; /* = {
 	{4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4},
 	{ 0,0,4,4,0,0,0,0,0,0,0,0,0,3,0,0,4,4,0,0,0,0,4,4,0,0,0,0,0,0,0,0,0,3,0,0,4,4,0,0,0,0,4,4,0,0,0,0,0,0,0,0,0,3,0,0,4,4,0,0 },
 	{ 0,0,4,4,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,4,4,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,4,4,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0 },
@@ -65,6 +68,8 @@ char tileMap[75][100]; /* = {
 	{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 }
 };*/
 
+
+
 void initMap()
 {
 	tileTextureMap = sfTexture_createFromFile(TEXTURE_PATH"tileset1.png", NULL);
@@ -87,6 +92,8 @@ void initMap()
 	}*/
 	
 }
+
+
 
 void updateMap(sfRenderWindow* _window, float _t, sfView* _view)
 {
@@ -129,11 +136,13 @@ void updateMap(sfRenderWindow* _window, float _t, sfView* _view)
 
 }
 
+
+
 void displayMap(sfRenderWindow* _window, float _t)
 {
-	for (int y = 0; y < 75; y++)
+	for (int y = 0; y < MAP_HEIGHT; y++)
 	{
-		for (int x = 0; x < 100; x++)
+		for (int x = 0; x < MAP_LENGTH; x++)
 		{
 			tilePos.x = x * 32;
 			tilePos.y = y * 32;
@@ -173,6 +182,7 @@ void displayMap(sfRenderWindow* _window, float _t)
 
 		}
 	}
+
 	switch (bloc)
 	{ 
 	case 0:
@@ -219,6 +229,8 @@ void displayMap(sfRenderWindow* _window, float _t)
 		break;
 	}
 }
+
+
 
 sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f _vitesse)
 {
