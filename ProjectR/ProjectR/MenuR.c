@@ -25,7 +25,9 @@ sfFloatRect rectQuitter;
 sfSprite* SpriteTitreMenu;
 sfTexture* TextureTitreMenu;
 sfVector2f posTitre = { 400.0f, 200.0f };
-sfBool editeur = sfFalse;
+sfSound* soudBoutonMenu;
+sfSoundBuffer* soundBuffer;
+
 
 
 void initMenu()
@@ -60,6 +62,9 @@ void initMenu()
 	TextureTitreMenu = sfTexture_createFromFile("..\\Ressources\\Textures\\BlockTitre.png", NULL);
 	sfSprite_setTexture(SpriteTitreMenu, TextureTitreMenu, sfTrue);
 	sfSprite_setPosition(SpriteTitreMenu, posTitre);
+	soudBoutonMenu = sfSound_create();
+	soundBuffer = sfSoundBuffer_createFromFile("..\\Ressources\\SoundFX\\Tactical-Nuke-Incoming-Sound-Effect.ogg");
+	sfSound_setBuffer(soudBoutonMenu, soundBuffer);
 }
 
 void updateMenu(sfRenderWindow* _window, sfView* _view)
@@ -90,6 +95,7 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 		{
 			editeur = sfTrue;
 			sfMusic_stop(musicMenu);
+			sfSound_play(soudBoutonMenu);
 			sfMusic_play(musicEdit);
 			choixJoueurMenu = EDITER;
 			printf("%d\n", choixJoueurMenu);
