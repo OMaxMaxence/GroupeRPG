@@ -74,23 +74,19 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 	rectPlay = sfSprite_getGlobalBounds(SpritePlayMenu);
 	rectEdit = sfSprite_getGlobalBounds(SpriteEditMenu);
 	rectQuitter = sfSprite_getGlobalBounds(SpriteQuitterMenu);
-	printf("yo\n");
 	//worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePosMenu, _view);
 	if (sfFloatRect_contains(&rectPlay, mousePosMenu.x, mousePosMenu.y))
 	{
-		printf("yolo\n");
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
 			sfMusic_stop(musicMenu);
 			sfMusic_play(musicJouer);
 			choixJoueurMenu = JOUER;
-			printf("%d\n", choixJoueurMenu);
 		}
 	}
 
 	if (sfFloatRect_contains(&rectEdit, mousePosMenu.x, mousePosMenu.y))
 	{
-		printf("yolo\n");
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
 			editeur = sfTrue;
@@ -98,13 +94,11 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 			sfSound_play(soudBoutonMenu);
 			sfMusic_play(musicEdit);
 			choixJoueurMenu = EDITER;
-			printf("%d\n", choixJoueurMenu);
 		}
 	}
 
 	if (sfFloatRect_contains(&rectQuitter, mousePosMenu.x, mousePosMenu.y))
 	{
-		printf("yolo\n");
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
 			exit(EXIT_SUCCESS);
