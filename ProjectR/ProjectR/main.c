@@ -76,10 +76,7 @@ int main()
 		}
 
 
-		/*timer += 0.1f * getDeltaTime();
-		if (timer >= 4.0f) timer = 0;
-		timerAnim += 0.001f * getDeltaTime();
-		if (timerAnim >= 4.0f) timerAnim = 0;*/
+
 		sfRenderWindow_clear(window, sfBlack);
 		if (choixJoueurMenu == MENU)
 		{
