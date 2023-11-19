@@ -7,6 +7,8 @@ sfIntRect iRectpnj = {0,0,32,32};
 float animTimepnj = 0.0f;
 
 sfVector2f pnjPos = { 40.0f, 75.0f };
+
+
 void initPnj()
 {
 	spritesheetpnj = sfTexture_createFromFile(TEXTURE_PATH"npc.png", NULL);
@@ -41,7 +43,6 @@ void updatePnj()
 
 	//sfSprite_setPosition(pnj, pnjPos);
 	float distanceToPlayer = distanceBetweenTwoPoints(playerPos, pnjPos);
-	printf("%f\n", distanceToPlayer);
 	
 }
 
