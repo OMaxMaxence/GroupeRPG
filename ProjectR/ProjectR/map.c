@@ -298,9 +298,20 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 	{
 		sfVector2i nextPosInTab = { _sprite.left / 32, (_sprite.top - _vitesse.y * getDeltaTime()) / 32 };
 		sfVector2i nextPosInTab2 = { (_sprite.left + _sprite.width) / 32, (_sprite.top - _vitesse.y * getDeltaTime()) / 32 };
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] == 2 || tileMap[nextPosInTab2.y][nextPosInTab2.x] == 2) // Player in water
+		{
+			playerSpeed.x = PLAYER_SPEED / 2;
+			playerSpeed.y = PLAYER_SPEED / 2;
+		}
+		else
+		{
+			playerSpeed.x = PLAYER_SPEED;
+			playerSpeed.y = PLAYER_SPEED;
+		}
 		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 3 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 6 ||
 			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 6)
 		{
+
 			return sfTrue;
 		}
 	}
@@ -309,6 +320,16 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 	{
 		sfVector2i nextPosInTab = { _sprite.left / 32, (_sprite.top + _sprite.height + _vitesse.y * getDeltaTime()) / 32 };
 		sfVector2i nextPosInTab2 = { (_sprite.left + _sprite.width) / 32, (_sprite.top + _sprite.height + _vitesse.y * getDeltaTime()) / 32 };
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] == 2 || tileMap[nextPosInTab2.y][nextPosInTab2.x] == 2) // Player in water
+		{
+			playerSpeed.x = PLAYER_SPEED / 2;
+			playerSpeed.y = PLAYER_SPEED / 2;
+		}
+		else
+		{
+			playerSpeed.x = PLAYER_SPEED;
+			playerSpeed.y = PLAYER_SPEED;
+		}
 		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 3 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 6 ||
 			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 6)
 		{
@@ -320,6 +341,16 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 	{
 		sfVector2i nextPosInTab = { (_sprite.left - _vitesse.x * getDeltaTime()) / 32, (_sprite.top) / 32 };
 		sfVector2i nextPosInTab2 = { (_sprite.left - _vitesse.x * getDeltaTime()) / 32, (_sprite.top + _sprite.height) / 32 };
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] == 2 || tileMap[nextPosInTab2.y][nextPosInTab2.x] == 2) // Player in water
+		{
+			playerSpeed.x = PLAYER_SPEED / 2;
+			playerSpeed.y = PLAYER_SPEED / 2;
+		}
+		else
+		{
+			playerSpeed.x = PLAYER_SPEED;
+			playerSpeed.y = PLAYER_SPEED;
+		}
 		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 3 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 6 ||
 			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 6)
 		{
@@ -331,6 +362,16 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 	{
 		sfVector2i nextPosInTab = { (_sprite.left + _sprite.width + _vitesse.x * getDeltaTime()) / 32, _sprite.top / 32 };
 		sfVector2i nextPosInTab2 = { (_sprite.left + _sprite.width + _vitesse.x * getDeltaTime()) / 32, (_sprite.top + _sprite.height) / 32 };
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] == 2 || tileMap[nextPosInTab2.y][nextPosInTab2.x] == 2) // Player in water
+		{
+			playerSpeed.x = PLAYER_SPEED / 2;
+			playerSpeed.y = PLAYER_SPEED / 2;
+		}
+		else
+		{
+			playerSpeed.x = PLAYER_SPEED;
+			playerSpeed.y = PLAYER_SPEED;
+		}
 		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 3 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 6 ||
 			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 6)
 		{
