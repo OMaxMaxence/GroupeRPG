@@ -31,38 +31,25 @@ void initView()
 
 void updateView(sfVector2f _playerpos)
 {
-	if (_playerpos.x <= 115.0f && _playerpos.y <= 85.0f) // Upper Left CORNER
-	{
-		sfView_setCenter(view, vector2f(115.0f, 85.0f));
-	}
-	else if (_playerpos.x <= 115.0f && _playerpos.y >= MAP_HEIGHT*32 - 85.0f) // Bottom Left CORNER
-	{
-		sfView_setCenter(view, vector2f(115.0f, MAP_HEIGHT*32 - 85.0f));
-	}
-	else if (_playerpos.x >= MAP_LENGTH*32 - 115.0f && _playerpos.y <= 85.0f) // Upper Rigth CORNER
-	{
-		sfView_setCenter(view, vector2f(MAP_LENGTH*32 - 115.0f, 85.0f));
-	}
-	else if (_playerpos.x >= MAP_LENGTH*32 - 115.0f && _playerpos.y >= MAP_HEIGHT*32 - 85.0f) // Bottom Right CORNER
-	{
-		sfView_setCenter(view, vector2f(MAP_LENGTH*32 - 115.0f, MAP_HEIGHT*32 - 85.0f));
-	}
-	else if (_playerpos.x<=115.0f) // Left EDGE
-	{
-		sfView_setCenter(view, vector2f(115.0f, _playerpos.y));
-	}
-	else if (_playerpos.y <= 85.0f) // Upper EDGE
-	{
-		sfView_setCenter(view, vector2f(_playerpos.x, 85.0f));
-	}
-	else if (_playerpos.y >= MAP_HEIGHT*32 - 85.0f) // Bottom EDGE
-	{
-		sfView_setCenter(view, vector2f(_playerpos.x, MAP_HEIGHT*32 - 85.0f));
-	}
-	else if (_playerpos.x >= MAP_LENGTH*32 - 115.0f) // Right EDGE
-	{
-		sfView_setCenter(view, vector2f(MAP_LENGTH * 32 - 115.0f, _playerpos.y));
-	}
+	// Upper Left CORNER
+	if (_playerpos.x <= 115.0f && _playerpos.y <= 85.0f) sfView_setCenter(view, vector2f(115.0f, 85.0f));
+	// Bottom Left CORNER
+	else if (_playerpos.x <= 115.0f && _playerpos.y >= MAP_HEIGHT*32 - 85.0f) sfView_setCenter(view, vector2f(115.0f, MAP_HEIGHT*32 - 85.0f));
+	// Upper Rigth CORNER
+	else if (_playerpos.x >= MAP_LENGTH*32 - 115.0f && _playerpos.y <= 85.0f) sfView_setCenter(view, vector2f(MAP_LENGTH*32 - 115.0f, 85.0f));
+	// Bottom Right CORNER
+	else if (_playerpos.x >= MAP_LENGTH*32 - 115.0f && _playerpos.y >= MAP_HEIGHT*32 - 85.0f) sfView_setCenter(view, vector2f(MAP_LENGTH*32 - 115.0f, MAP_HEIGHT*32 - 85.0f));
+	
+	// Left EDGE
+	else if (_playerpos.x<=115.0f) sfView_setCenter(view, vector2f(115.0f, _playerpos.y));
+	// Upper EDGE
+	else if (_playerpos.y <= 85.0f) sfView_setCenter(view, vector2f(_playerpos.x, 85.0f));
+	// Bottom EDGE
+	else if (_playerpos.y >= MAP_HEIGHT*32 - 85.0f) sfView_setCenter(view, vector2f(_playerpos.x, MAP_HEIGHT*32 - 85.0f));
+	// Right EDGE
+	else if (_playerpos.x >= MAP_LENGTH*32 - 115.0f) sfView_setCenter(view, vector2f(MAP_LENGTH * 32 - 115.0f, _playerpos.y));
+
+	// MIDDLE
 	else sfView_setCenter(view, _playerpos);
 }
 
