@@ -8,7 +8,7 @@ float animTime = 0.0f;
 sfBool isMoving;
 
 sfVector2f playerPos = { 100.0f, 100.0f };
-sfVector2f playerSpeed = { 150.0f, 150.0f };
+sfVector2f playerSpeed = { PLAYER_SPEED, PLAYER_SPEED };
 
 void initPlayer()
 {
