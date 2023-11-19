@@ -54,17 +54,17 @@ void initMenu()
 	sfSprite_setTexture(SpriteQuitterMenu, TextureQuitterMenu, sfTrue);
 	sfSprite_setOrigin(SpriteQuitterMenu, vector2f(sfSprite_getGlobalBounds(SpriteQuitterMenu).width / 2, sfSprite_getGlobalBounds(SpriteQuitterMenu).height / 2));
 	sfSprite_setPosition(SpriteQuitterMenu, posQuitter);
-	musicMenu = sfMusic_createFromFile("..\\Ressources\\Musics\\Musique-libre-de-droits_-Epic-Music-CELTIC-FANTASY-MUSIC-Dark-Ambience-Medieval-_No-Copyright_.ogg");
+	musicMenu = sfMusic_createFromFile("..\\Ressources\\Musics\\Medieval-II-Total-War-Main-Menu-Background-in-4K-with-Music.ogg");
 	sfMusic_play(musicMenu);
-	musicEdit = sfMusic_createFromFile("..\\Ressources\\Musics\\Geometry-Dash-Practice-Mode-Song-1-Hour.ogg");
-	musicJouer = sfMusic_createFromFile("..\\Ressources\\Musics\\Crazy-Frog-Axel-F-1-Hour.ogg");
+	musicEdit = sfMusic_createFromFile("..\\Ressources\\Musics\\Geometry-Dash-Practice-Mode-Stay-Inside-Me-Soundtrack.ogg");
+	musicJouer = sfMusic_createFromFile("..\\Ressources\\Musics\\MusicJouer.ogg");
 	SpriteTitreMenu = sfSprite_create();
 	TextureTitreMenu = sfTexture_createFromFile("..\\Ressources\\Textures\\BlockTitre.png", NULL);
 	sfSprite_setTexture(SpriteTitreMenu, TextureTitreMenu, sfTrue);
 	sfSprite_setPosition(SpriteTitreMenu, posTitre);
-	soudBoutonMenu = sfSound_create();
+	/*soudBoutonMenu = sfSound_create();
 	soundBuffer = sfSoundBuffer_createFromFile("..\\Ressources\\SoundFX\\Tactical-Nuke-Incoming-Sound-Effect.ogg");
-	sfSound_setBuffer(soudBoutonMenu, soundBuffer);
+	sfSound_setBuffer(soudBoutonMenu, soundBuffer);*/
 }
 
 void updateMenu(sfRenderWindow* _window, sfView* _view)
@@ -91,7 +91,7 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 		{
 			editeur = sfTrue;
 			sfMusic_stop(musicMenu);
-			sfSound_play(soudBoutonMenu);
+			//sfSound_play(soudBoutonMenu);
 			sfMusic_play(musicEdit);
 			choixJoueurMenu = EDITER;
 		}
