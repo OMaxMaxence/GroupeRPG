@@ -111,7 +111,7 @@ void updateEditView(sfVector2f _viewpos)
 	}
 	else if (sfKeyboard_isKeyPressed(sfKeyUp))
 	{
-		if (rectEditView.height > 200.0f)
+		if (rectEditView.height > 170.0f)
 		{
 			rectEditView.width *= 0.998f;
 			rectEditView.height *= 0.998f;
