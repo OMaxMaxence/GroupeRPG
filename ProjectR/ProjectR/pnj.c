@@ -1,7 +1,8 @@
 #include "pnj.h"
-#define TEXTURE_PATH "../Ressources/Textures/"
+#define TEXTURE_PATH "../Ressources/Textures/" 
 
-sfTexture* spritesheetpnj;
+// Déclaration et initialisation des variables utilisées
+sfTexture* spritesheetpnj; 
 sfSprite* pnj;
 sfIntRect iRectpnj = {0,0,32,32};
 float animTimepnj = 0.0f;
@@ -9,8 +10,11 @@ float animTimepnj = 0.0f;
 sfVector2f pnjPos = { 40.0f, 75.0f };
 
 
+//Fonction d'initialisation du pnj
+
 void initPnj()
 {
+	//Application de la texture et de sa position 
 	spritesheetpnj = sfTexture_createFromFile(TEXTURE_PATH"npc.png", NULL);
 	pnj = sfSprite_create();
 	sfSprite_setTexture(pnj, spritesheetpnj, sfTrue);
@@ -28,8 +32,10 @@ void initPnj()
 
 }
 
+//Fonction de mise à jour du pnj
 void updatePnj()
 {
+	//Gestion de l'animation du sprite
 	animTimepnj += getDeltaTime();
 	if (animTimepnj >= 1)
 	{
@@ -46,6 +52,7 @@ void updatePnj()
 	
 }
 
+//Fonction d'affichage du pnj
 void displayPnj(sfRenderWindow* _window)
 {
 	sfRenderWindow_drawSprite(_window, pnj, NULL); 

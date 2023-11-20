@@ -1,22 +1,11 @@
+//Liaison des fichiers
 #include "tools.h"
 #include "map.h"
 #include "player.h"
-#define TEXTURE_PATH "../Ressources/Textures/"
-#define T_VIDE (sfIntRect){0,0,32,32}
-#define T_BOIS (sfIntRect){32,0,32,32}
-#define T_TERRE (sfIntRect){64,0,32,32}
-#define T_EAU (sfIntRect){ 96,0,32,32}
-#define T_ARBRE (sfIntRect){128,0,32,32}
-#define T_PIERRE (sfIntRect){160,0,32,32}
-#define T_COFFRE (sfIntRect){192,0,32,32}
-#define T_DRAPEAU (sfIntRect){224,0,32,32} 
-#define T_FERMER (sfIntRect){0,0,32,32}
-#define T_QUART (sfIntRect){32,0,32,32}
-#define T_DEMI (sfIntRect){64,0,32,32}
-#define T_OUVERT (sfIntRect){ 96,0,32,32}
 
 #pragma warning (disable: 4244)
 
+//Déclaration et initialisation des variables nécessaires
 sfSprite* tileSpriteMap;
 sfTexture* tileTextureMap;
 sfVector2f tilePos = { 0.0f, 0.0f };
@@ -29,6 +18,7 @@ float delai;
 sfVector2f worldPos;
 FILE* fichier;
 
+//Génération de la taille de la map
 char tileMap[MAP_HEIGHT][MAP_LENGTH]; /* = {
 	{4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4},
 	{ 0,0,4,4,0,0,0,0,0,0,0,0,0,3,0,0,4,4,0,0,0,0,4,4,0,0,0,0,0,0,0,0,0,3,0,0,4,4,0,0,0,0,4,4,0,0,0,0,0,0,0,0,0,3,0,0,4,4,0,0 },
@@ -67,15 +57,18 @@ char tileMap[MAP_HEIGHT][MAP_LENGTH]; /* = {
 };*/
 
 
-
+//Fonction d'initialisation de la map
 void initMap()
 {
+	//Application du tileset 
 	tileTextureMap = sfTexture_createFromFile(TEXTURE_PATH"tileset1.png", NULL);
 	tileSpriteMap = sfSprite_create();
 	sfSprite_setTexture(tileSpriteMap, tileTextureMap, sfTrue);
 	tileTextureCoffre = sfTexture_createFromFile(TEXTURE_PATH"coffre32.png", NULL);
 	tileSpriteCoffre = sfSprite_create();
 	sfSprite_setTexture(tileSpriteCoffre, tileTextureCoffre, sfTrue); 
+
+	//Ouverture de la map via le fichier de sauvegarde
 	/*if (save = 1) 
 	{*/
 		fichier = fopen("savemap1.bin", "rb");
@@ -92,14 +85,17 @@ void initMap()
 }
 
 
-
+//Fonction de mise à jour de la map du mode éditeur
 void updateMap(sfRenderWindow* _window, float _t, sfView* _view)
 {
+	//Récupération de la position de la souris avec association au bloc à placer
 	mousePos = sfMouse_getPosition(_window);
 	worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePos, editView);  
 	blocpos.x = worldPos.x / 32;
 	blocpos.y = worldPos.y / 32;
 	delai += getDeltaTime();
+
+	//Bouton pour changer les blocs à placer dans l'éditeur
 	if (sfKeyboard_isKeyPressed(sfKeyUp) && delai > 0.3f)
 	{
 		delai = 0.0f;
@@ -110,14 +106,15 @@ void updateMap(sfRenderWindow* _window, float _t, sfView* _view)
 		delai = 0.0f;
 		bloc = bloc - 1;
 	}
-	if (bloc > 6)
+	if (bloc > 7)
 	{
 		bloc = 0;
 	}
 	else if (bloc < 0)
 	{
-		bloc = 6;
+		bloc = 7;
 	} 
+	//Application du bloc sélectionné sur la map en mode éditeur
 	else if (sfMouse_isButtonPressed(sfMouseLeft))
 	{
 		if (worldPos.x < 3200 && worldPos.x > 0 && worldPos.y < 2400 && worldPos.y > 0)
@@ -125,6 +122,7 @@ void updateMap(sfRenderWindow* _window, float _t, sfView* _view)
 			tileMap[blocpos.y][blocpos.x] = bloc;  
 		}
 	}
+	//Bouton de sauvegarde de la map dans un fichier de sauvegarde
 	if (sfKeyboard_isKeyPressed(sfKeyM)) 
 	{ 
 		fichier = fopen("savemap1.bin", "wt"); 
@@ -133,13 +131,15 @@ void updateMap(sfRenderWindow* _window, float _t, sfView* _view)
 	}
 
 }
+//Fonction de mise à jour de la map du mode jouer
 void updateGameMap(sfRenderWindow* _window, float _t, sfView* _view)
 {
 }
 
+//Fonction d'affichage de la map du mode éditeur
 void displayMap(sfRenderWindow* _window, float _t)
 {
-	
+	//Détection du bloc placé sur la map et affichage
 	if (editeur = sfTrue)
 	{
 		for (int y = 0; y < MAP_HEIGHT; y++)
@@ -174,6 +174,9 @@ void displayMap(sfRenderWindow* _window, float _t)
 				case 6:
 					sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU);
 					break;
+				case 7:
+					sfSprite_setTextureRect(tileSpriteMap, T_PNJ); 
+					break;
 					/*case 6:
 						if (_t >= 0 && _t < 1) sfSprite_setTextureRect(tileSpriteCoffre, T_FERMER);
 						else if (_t >= 1 && _t < 2) sfSprite_setTextureRect(tileSpriteCoffre, T_QUART);
@@ -187,6 +190,8 @@ void displayMap(sfRenderWindow* _window, float _t)
 
 			}
 		}
+
+		//Affichage du bloc sélectionné à côté du curseur dans le mode éditeur
 		switch (bloc)
 		{ 
 		case 0:
@@ -238,9 +243,18 @@ void displayMap(sfRenderWindow* _window, float _t)
 			sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU);  
 			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
 			break;
+		case 7:
+			tilePos.x = worldPos.x; 
+			tilePos.y = worldPos.y; 
+			sfSprite_setPosition(tileSpriteMap, tilePos); 
+			sfSprite_setTextureRect(tileSpriteMap, T_PNJ); 
+			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
+			break;
 	}
 	}
 }
+
+//Fonction d'affichage de la map du mode jouer
 void displayGameMap(sfRenderWindow* _window, float _t)
 {
 	for (int y = 0; y < MAP_HEIGHT; y++)
@@ -290,7 +304,7 @@ void displayGameMap(sfRenderWindow* _window, float _t)
 	}
 }
 
-
+//Génération des collisions entre certains bloc de la map et le personnage
 sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f _vitesse)
 {
 

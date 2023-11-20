@@ -30,7 +30,7 @@ int main()
 
 	choixJoueurMenu = MENU;
 
-
+	//Boucle de jeu
 	while (sfRenderWindow_isOpen(window))
 	{
 		restartClock();
@@ -42,7 +42,9 @@ int main()
 			}
 		}
 
+		//Mise à jour
 
+		//Retour au menu via touche
 		if (sfKeyboard_isKeyPressed(sfKeyEscape) && choixJoueurMenu != MENU)
 		{
 			sfRenderWindow_setMouseCursorVisible(window, sfTrue);
@@ -57,6 +59,7 @@ int main()
 			updateMenu(window, view);
 		}
 
+		//Mode jouer
 		else if (choixJoueurMenu == JOUER)
 		{
 			initMap();
@@ -67,6 +70,7 @@ int main()
 			sfRenderWindow_setMouseCursorVisible(window, sfFalse);
 		}
 
+		//Mode Editeur
 		else if (choixJoueurMenu == EDITER)
 		{
 			updateMap(window, timerAnim, view);
@@ -74,6 +78,8 @@ int main()
 		}
 
 
+
+		//Affichage
 
 		sfRenderWindow_clear(window, sfBlack);
 		if (choixJoueurMenu == MENU)
