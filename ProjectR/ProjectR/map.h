@@ -13,6 +13,7 @@
 #define T_COFFRE (sfIntRect){224,0,32,32}
 #define T_DRAPEAU (sfIntRect){256,0,32,32} 
 #define T_PNJ (sfIntRect){288,0,32,32} 
+#define T_PORTE (sfIntRect){320,0,32,32}
 #define T_FERMER (sfIntRect){0,0,32,32}
 #define T_QUART (sfIntRect){32,0,32,32}
 #define T_DEMI (sfIntRect){64,0,32,32}
