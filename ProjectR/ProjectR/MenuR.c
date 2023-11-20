@@ -39,25 +39,30 @@ void initMenu()
 	sfSprite_setOrigin(SpriteBackgroundMenu, origin);
 	sfSprite_setPosition(SpriteBackgroundMenu, pos);
 	sfSprite_setRotation(SpriteBackgroundMenu, angle);
+
 	SpritePlayMenu = sfSprite_create();
 	TexturePlayMenu = sfTexture_createFromFile("..\\Ressources\\Textures\\BlockPlay.png", NULL);
 	sfSprite_setTexture(SpritePlayMenu, TexturePlayMenu, sfTrue);
 	sfSprite_setOrigin(SpritePlayMenu, vector2f(sfSprite_getGlobalBounds(SpritePlayMenu).width / 2, sfSprite_getGlobalBounds(SpritePlayMenu).height / 2));
 	sfSprite_setPosition(SpritePlayMenu, posPlay);
+
 	SpriteEditMenu = sfSprite_create();
 	TextureEditMenu = sfTexture_createFromFile("..\\Ressources\\Textures\\BlockEditer.png", NULL);
 	sfSprite_setTexture(SpriteEditMenu, TextureEditMenu, sfTrue);
 	sfSprite_setOrigin(SpriteEditMenu, vector2f(sfSprite_getGlobalBounds(SpriteEditMenu).width / 2, sfSprite_getGlobalBounds(SpriteEditMenu).height / 2));
 	sfSprite_setPosition(SpriteEditMenu, posEdit);
+
 	SpriteQuitterMenu = sfSprite_create();
 	TextureQuitterMenu = sfTexture_createFromFile("..\\Ressources\\Textures\\BlockQuitter.png", NULL);
 	sfSprite_setTexture(SpriteQuitterMenu, TextureQuitterMenu, sfTrue);
 	sfSprite_setOrigin(SpriteQuitterMenu, vector2f(sfSprite_getGlobalBounds(SpriteQuitterMenu).width / 2, sfSprite_getGlobalBounds(SpriteQuitterMenu).height / 2));
 	sfSprite_setPosition(SpriteQuitterMenu, posQuitter);
+
 	SpriteTitreMenu = sfSprite_create();
 	TextureTitreMenu = sfTexture_createFromFile("..\\Ressources\\Textures\\BlockTitre.png", NULL);
 	sfSprite_setTexture(SpriteTitreMenu, TextureTitreMenu, sfTrue);
 	sfSprite_setPosition(SpriteTitreMenu, posTitre);
+
 	musiqueJouer = MUSICMENU;
 	updateMusique();
 	

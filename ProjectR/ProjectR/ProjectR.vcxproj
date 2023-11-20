@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BlockText.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="map.c" />
     <ClCompile Include="MenuR.c" />
@@ -149,6 +150,7 @@
     <ClCompile Include="view.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BlockText.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="MenuR.h" />
     <ClInclude Include="musique.h" />
