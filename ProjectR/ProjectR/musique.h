@@ -5,6 +5,6 @@ sfMusic* musicMenu;
 sfMusic* musicEdit;
 sfMusic* musicJouer;
 
-initMusique();
-updateMusique();
-stopMusic();
+void initMusique();
+void updateMusique();
+void stopMusic();

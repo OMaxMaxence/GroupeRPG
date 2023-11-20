@@ -16,9 +16,8 @@ int main()
 	float timer = 0;
 	float timerAnim = 0;
 	
-
-	
 	initTools();
+	initMusique();
 	initMenu();
 	initMap();
 	initPlayer();
@@ -26,7 +25,6 @@ int main()
 	initView();
 	initEditView();
 	initPnj();
-	initMusique();
 
 	choixJoueurMenu = MENU;
 
@@ -48,6 +46,7 @@ int main()
 		if (sfKeyboard_isKeyPressed(sfKeyEscape) && choixJoueurMenu != MENU)
 		{
 			sfRenderWindow_setMouseCursorVisible(window, sfTrue);
+			stopMusic();
 			choixJoueurMenu = MENU;
 			initMenu();
 			displayMenuView(window);
@@ -77,7 +76,7 @@ int main()
 			updateEditView(posEditView);
 		}
 
-
+		
 
 		//Affichage
 

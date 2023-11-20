@@ -1,15 +1,16 @@
 #include "musique.h"
 
 
-initMusique()
+void initMusique()
 {
 	musicMenu = sfMusic_createFromFile("..\\Ressources\\Musics\\Medieval-II-Total-War-Main-Menu-Background-in-4K-with-Music.ogg");
-	musicEdit = sfMusic_createFromFile("..\\Ressources\\Musics\\Geometry-Dash-Practice-Mode-Stay-Inside-Me-Soundtrack.ogg");
 	musicJouer = sfMusic_createFromFile("..\\Ressources\\Musics\\MusicJouer.ogg");
+	musicEdit = sfMusic_createFromFile("..\\Ressources\\Musics\\Geometry-Dash-Practice-Mode-Stay-Inside-Me-Soundtrack.ogg");
+
 
 }
 
-updateMusique()
+void updateMusique()
 {
 	if (musiqueJouer == MUSICMENU) 
 	{
@@ -27,7 +28,7 @@ updateMusique()
 	}
 }
 
-stopMusic()
+void stopMusic()
 {
 	sfMusic_stop(musicMenu);
 	sfMusic_stop(musicJouer);
