@@ -7,7 +7,7 @@ sfSprite* pnj;
 sfIntRect iRectpnj = {0,0,32,32};
 float animTimepnj = 0.0f;
 
-sfVector2f pnjPos = { 40.0f, 75.0f };
+sfVector2f pnjPos = { 40.0f, 105.0f };
 
 
 //Fonction d'initialisation du pnj
@@ -26,9 +26,8 @@ void initPnj()
 	animTimepnj = 0.0f;
 	framepnjX = 0;
 	framepnjY = 0;
-	sfVector2f pnjpos = vector2f(40.0f, 75.0f);
 
-	sfSprite_setPosition(pnj, pnjpos); 
+	sfSprite_setPosition(pnj, pnjPos); 
 
 }
 

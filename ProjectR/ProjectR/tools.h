@@ -1,6 +1,7 @@
 #pragma once
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "SFML/Graphics.h"
 #include <math.h>
 #include <time.h>
@@ -13,8 +14,10 @@
 #include "view.h"
 #include "pnj.h"
 #include "musique.h"
+#include "BlockText.h"
 #include "key.h"
 #include "chest.h"
+
 
 typedef enum Menu Menu;
 enum Menu
@@ -35,7 +38,7 @@ enum Musique
 };
 
 Menu choixJoueurMenu;
-sfRenderWindow* window;
+//sfRenderWindow* window;
 
 void initTools();
 float getDeltaTime();

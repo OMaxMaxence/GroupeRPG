@@ -25,8 +25,10 @@ int main()
 	initView();
 	initEditView();
 	initPnj();
+	initBlockText();
 	initKey();
 	initChest();
+
 
 	choixJoueurMenu = MENU;
 
@@ -99,6 +101,7 @@ int main()
 			displayGameMap(window, timerAnim); 
 			displayPnj(window);
 			displayPlayer(window);
+			displayBlockText(window);
 			displayKey(window);
 			displayChest(window);
 		}
@@ -114,3 +117,4 @@ int main()
 
 	return 0;
 }
+
