@@ -16,9 +16,8 @@ int main()
 	float timer = 0;
 	float timerAnim = 0;
 	
-
-	
 	initTools();
+	initMusique();
 	initMenu();
 	initMap();
 	initPlayer();
@@ -26,7 +25,6 @@ int main()
 	initView();
 	initEditView();
 	initPnj();
-	initMusique();
 
 	choixJoueurMenu = MENU;
 

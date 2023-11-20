@@ -12,6 +12,7 @@
 #include "player.h"
 #include "view.h"
 #include "pnj.h"
+#include "musique.h"
 
 typedef enum Menu Menu;
 enum Menu
