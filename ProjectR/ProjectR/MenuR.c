@@ -58,8 +58,8 @@ void initMenu()
 	TextureTitreMenu = sfTexture_createFromFile("..\\Ressources\\Textures\\BlockTitre.png", NULL);
 	sfSprite_setTexture(SpriteTitreMenu, TextureTitreMenu, sfTrue);
 	sfSprite_setPosition(SpriteTitreMenu, posTitre);
-	stopMusic();
 	musiqueJouer = MUSICMENU;
+	updateMusique();
 	/*soudBoutonMenu = sfSound_create();
 	soundBuffer = sfSoundBuffer_createFromFile("..\\Ressources\\SoundFX\\Tactical-Nuke-Incoming-Sound-Effect.ogg");
 	sfSound_setBuffer(soudBoutonMenu, soundBuffer);*/
@@ -67,7 +67,6 @@ void initMenu()
 
 void updateMenu(sfRenderWindow* _window, sfView* _view)
 {
-
 	mousePosMenu = sfMouse_getPosition(_window);
 	rectPlay = sfSprite_getGlobalBounds(SpritePlayMenu);
 	rectEdit = sfSprite_getGlobalBounds(SpriteEditMenu);
@@ -78,6 +77,8 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
 			musiqueJouer = MUSICJOUER;
+			stopMusic();
+			updateMusique();
 			choixJoueurMenu = JOUER;
 		}
 	}
@@ -88,6 +89,8 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 		{
 			editeur = sfTrue;
 			musiqueJouer = MUSICEDITER;
+			stopMusic();
+			updateMusique();
 			choixJoueurMenu = EDITER;
 		}
 	}
@@ -99,8 +102,8 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 			exit(EXIT_SUCCESS);
 		}
 	}
-	
-	updateMusique();
+
+
 
 }
 
