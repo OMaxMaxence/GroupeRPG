@@ -4,7 +4,7 @@ void initChest()
 {
 	for (int i = 0; i < 3; i++)
 	{
-		chests[i].chestPos.x = 100.0f + i*32;
+		chests[i].chestPos.x = 30.0f + i*32*2;
 		chests[i].chestPos.y = 100.0f;
 		chests[i].chestRect.width = 32;
 		chests[i].chestRect.height = 32;
@@ -16,21 +16,25 @@ void initChest()
 		sfSprite_setTexture(chests[i].chestSprite, chests[i].chestTexture, sfTrue);
 		sfSprite_setTextureRect(chests[i].chestSprite, chests[i].chestRect);
 		sfSprite_setPosition(chests[i].chestSprite, chests[i].chestPos);
+		sfSprite_setOrigin(chests[i].chestSprite, vector2f(16.0f, 16.0f));
 	}
 }
 
 float chestTimer = 0.0f;
-sfBool openChest = sfFalse;
+float distToPlayer = 0.0f;
 void updateChest()
 {
 	chestTimer += getDeltaTime();
+	
 	for (int  i = 0; i < 3; i++)
 	{
-		if (sfKeyboard_isKeyPressed(sfKeyJ))
+		distToPlayer = distanceBetweenTwoPoints(chests[i].chestPos, playerPos);
+
+		if (sfKeyboard_isKeyPressed(sfKeySpace) && distToPlayer < 32)
 		{
-			openChest = sfTrue;
+			chests[i].openChest = sfTrue;
 		}
-		if (chestTimer > 1.0f && openChest == sfTrue && chests[i].chestRect.left < 96)
+		if (chestTimer > 1.0f && chests[i].openChest == sfTrue && chests[i].chestRect.left < 96)
 		{
 			chests[i].chestRect.left += 32;
 			sfSprite_setTextureRect(chests[i].chestSprite, chests[i].chestRect);

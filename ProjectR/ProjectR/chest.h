@@ -9,6 +9,7 @@ struct allChests
 	sfTexture* chestTexture;
 	sfVector2f chestPos;
 	sfIntRect chestRect;
+	sfBool openChest;
 };
 allChests chests[3];
 
