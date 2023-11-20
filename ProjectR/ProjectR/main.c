@@ -41,10 +41,11 @@ int main()
 		}
 
 		//Mise à jour
-
+		timer += getDeltaTime();
 		//Retour au menu via touche
-		if (sfKeyboard_isKeyPressed(sfKeyEscape) && choixJoueurMenu != MENU)
+		if (sfKeyboard_isKeyPressed(sfKeyEscape) && choixJoueurMenu != MENU && timer > 1.0f)
 		{
+			timer = 0.0f;
 			sfRenderWindow_setMouseCursorVisible(window, sfTrue);
 			stopMusic();
 			choixJoueurMenu = MENU;
