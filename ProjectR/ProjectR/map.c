@@ -96,12 +96,12 @@ void updateMap(sfRenderWindow* _window, float _t, sfView* _view)
 	delai += getDeltaTime();
 
 	//Bouton pour changer les blocs à placer dans l'éditeur
-	if (sfKeyboard_isKeyPressed(sfKeyUp) && delai > 0.3f)
+	if (sfKeyboard_isKeyPressed(sfKeyRight) && delai > 0.3f)
 	{
 		delai = 0.0f;
 		bloc = bloc + 1;
 	}
-	else if (sfKeyboard_isKeyPressed(sfKeyDown) && delai > 0.3f)
+	else if (sfKeyboard_isKeyPressed(sfKeyLeft) && delai > 0.3f)
 	{
 		delai = 0.0f;
 		bloc = bloc - 1;
@@ -289,6 +289,9 @@ void displayGameMap(sfRenderWindow* _window, float _t)
 			case 6:
 				sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU); 
 				break;
+			case 7:
+				sfSprite_setTextureRect(tileSpriteMap, T_PNJ);
+				break;
 				/*case 6:
 					if (_t >= 0 && _t < 1) sfSprite_setTextureRect(tileSpriteCoffre, T_FERMER);
 					else if (_t >= 1 && _t < 2) sfSprite_setTextureRect(tileSpriteCoffre, T_QUART);
@@ -322,8 +325,8 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
-		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 3 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 6 ||
-			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 6)
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 3 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 5 ||
+			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 5)
 		{
 
 			return sfTrue;
@@ -344,8 +347,8 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
-		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 3 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 6 ||
-			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 6)
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 3 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 5 ||
+			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 5)
 		{
 			return sfTrue;
 		}
@@ -365,8 +368,8 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
-		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 3 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 6 ||
-			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 6)
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 3 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 5 ||
+			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 5)
 		{
 			return sfTrue;
 		}
@@ -386,8 +389,8 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
-		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 3 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 6 ||
-			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 6)
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 3 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 5 ||
+			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 5)
 		{
 			return sfTrue;
 		}
