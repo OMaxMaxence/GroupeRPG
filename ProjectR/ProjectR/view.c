@@ -111,12 +111,15 @@ sfVector2f posEditView = { 100.0f, 100.0f };
 sfFloatRect rectEditView = { 800.0f,600.0f, 1150.0f, 850.0f };
 sfVector2f speedEditView = { 200.0f, 200.0f };
 
+float timerZoom = 0.0f;
+
 void initEditView()
 {
 	editView = sfView_create();
 	sfView_reset(editView, rectEditView);
 	sfView_setCenter(editView, posEditView);
 }
+
 
 void updateEditView(sfVector2f _viewpos)
 {
@@ -144,12 +147,13 @@ void updateEditView(sfVector2f _viewpos)
 
 
 	// Zoom editView
+	timerZoom += getDeltaTime();
 	if (sfKeyboard_isKeyPressed(sfKeyDown))
 	{
 		if (rectEditView.height < 2500.0f)
 		{
-			rectEditView.width *= 1.002f;
-			rectEditView.height *= 1.002f;
+			rectEditView.width *= (1.0f + timerZoom);
+			rectEditView.height *= (1.0f + timerZoom);
 			sfView_reset(editView, rectEditView);
 			sfView_setCenter(editView, posEditView);
 		}
@@ -158,12 +162,13 @@ void updateEditView(sfVector2f _viewpos)
 	{
 		if (rectEditView.height > 170.0f)
 		{
-			rectEditView.width *= 0.998f;
-			rectEditView.height *= 0.998f;
+			rectEditView.width /= (1.0f + timerZoom);
+			rectEditView.height /= (1.0f + timerZoom);
 			sfView_reset(editView, rectEditView);
 			sfView_setCenter(editView, posEditView);
 		}
 	}
+	timerZoom = 0.0f;
 
 
 	// Vitesse editView selon le zoom

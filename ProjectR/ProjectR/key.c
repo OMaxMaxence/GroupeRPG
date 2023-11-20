@@ -24,20 +24,6 @@ void initKey()
 		sfSprite_setScale(keys[i].keySprite, vector2f(0.5f, 0.5f));
 		sfSprite_setPosition(keys[i].keySprite, keyPos);
 	}
-
-
-
-	//nb_key = 0;
-	//key = sfSprite_create();
-	//key_texture = sfTexture_createFromFile(TEXTURE_PATH"tilesetKEY.png", NULL);
-	//sfSprite_setTexture(key, key_texture, sfTrue);
-	//
-	//sfSprite_setTextureRect(key, iRectKey);
-	//sfSprite_setScale(key, vector2f(0.5f, 0.5f));
-	//iRectKey.left = 64;
-	//iRectKey.top = 32;
-	//
-	//sfSprite_setPosition(key, keyPos);
 }
 
 void updateKey()
@@ -91,17 +77,8 @@ void updateKey()
 			sfSprite_setTextureRect(keys[2].keySprite, keys[2].keyRect);
 			sfSprite_setPosition(keys[2].keySprite, vector2f(keys[2].keyPosStruct.x - 115.0f, keys[2].keyPosStruct.y - 85.0f));
 		}
-		//sfSprite_setTexture(keys[i].keySprite, keys[i].keyTexture, sfTrue);
-		//else if (keys[i].keyCode <0)
-		//{
-		//	sfSprite_setTextureRect(keys[i].keySprite, keys[i].keyRect);
-		//	sfSprite_setPosition(keys[i].keySprite, vector2f(keys[i].keyPosStruct.x - 115.0f, keys[i].keyPosStruct.y - 85.0f));
-		//}
-		printf("%f, %f\n", keyPos.x, keyPos.y);
 	
 	}
-	//sfSprite_setTextureRect(key_sprite_create, iRectKey);
-	//sfSprite_setPosition(key_sprite_create, vector2f(keyPos.x - 115.0f, keyPos.y - 85.0f));
 }
 
 
