@@ -25,8 +25,8 @@ sfFloatRect rectQuitter;
 sfSprite* SpriteTitreMenu;
 sfTexture* TextureTitreMenu;
 sfVector2f posTitre = { 400.0f, 200.0f };
-sfSound* soudBoutonMenu;
-sfSoundBuffer* soundBuffer;
+float delai = 0.0f;
+
 
 
 
@@ -60,13 +60,12 @@ void initMenu()
 	sfSprite_setPosition(SpriteTitreMenu, posTitre);
 	musiqueJouer = MUSICMENU;
 	updateMusique();
-	/*soudBoutonMenu = sfSound_create();
-	soundBuffer = sfSoundBuffer_createFromFile("..\\Ressources\\SoundFX\\Tactical-Nuke-Incoming-Sound-Effect.ogg");
-	sfSound_setBuffer(soudBoutonMenu, soundBuffer);*/
+	
 }
 
 void updateMenu(sfRenderWindow* _window, sfView* _view)
 {
+	delai += getDeltaTime();
 	mousePosMenu = sfMouse_getPosition(_window);
 	rectPlay = sfSprite_getGlobalBounds(SpritePlayMenu);
 	rectEdit = sfSprite_getGlobalBounds(SpriteEditMenu);
@@ -74,8 +73,9 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 	//worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePosMenu, _view);
 	if (sfFloatRect_contains(&rectPlay, mousePosMenu.x, mousePosMenu.y))
 	{
-		if (sfMouse_isButtonPressed(sfMouseLeft))
+		if (sfMouse_isButtonPressed(sfMouseLeft) && delai > 0.5f)
 		{
+			delai = 0.0f;
 			musiqueJouer = MUSICJOUER;
 			stopMusic();
 			updateMusique();
@@ -85,8 +85,9 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 
 	else if (sfFloatRect_contains(&rectEdit, mousePosMenu.x, mousePosMenu.y))
 	{
-		if (sfMouse_isButtonPressed(sfMouseLeft))
+		if (sfMouse_isButtonPressed(sfMouseLeft) && delai > 0.5f)
 		{
+			delai = 0.0f;
 			editeur = sfTrue;
 			musiqueJouer = MUSICEDITER;
 			stopMusic();
@@ -95,7 +96,7 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 		}
 	}
 
-	else if (sfFloatRect_contains(&rectQuitter, mousePosMenu.x, mousePosMenu.y))
+	else if (sfFloatRect_contains(&rectQuitter, mousePosMenu.x, mousePosMenu.y) && delai > 0.3f)
 	{
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{

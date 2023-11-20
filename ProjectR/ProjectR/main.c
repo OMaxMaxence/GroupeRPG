@@ -25,6 +25,7 @@ int main()
 	initView();
 	initEditView();
 	initPnj();
+	initKey();
 
 	choixJoueurMenu = MENU;
 
@@ -41,10 +42,11 @@ int main()
 		}
 
 		//Mise à jour
-
+		timer += getDeltaTime();
 		//Retour au menu via touche
-		if (sfKeyboard_isKeyPressed(sfKeyEscape) && choixJoueurMenu != MENU)
+		if (sfKeyboard_isKeyPressed(sfKeyEscape) && choixJoueurMenu != MENU && timer > 1.0f)
 		{
+			timer = 0.0f;
 			sfRenderWindow_setMouseCursorVisible(window, sfTrue);
 			stopMusic();
 			choixJoueurMenu = MENU;
@@ -67,6 +69,7 @@ int main()
 			updatePlayer();
 			updateView(playerPos);
 			sfRenderWindow_setMouseCursorVisible(window, sfFalse);
+			updateKey();
 		}
 
 		//Mode Editeur
@@ -93,6 +96,7 @@ int main()
 			displayGameMap(window, timerAnim); 
 			displayPnj(window);
 			displayPlayer(window);
+			displayKey(window);
 		}
 
 		else if (choixJoueurMenu == EDITER)

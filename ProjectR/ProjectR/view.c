@@ -32,25 +32,70 @@ void initView()
 void updateView(sfVector2f _playerpos)
 {
 	// Upper Left CORNER
-	if (_playerpos.x <= 115.0f && _playerpos.y <= 85.0f) sfView_setCenter(view, vector2f(115.0f, 85.0f));
+	if (_playerpos.x <= 115.0f && _playerpos.y <= 85.0f)
+	{
+		sfView_setCenter(view, vector2f(115.0f, 85.0f));
+		keyPos.x = 115.0f;
+		keyPos.y = 85.0f;
+	}
 	// Bottom Left CORNER
-	else if (_playerpos.x <= 115.0f && _playerpos.y >= MAP_HEIGHT*32 - 85.0f) sfView_setCenter(view, vector2f(115.0f, MAP_HEIGHT*32 - 85.0f));
+	else if (_playerpos.x <= 115.0f && _playerpos.y >= MAP_HEIGHT*32 - 85.0f)
+	{
+		sfView_setCenter(view, vector2f(115.0f, MAP_HEIGHT * 32 - 85.0f));
+		keyPos.x = 115.0f;
+		keyPos.y = MAP_HEIGHT * 32 - 85.0f;
+	}
 	// Upper Rigth CORNER
-	else if (_playerpos.x >= MAP_LENGTH*32 - 115.0f && _playerpos.y <= 85.0f) sfView_setCenter(view, vector2f(MAP_LENGTH*32 - 115.0f, 85.0f));
+	else if (_playerpos.x >= MAP_LENGTH * 32 - 115.0f && _playerpos.y <= 85.0f)
+	{
+		sfView_setCenter(view, vector2f(MAP_LENGTH * 32 - 115.0f, 85.0f));
+		keyPos.x = MAP_LENGTH * 32 - 115.0f;
+		keyPos.y = 85.0f;
+	}
 	// Bottom Right CORNER
-	else if (_playerpos.x >= MAP_LENGTH*32 - 115.0f && _playerpos.y >= MAP_HEIGHT*32 - 85.0f) sfView_setCenter(view, vector2f(MAP_LENGTH*32 - 115.0f, MAP_HEIGHT*32 - 85.0f));
-	
-	// Left EDGE
-	else if (_playerpos.x<=115.0f) sfView_setCenter(view, vector2f(115.0f, _playerpos.y));
-	// Upper EDGE
-	else if (_playerpos.y <= 85.0f) sfView_setCenter(view, vector2f(_playerpos.x, 85.0f));
-	// Bottom EDGE
-	else if (_playerpos.y >= MAP_HEIGHT*32 - 85.0f) sfView_setCenter(view, vector2f(_playerpos.x, MAP_HEIGHT*32 - 85.0f));
-	// Right EDGE
-	else if (_playerpos.x >= MAP_LENGTH*32 - 115.0f) sfView_setCenter(view, vector2f(MAP_LENGTH * 32 - 115.0f, _playerpos.y));
+	else if (_playerpos.x >= MAP_LENGTH * 32 - 115.0f && _playerpos.y >= MAP_HEIGHT * 32 - 85.0f)
+	{
+		sfView_setCenter(view, vector2f(MAP_LENGTH * 32 - 115.0f, MAP_HEIGHT * 32 - 85.0f));
+		keyPos.x = MAP_LENGTH * 32 - 115.0f;
+		keyPos.y = MAP_HEIGHT * 32 - 85.0f;
+	}
 
+
+	// Left EDGE
+	else if (_playerpos.x <= 115.0f)
+	{
+		sfView_setCenter(view, vector2f(115.0f, _playerpos.y));
+		keyPos.x = 115.0f;
+		keyPos.y = _playerpos.y;
+	}
+	// Upper EDGE
+	else if (_playerpos.y <= 85.0f)
+	{
+		sfView_setCenter(view, vector2f(_playerpos.x, 85.0f));
+		keyPos.x = _playerpos.x;
+		keyPos.y = 85.0f;
+	}
+	// Bottom EDGE
+	else if (_playerpos.y >= MAP_HEIGHT * 32 - 85.0f)
+	{
+		sfView_setCenter(view, vector2f(_playerpos.x, MAP_HEIGHT * 32 - 85.0f));
+		keyPos.x = _playerpos.x;
+		keyPos.y = MAP_HEIGHT * 32 - 85.0f;
+	}
+	// Right EDGE
+	else if (_playerpos.x >= MAP_LENGTH * 32 - 115.0f)
+	{
+		sfView_setCenter(view, vector2f(MAP_LENGTH * 32 - 115.0f, _playerpos.y));
+		keyPos.x = MAP_LENGTH * 32 - 115.0f;
+		keyPos.y = _playerpos.y;
+	}
 	// MIDDLE
-	else sfView_setCenter(view, _playerpos);
+	else
+	{
+		sfView_setCenter(view, _playerpos);
+		keyPos.x = playerPos.x;
+		keyPos.y = playerPos.y;
+	}
 }
 
 void displayView(sfRenderWindow* _window)
