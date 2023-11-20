@@ -4,14 +4,15 @@
 //Macro pour raccourci des textures
 #define TEXTURE_PATH "../Ressources/Textures/"
 #define T_VIDE (sfIntRect){0,0,32,32}
-#define T_BOIS (sfIntRect){32,0,32,32}
+#define T_HERBE (sfIntRect){32,0,32,32}
 #define T_TERRE (sfIntRect){64,0,32,32}
-#define T_EAU (sfIntRect){ 96,0,32,32}
-#define T_ARBRE (sfIntRect){128,0,32,32}
-#define T_PIERRE (sfIntRect){160,0,32,32}
-#define T_COFFRE (sfIntRect){192,0,32,32}
-#define T_DRAPEAU (sfIntRect){224,0,32,32} 
-#define T_PNJ (sfIntRect){256,0,32,32} 
+#define T_BOIS (sfIntRect){96,0,32,32}
+#define T_EAU (sfIntRect){ 128,0,32,32}
+#define T_ARBRE (sfIntRect){160,0,32,32}
+#define T_PIERRE (sfIntRect){192,0,32,32}
+#define T_COFFRE (sfIntRect){224,0,32,32}
+#define T_DRAPEAU (sfIntRect){256,0,32,32} 
+#define T_PNJ (sfIntRect){288,0,32,32} 
 #define T_FERMER (sfIntRect){0,0,32,32}
 #define T_QUART (sfIntRect){32,0,32,32}
 #define T_DEMI (sfIntRect){64,0,32,32}
