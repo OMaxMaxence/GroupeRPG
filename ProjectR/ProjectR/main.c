@@ -26,6 +26,7 @@ int main()
 	initView();
 	initEditView();
 	initPnj();
+	initMusique();
 
 	choixJoueurMenu = MENU;
 
@@ -46,9 +47,6 @@ int main()
 		//Retour au menu via touche
 		if (sfKeyboard_isKeyPressed(sfKeyEscape) && choixJoueurMenu != MENU)
 		{
-			sfMusic_stop(musicMenu);
-			sfMusic_stop(musicEdit);
-			sfMusic_stop(musicJouer);
 			sfRenderWindow_setMouseCursorVisible(window, sfTrue);
 			choixJoueurMenu = MENU;
 			initMenu();
@@ -80,14 +78,9 @@ int main()
 		}
 
 
-<<<<<<< Updated upstream
-		/*timer += 0.1f * getDeltaTime();
-		if (timer >= 4.0f) timer = 0;
-		timerAnim += 0.001f * getDeltaTime();
-		if (timerAnim >= 4.0f) timerAnim = 0;*/
-=======
+
 		//Affichage
->>>>>>> Stashed changes
+
 		sfRenderWindow_clear(window, sfBlack);
 		if (choixJoueurMenu == MENU)
 		{

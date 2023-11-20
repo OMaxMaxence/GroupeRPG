@@ -9,7 +9,9 @@ float animTimepnj = 0.0f;
 
 sfVector2f pnjPos = { 40.0f, 75.0f };
 
+
 //Fonction d'initialisation du pnj
+
 void initPnj()
 {
 	//Application de la texture et de sa position 
@@ -17,7 +19,7 @@ void initPnj()
 	pnj = sfSprite_create();
 	sfSprite_setTexture(pnj, spritesheetpnj, sfTrue);
 	sfSprite_setScale(pnj, vector2f(PNJ_SCALE, PNJ_SCALE));
-	sfSprite_setOrigin(pnj, vector2f(8.5f, 11.5f));
+	sfSprite_setOrigin(pnj, vector2f(16.0f, 16.0f));
 
 	sfSprite_setTextureRect(pnj, iRectpnj);
 
@@ -45,8 +47,8 @@ void updatePnj()
 		animTimepnj = 0;
 	}
 
-	sfSprite_setPosition(pnj, pnjPos);
-
+	//sfSprite_setPosition(pnj, pnjPos);
+	float distanceToPlayer = distanceBetweenTwoPoints(playerPos, pnjPos);
 	
 }
 

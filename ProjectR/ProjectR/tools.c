@@ -25,3 +25,9 @@ sfVector2f vector2f(float _x, float _y)
 	return v;
 }
 
+float distanceBetweenTwoPoints(sfVector2f _pos1, sfVector2f _pos2)
+{
+	float d = sqrtf((_pos2.x - _pos1.x) * (_pos2.x - _pos1.x) + (_pos2.y - _pos1.y) * (_pos2.y - _pos1.y));
+	return d;
+}
+

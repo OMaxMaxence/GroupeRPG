@@ -25,7 +25,9 @@ sfFloatRect rectQuitter;
 sfSprite* SpriteTitreMenu;
 sfTexture* TextureTitreMenu;
 sfVector2f posTitre = { 400.0f, 200.0f };
-sfBool editeur = sfFalse;
+sfSound* soudBoutonMenu;
+sfSoundBuffer* soundBuffer;
+
 
 
 void initMenu()
@@ -52,58 +54,53 @@ void initMenu()
 	sfSprite_setTexture(SpriteQuitterMenu, TextureQuitterMenu, sfTrue);
 	sfSprite_setOrigin(SpriteQuitterMenu, vector2f(sfSprite_getGlobalBounds(SpriteQuitterMenu).width / 2, sfSprite_getGlobalBounds(SpriteQuitterMenu).height / 2));
 	sfSprite_setPosition(SpriteQuitterMenu, posQuitter);
-	musicMenu = sfMusic_createFromFile("..\\Ressources\\Musics\\Musique-libre-de-droits_-Epic-Music-CELTIC-FANTASY-MUSIC-Dark-Ambience-Medieval-_No-Copyright_.ogg");
-	sfMusic_play(musicMenu);
-	musicEdit = sfMusic_createFromFile("..\\Ressources\\Musics\\Geometry-Dash-Practice-Mode-Song-1-Hour.ogg");
-	musicJouer = sfMusic_createFromFile("..\\Ressources\\Musics\\Crazy-Frog-Axel-F-1-Hour.ogg");
 	SpriteTitreMenu = sfSprite_create();
 	TextureTitreMenu = sfTexture_createFromFile("..\\Ressources\\Textures\\BlockTitre.png", NULL);
 	sfSprite_setTexture(SpriteTitreMenu, TextureTitreMenu, sfTrue);
 	sfSprite_setPosition(SpriteTitreMenu, posTitre);
+	stopMusic();
+	musiqueJouer = MUSICMENU;
+	/*soudBoutonMenu = sfSound_create();
+	soundBuffer = sfSoundBuffer_createFromFile("..\\Ressources\\SoundFX\\Tactical-Nuke-Incoming-Sound-Effect.ogg");
+	sfSound_setBuffer(soudBoutonMenu, soundBuffer);*/
 }
 
 void updateMenu(sfRenderWindow* _window, sfView* _view)
 {
-	
+
 	mousePosMenu = sfMouse_getPosition(_window);
 	rectPlay = sfSprite_getGlobalBounds(SpritePlayMenu);
 	rectEdit = sfSprite_getGlobalBounds(SpriteEditMenu);
 	rectQuitter = sfSprite_getGlobalBounds(SpriteQuitterMenu);
-	printf("yo\n");
 	//worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePosMenu, _view);
 	if (sfFloatRect_contains(&rectPlay, mousePosMenu.x, mousePosMenu.y))
 	{
-		printf("yolo\n");
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
-			sfMusic_stop(musicMenu);
-			sfMusic_play(musicJouer);
+			musiqueJouer = MUSICJOUER;
 			choixJoueurMenu = JOUER;
-			printf("%d\n", choixJoueurMenu);
 		}
 	}
 
-	if (sfFloatRect_contains(&rectEdit, mousePosMenu.x, mousePosMenu.y))
+	else if (sfFloatRect_contains(&rectEdit, mousePosMenu.x, mousePosMenu.y))
 	{
-		printf("yolo\n");
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
 			editeur = sfTrue;
-			sfMusic_stop(musicMenu);
-			sfMusic_play(musicEdit);
+			musiqueJouer = MUSICEDITER;
 			choixJoueurMenu = EDITER;
-			printf("%d\n", choixJoueurMenu);
 		}
 	}
 
-	if (sfFloatRect_contains(&rectQuitter, mousePosMenu.x, mousePosMenu.y))
+	else if (sfFloatRect_contains(&rectQuitter, mousePosMenu.x, mousePosMenu.y))
 	{
-		printf("yolo\n");
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
 			exit(EXIT_SUCCESS);
 		}
 	}
+	
+	updateMusique();
 
 }
 

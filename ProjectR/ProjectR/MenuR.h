@@ -1,9 +1,7 @@
 #pragma once
 #include "tools.h"
-sfMusic* musicMenu;
-sfMusic* musicEdit;
-sfMusic* musicJouer;
 sfBool editeur;
+int musiqueJouer;
 
 void initMenu();
 void updateMenu(sfRenderWindow* _window, sfView* _view);
