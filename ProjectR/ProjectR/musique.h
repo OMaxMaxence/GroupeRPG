@@ -4,6 +4,8 @@
 sfMusic* musicMenu;
 sfMusic* musicEdit;
 sfMusic* musicJouer;
+sfSound* soudBoutonMenu;
+sfSoundBuffer* soundBuffer;
 
 void initMusique();
 void updateMusique();
