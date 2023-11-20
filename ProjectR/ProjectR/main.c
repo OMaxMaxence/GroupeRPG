@@ -46,6 +46,7 @@ int main()
 		if (sfKeyboard_isKeyPressed(sfKeyEscape) && choixJoueurMenu != MENU)
 		{
 			sfRenderWindow_setMouseCursorVisible(window, sfTrue);
+			stopMusic();
 			choixJoueurMenu = MENU;
 			initMenu();
 			displayMenuView(window);
@@ -75,7 +76,7 @@ int main()
 			updateEditView(posEditView);
 		}
 
-
+		
 
 		//Affichage
 
