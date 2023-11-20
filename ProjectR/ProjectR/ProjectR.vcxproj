@@ -142,6 +142,7 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="map.c" />
     <ClCompile Include="MenuR.c" />
+    <ClCompile Include="musique.c" />
     <ClCompile Include="player.c" />
     <ClCompile Include="pnj.c" />
     <ClCompile Include="tools.c" />
@@ -150,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="map.h" />
     <ClInclude Include="MenuR.h" />
+    <ClInclude Include="musique.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="pnj.h" />
     <ClInclude Include="tools.h" />
