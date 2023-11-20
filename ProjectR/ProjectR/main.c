@@ -26,6 +26,8 @@ int main()
 	initEditView();
 	initPnj();
 	initBlockText();
+	initKey();
+
 
 	choixJoueurMenu = MENU;
 
@@ -51,6 +53,7 @@ int main()
 			stopMusic();
 			choixJoueurMenu = MENU;
 			initMenu();
+			initKey();
 			displayMenuView(window);
 
 		}
@@ -67,9 +70,9 @@ int main()
 			updateGameMap(window, timerAnim, view); 
 			updatePnj();
 			updatePlayer();
-			
 			updateView(playerPos);
-			//sfRenderWindow_setMouseCursorVisible(window, sfFalse);
+			sfRenderWindow_setMouseCursorVisible(window, sfFalse);
+			updateKey();
 		}
 
 		//Mode Editeur
@@ -97,6 +100,8 @@ int main()
 			displayPnj(window);
 			displayPlayer(window);
 			displayBlockText(window);
+			displayKey(window);
+
 		}
 
 		else if (choixJoueurMenu == EDITER)

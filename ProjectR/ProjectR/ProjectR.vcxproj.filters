@@ -39,7 +39,7 @@
     <ClCompile Include="musique.c">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="BlockText.c">
+    <ClCompile Include="key.c">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,7 +65,7 @@
     <ClInclude Include="musique.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="BlockText.h">
+    <ClInclude Include="key.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

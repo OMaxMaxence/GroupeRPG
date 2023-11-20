@@ -15,6 +15,7 @@
 #include "pnj.h"
 #include "musique.h"
 #include "BlockText.h"
+#include "key.h"
 
 
 typedef enum Menu Menu;
