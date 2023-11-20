@@ -106,13 +106,13 @@ void updateMap(sfRenderWindow* _window, float _t, sfView* _view)
 		delai = 0.0f;
 		bloc = bloc - 1;
 	}
-	if (bloc > 8)
+	if (bloc > 9)
 	{
 		bloc = 0;
 	}
 	else if (bloc < 0)
 	{
-		bloc = 8;
+		bloc = 9;
 	} 
 	//Application du bloc sélectionné sur la map en mode éditeur
 	else if (sfMouse_isButtonPressed(sfMouseLeft))
@@ -179,6 +179,9 @@ void displayMap(sfRenderWindow* _window, float _t)
 					break;
 				case 8:
 					sfSprite_setTextureRect(tileSpriteMap, T_PNJ);
+					break;
+				case 9:
+					sfSprite_setTextureRect(tileSpriteMap, T_PORTE);
 					break;
 					/*case 6:
 						if (_t >= 0 && _t < 1) sfSprite_setTextureRect(tileSpriteCoffre, T_FERMER);
@@ -260,6 +263,13 @@ void displayMap(sfRenderWindow* _window, float _t)
 			sfSprite_setTextureRect(tileSpriteMap, T_PNJ);
 			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
 			break;
+		case 9:
+			tilePos.x = worldPos.x;
+			tilePos.y = worldPos.y;
+			sfSprite_setPosition(tileSpriteMap, tilePos);
+			sfSprite_setTextureRect(tileSpriteMap, T_PORTE);
+			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
+			break;
 	}
 	}
 }
@@ -304,6 +314,9 @@ void displayGameMap(sfRenderWindow* _window, float _t)
 				break;
 			case 8:
 				sfSprite_setTextureRect(tileSpriteMap, T_PNJ);
+				break;
+			case 9:
+				sfSprite_setTextureRect(tileSpriteMap, T_PORTE);
 				break;
 				/*case 6:
 					if (_t >= 0 && _t < 1) sfSprite_setTextureRect(tileSpriteCoffre, T_FERMER);
