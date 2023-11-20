@@ -6,15 +6,19 @@ int frameKeyX;
 int frameKeyY;
 
 
-typedef struct chests chests;
-struct chests
+typedef struct allKeys allKeys;
+struct allKeys
 {
-	sfSprite* chest;
-	int life;
+	int keyCode;
+	sfSprite* keySprite;
+	sfTexture* keyTexture;
+	sfVector2f keyPosStruct;
+	sfIntRect keyRect;
 };
-chests chest[3];
+allKeys keys[3];
 
 sfVector2f keyPos;
+//sfIntRect keyRect;
 
 void initKey();
 void updateKey();
