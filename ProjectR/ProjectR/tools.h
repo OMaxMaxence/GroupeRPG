@@ -16,6 +16,7 @@
 #include "musique.h"
 #include "BlockText.h"
 #include "key.h"
+#include "chest.h"
 
 
 typedef enum Menu Menu;
