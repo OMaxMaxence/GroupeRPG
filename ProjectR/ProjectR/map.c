@@ -175,13 +175,13 @@ void displayMap(sfRenderWindow* _window, float _t)
 					sfSprite_setTextureRect(tileSpriteMap, T_COFFRE);
 					break;
 				case 7:
-					sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU);  
+					sfSprite_setTextureRect(tileSpriteMap, T_PORTE);
 					break;
 				case 8:
 					sfSprite_setTextureRect(tileSpriteMap, T_PNJ);
 					break;
 				case 9:
-					sfSprite_setTextureRect(tileSpriteMap, T_PORTE);
+					sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU);
 					break;
 					/*case 6:
 						if (_t >= 0 && _t < 1) sfSprite_setTextureRect(tileSpriteCoffre, T_FERMER);
@@ -253,7 +253,7 @@ void displayMap(sfRenderWindow* _window, float _t)
 			tilePos.x = worldPos.x; 
 			tilePos.y = worldPos.y; 
 			sfSprite_setPosition(tileSpriteMap, tilePos); 
-			sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU); 
+			sfSprite_setTextureRect(tileSpriteMap, T_PORTE);
 			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
 			break;
 		case 8:
@@ -267,7 +267,7 @@ void displayMap(sfRenderWindow* _window, float _t)
 			tilePos.x = worldPos.x;
 			tilePos.y = worldPos.y;
 			sfSprite_setPosition(tileSpriteMap, tilePos);
-			sfSprite_setTextureRect(tileSpriteMap, T_PORTE);
+			sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU);
 			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
 			break;
 	}
@@ -310,13 +310,13 @@ void displayGameMap(sfRenderWindow* _window, float _t)
 				sfSprite_setTextureRect(tileSpriteMap, T_COFFRE);
 				break;
 			case 7:
-				sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU);
+				sfSprite_setTextureRect(tileSpriteMap, T_PORTE);
 				break;
 			case 8:
 				sfSprite_setTextureRect(tileSpriteMap, T_PNJ);
 				break;
 			case 9:
-				sfSprite_setTextureRect(tileSpriteMap, T_PORTE);
+				sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU);
 				break;
 				/*case 6:
 					if (_t >= 0 && _t < 1) sfSprite_setTextureRect(tileSpriteCoffre, T_FERMER);
