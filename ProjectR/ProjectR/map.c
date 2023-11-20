@@ -351,8 +351,8 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
-		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 4 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 6 ||
-			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 4 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 6) // Choix des blocs à collision 
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 4 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 8 ||
+			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 4 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 8) // Choix des blocs à collision 
 		{
 
 			return sfTrue;
@@ -373,8 +373,8 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
-		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 4 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 6 ||
-			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 4 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 6) // Choix des blocs à collision 
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 4 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 8 ||
+			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 4 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 8) // Choix des blocs à collision 
 		{
 			return sfTrue;
 		}
@@ -394,8 +394,8 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
-		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 4 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 6 ||
-			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 4 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 6) // Choix des blocs à collision
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 4 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 8 ||
+			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 4 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 8) // Choix des blocs à collision
 		{
 			return sfTrue;
 		}
@@ -415,8 +415,8 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
-		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 4 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 6  ||
-			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 4 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 6) // Choix des blocs à collision
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 4 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 8 ||
+			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 4 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 8) // Choix des blocs à collision
 		{
 			return sfTrue;
 		}
