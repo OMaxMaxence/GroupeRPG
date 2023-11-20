@@ -26,6 +26,7 @@ int main()
 	initView();
 	initEditView();
 	initPnj();
+	initMusique();
 
 	choixJoueurMenu = MENU;
 
@@ -44,9 +45,6 @@ int main()
 
 		if (sfKeyboard_isKeyPressed(sfKeyEscape) && choixJoueurMenu != MENU)
 		{
-			sfMusic_stop(musicMenu);
-			sfMusic_stop(musicEdit);
-			sfMusic_stop(musicJouer);
 			sfRenderWindow_setMouseCursorVisible(window, sfTrue);
 			choixJoueurMenu = MENU;
 			initMenu();

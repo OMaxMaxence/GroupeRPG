@@ -54,14 +54,12 @@ void initMenu()
 	sfSprite_setTexture(SpriteQuitterMenu, TextureQuitterMenu, sfTrue);
 	sfSprite_setOrigin(SpriteQuitterMenu, vector2f(sfSprite_getGlobalBounds(SpriteQuitterMenu).width / 2, sfSprite_getGlobalBounds(SpriteQuitterMenu).height / 2));
 	sfSprite_setPosition(SpriteQuitterMenu, posQuitter);
-	musicMenu = sfMusic_createFromFile("..\\Ressources\\Musics\\Medieval-II-Total-War-Main-Menu-Background-in-4K-with-Music.ogg");
-	sfMusic_play(musicMenu);
-	musicEdit = sfMusic_createFromFile("..\\Ressources\\Musics\\Geometry-Dash-Practice-Mode-Stay-Inside-Me-Soundtrack.ogg");
-	musicJouer = sfMusic_createFromFile("..\\Ressources\\Musics\\MusicJouer.ogg");
 	SpriteTitreMenu = sfSprite_create();
 	TextureTitreMenu = sfTexture_createFromFile("..\\Ressources\\Textures\\BlockTitre.png", NULL);
 	sfSprite_setTexture(SpriteTitreMenu, TextureTitreMenu, sfTrue);
 	sfSprite_setPosition(SpriteTitreMenu, posTitre);
+	stopMusic();
+	musiqueJouer = MUSICMENU;
 	/*soudBoutonMenu = sfSound_create();
 	soundBuffer = sfSoundBuffer_createFromFile("..\\Ressources\\SoundFX\\Tactical-Nuke-Incoming-Sound-Effect.ogg");
 	sfSound_setBuffer(soudBoutonMenu, soundBuffer);*/
@@ -69,7 +67,7 @@ void initMenu()
 
 void updateMenu(sfRenderWindow* _window, sfView* _view)
 {
-	
+
 	mousePosMenu = sfMouse_getPosition(_window);
 	rectPlay = sfSprite_getGlobalBounds(SpritePlayMenu);
 	rectEdit = sfSprite_getGlobalBounds(SpriteEditMenu);
@@ -79,31 +77,30 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 	{
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
-			sfMusic_stop(musicMenu);
-			sfMusic_play(musicJouer);
+			musiqueJouer = MUSICJOUER;
 			choixJoueurMenu = JOUER;
 		}
 	}
 
-	if (sfFloatRect_contains(&rectEdit, mousePosMenu.x, mousePosMenu.y))
+	else if (sfFloatRect_contains(&rectEdit, mousePosMenu.x, mousePosMenu.y))
 	{
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
 			editeur = sfTrue;
-			sfMusic_stop(musicMenu);
-			//sfSound_play(soudBoutonMenu);
-			sfMusic_play(musicEdit);
+			musiqueJouer = MUSICEDITER;
 			choixJoueurMenu = EDITER;
 		}
 	}
 
-	if (sfFloatRect_contains(&rectQuitter, mousePosMenu.x, mousePosMenu.y))
+	else if (sfFloatRect_contains(&rectQuitter, mousePosMenu.x, mousePosMenu.y))
 	{
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
 			exit(EXIT_SUCCESS);
 		}
 	}
+	
+	updateMusique();
 
 }
 

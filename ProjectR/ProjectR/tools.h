@@ -21,6 +21,16 @@ enum Menu
 	EDITER,
 	QUITTER
 };
+
+typedef enum Musique Musique;
+enum Musique
+{
+	NOMUSIC = 0,
+	MUSICMENU = 1,
+	MUSICJOUER,
+	MUSICEDITER
+};
+
 Menu choixJoueurMenu;
 sfRenderWindow* window;
 
