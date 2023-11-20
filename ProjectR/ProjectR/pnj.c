@@ -49,7 +49,6 @@ void updatePnj()
 
 	//sfSprite_setPosition(pnj, pnjPos);
 	float distanceToPlayer = distanceBetweenTwoPoints(playerPos, pnjPos);
-	
 }
 
 //Fonction d'affichage du pnj

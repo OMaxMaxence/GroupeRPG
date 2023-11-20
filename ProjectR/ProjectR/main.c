@@ -51,6 +51,7 @@ int main()
 			stopMusic();
 			choixJoueurMenu = MENU;
 			initMenu();
+			initKey();
 			displayMenuView(window);
 
 		}
