@@ -1,6 +1,22 @@
 #pragma once
 #include "tools.h"
 
+//Macro pour raccourci des textures
+#define TEXTURE_PATH "../Ressources/Textures/"
+#define T_VIDE (sfIntRect){0,0,32,32}
+#define T_BOIS (sfIntRect){32,0,32,32}
+#define T_TERRE (sfIntRect){64,0,32,32}
+#define T_EAU (sfIntRect){ 96,0,32,32}
+#define T_ARBRE (sfIntRect){128,0,32,32}
+#define T_PIERRE (sfIntRect){160,0,32,32}
+#define T_COFFRE (sfIntRect){192,0,32,32}
+#define T_DRAPEAU (sfIntRect){224,0,32,32} 
+#define T_PNJ (sfIntRect){256,0,32,32} 
+#define T_FERMER (sfIntRect){0,0,32,32}
+#define T_QUART (sfIntRect){32,0,32,32}
+#define T_DEMI (sfIntRect){64,0,32,32}
+#define T_OUVERT (sfIntRect){ 96,0,32,32}
+//Macro pour la taille de map
 #define MAP_HEIGHT 75
 #define MAP_LENGTH 100
 
@@ -14,9 +30,8 @@ typedef enum
 
 
 
-
+//Prototype des fonctions utilisées dans map.c
 sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f _vitesse);
-
 
 void initMap();
 void updateMap(sfRenderWindow* _window, float _t, sfView* _view);
