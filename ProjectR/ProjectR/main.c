@@ -25,7 +25,9 @@ int main()
 	initView();
 	initEditView();
 	initPnj();
+	initBlockText();
 	initKey();
+
 
 	choixJoueurMenu = MENU;
 
@@ -97,7 +99,9 @@ int main()
 			displayGameMap(window, timerAnim); 
 			displayPnj(window);
 			displayPlayer(window);
+			displayBlockText(window);
 			displayKey(window);
+
 		}
 
 		else if (choixJoueurMenu == EDITER)
@@ -111,3 +115,4 @@ int main()
 
 	return 0;
 }
+

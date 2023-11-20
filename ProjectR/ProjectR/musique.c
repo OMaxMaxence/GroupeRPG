@@ -18,20 +18,21 @@ void updateMusique()
 	{
 		sfSound_play(soudBoutonMenu);
 		sfMusic_play(musicMenu);
+		sfMusic_setLoop(musicMenu, sfTrue);
 	}
 
 	else if (musiqueJouer == MUSICJOUER)
 	{
 		sfSound_play(soudBoutonMenu);
-
 		sfMusic_play(musicJouer);
+		sfMusic_setLoop(musicJouer, sfTrue);
 	}
 
 	else if (musiqueJouer == MUSICEDITER)
 	{
 		sfSound_play(soudBoutonMenu);
-
 		sfMusic_play(musicEdit);
+		sfMusic_setLoop(musicEdit, sfTrue);
 	}
 }
 
