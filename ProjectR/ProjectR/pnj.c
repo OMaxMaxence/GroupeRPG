@@ -51,13 +51,13 @@ void updatePnj()
 
 	//sfSprite_setPosition(pnj, pnjPos);
 	float distanceToPlayer = distanceBetweenTwoPoints(playerPos, pnjPos);
-	if (textAfficher == 0 && sfKeyboard_isKeyPressed(sfKeySpace) && distanceToPlayer < 32 && affichageText >= 1)
+	if (textAfficher == 0 && sfKeyboard_isKeyPressed(sfKeySpace) && distanceToPlayer < 40 && affichageText >= 1)
 	{
 		textAfficher = 1;
 		affichageText = 0;
 		
 	}
-	if (textAfficher == 1 && sfKeyboard_isKeyPressed(sfKeySpace) && distanceToPlayer < 32 && affichageText >= 1)
+	if (textAfficher == 1 && sfKeyboard_isKeyPressed(sfKeySpace) && distanceToPlayer < 40 && affichageText >= 1)
 	{
 		textAfficher = 0;
 		affichageText = 0;
