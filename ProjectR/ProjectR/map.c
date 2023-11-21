@@ -78,8 +78,8 @@ void initMap()
 	//Ouverture de la map via le fichier de sauvegarde
 	/*if (save = 1) 
 	{*/
-		fichier = fopen("savemap1.bin", "rb");
-		fread(tileMap, sizeof(char), 7500, fichier);
+		fichier = fopen("savemap.bin", "r");
+		fread(tileMap, sizeof(char), MAP_HEIGHT * MAP_LENGTH, fichier);
 		fclose(fichier);
 	/* }
 	else if (save = 2)
@@ -165,7 +165,7 @@ void updateMap(sfRenderWindow* _window, sfView* _view)
 	//Bouton de sauvegarde de la map dans un fichier de sauvegarde
 	if (sfKeyboard_isKeyPressed(sfKeyM)) 
 	{ 
-		fichier = fopen("savemap1.bin", "wt"); 
+		fichier = fopen("savemap.bin", "w"); 
 		fwrite(tileMap, sizeof(char), MAP_HEIGHT*MAP_LENGTH, fichier); 
 		fclose(fichier); 
 	}
