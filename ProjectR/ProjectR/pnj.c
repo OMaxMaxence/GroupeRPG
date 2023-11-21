@@ -1,7 +1,6 @@
 #include "pnj.h"
 #include "player.h"
 #include "BlockText.h"
-#define TEXTURE_PATH "../Ressources/Textures/" 
 
 // Déclaration et initialisation des variables utilisées
 sfTexture* spritesheetpnj; 
