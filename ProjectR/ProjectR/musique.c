@@ -3,11 +3,11 @@
 
 void initMusique()
 {
-	musicMenu = sfMusic_createFromFile("..\\Ressources\\Musics\\Medieval-II-Total-War-Main-Menu-Background-in-4K-with-Music.ogg");
-	musicJouer = sfMusic_createFromFile("..\\Ressources\\Musics\\MusicJouer.ogg");
-	musicEdit = sfMusic_createFromFile("..\\Ressources\\Musics\\Geometry-Dash-Practice-Mode-Stay-Inside-Me-Soundtrack.ogg");
+	musicMenu = sfMusic_createFromFile(MUSIC_PATH"Medieval-II-Total-War-Main-Menu-Background-in-4K-with-Music.ogg");   
+	musicJouer = sfMusic_createFromFile(MUSIC_PATH"MusicJouer.ogg");
+	musicEdit = sfMusic_createFromFile(MUSIC_PATH"Geometry-Dash-Practice-Mode-Stay-Inside-Me-Soundtrack.ogg");
 	soudBoutonMenu = sfSound_create();
-	soundBuffer = sfSoundBuffer_createFromFile("..\\Ressources\\SoundsFX\\Clic Sound.ogg");
+	soundBuffer = sfSoundBuffer_createFromFile(SOUND_PATH"Clic Sound.ogg");
 	sfSound_setBuffer(soudBoutonMenu, soundBuffer);
 
 }

@@ -12,7 +12,7 @@ sfVector2f playerSpeed = { PLAYER_SPEED, PLAYER_SPEED };
 
 void initPlayer()
 {
-	spritesheet = sfTexture_createFromFile("..\\Ressources\\Textures\\link.png", NULL);
+	spritesheet = sfTexture_createFromFile(TEXTURE_PATH"link.png", NULL); 
 	player = sfSprite_create();
 	sfSprite_setTexture(player, spritesheet, sfTrue);
 	sfSprite_setScale(player, vector2f(PLAYER_SCALE, PLAYER_SCALE));
