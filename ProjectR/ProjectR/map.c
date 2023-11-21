@@ -78,8 +78,8 @@ void initMap()
 	//Ouverture de la map via le fichier de sauvegarde
 	/*if (save = 1) 
 	{*/
-		fichier = fopen("savemap1.bin", "rb");
-		fread(tileMap, sizeof(char), 7500, fichier);
+		fichier = fopen("savemap1.bin", "r");
+		fread(tileMap, sizeof(char), MAP_HEIGHT * MAP_LENGTH, fichier);
 		fclose(fichier);
 	/* }
 	else if (save = 2)
@@ -165,7 +165,7 @@ void updateMap(sfRenderWindow* _window, sfView* _view)
 	//Bouton de sauvegarde de la map dans un fichier de sauvegarde
 	if (sfKeyboard_isKeyPressed(sfKeyM)) 
 	{ 
-		fichier = fopen("savemap1.bin", "wt"); 
+		fichier = fopen("savemap1.bin", "w"); 
 		fwrite(tileMap, sizeof(char), MAP_HEIGHT*MAP_LENGTH, fichier); 
 		fclose(fichier); 
 	}
@@ -174,7 +174,11 @@ void updateMap(sfRenderWindow* _window, sfView* _view)
 //Fonction de mise à jour de la map du mode jouer
 void updateGameMap(sfRenderWindow* _window, sfView* _view)
 {
-
+	updatePorte();
+	updateChest();
+	updatePnj();
+	updatePlayer();
+	updateKey();
 }
 
 //Fonction d'affichage de la map du mode éditeur
@@ -406,7 +410,7 @@ void displayGameMap(sfRenderWindow* _window)
 //Génération des collisions entre certains bloc de la map et le personnage
 sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f _vitesse)
 {
-
+	
 	if (_direction == HAUT)
 	{
 		sfVector2i nextPosInTab = { _sprite.left / 32, (_sprite.top - _vitesse.y * getDeltaTime()) / 32 };
@@ -421,10 +425,13 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
+		if ((tileMap[nextPosInTab.y][nextPosInTab.x] == 7 || tileMap[nextPosInTab2.y][nextPosInTab2.x] == 7) && portes.porteRect.left >= 96) // Player opens the door
+		{
+			return sfFalse;
+		}
 		if (tileMap[nextPosInTab.y][nextPosInTab.x] > 3 && tileMap[nextPosInTab.y][nextPosInTab.x] < 9 || tileMap[nextPosInTab.y][nextPosInTab.x] > 10 && tileMap[nextPosInTab.y][nextPosInTab.x] < 13 ||
 			tileMap[nextPosInTab2.y][nextPosInTab2.x] > 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 9 || tileMap[nextPosInTab2.y][nextPosInTab2.x] > 10 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 13) // Choix des blocs à collision 
 		{
-
 			return sfTrue;
 		}
 	}
@@ -442,6 +449,10 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 		{
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
+		}
+		if ((tileMap[nextPosInTab.y][nextPosInTab.x] == 7 || tileMap[nextPosInTab2.y][nextPosInTab2.x] == 7) && portes.porteRect.left >= 96) // Player opens the door
+		{
+			return sfFalse;
 		}
 		if (tileMap[nextPosInTab.y][nextPosInTab.x] > 3 && tileMap[nextPosInTab.y][nextPosInTab.x] < 9 || tileMap[nextPosInTab.y][nextPosInTab.x] > 10 && tileMap[nextPosInTab.y][nextPosInTab.x] < 13 ||
 			tileMap[nextPosInTab2.y][nextPosInTab2.x] > 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 9 || tileMap[nextPosInTab2.y][nextPosInTab2.x] > 10 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 13) // Choix des blocs à collision 
