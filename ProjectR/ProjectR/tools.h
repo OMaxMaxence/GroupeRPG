@@ -17,6 +17,7 @@
 #include "BlockText.h"
 #include "key.h"
 #include "chest.h"
+#include "porte.h"
 #define TEXTURE_PATH "../Ressources/Textures/" 
 #define MUSIC_PATH "../Ressources/Musics/"
 #define SOUND_PATH "../Ressources/SoundsFX/"

@@ -24,6 +24,7 @@ int main()
 	initView();
 	initEditView();
 	initBlockText();
+	initPorte();
 
 
 	choixJoueurMenu = MENU;
