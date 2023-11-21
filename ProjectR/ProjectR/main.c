@@ -20,15 +20,11 @@ int main()
 	initMusique();
 	initMenu();
 	initMap();
-	initPlayer();
 	initMenuView();
 	initView();
 	initEditView();
-	initPnj();
 	initBlockText();
-	initKey();
-	initChest();
-	initPorte();  
+	initPorte();
 
 
 	choixJoueurMenu = MENU;
@@ -69,8 +65,8 @@ int main()
 		else if (choixJoueurMenu == JOUER)
 		{
 			updateGameMap(window, timerAnim, view); 
-			updatePnj();
 			updatePlayer();
+			updatePnj();
 			updateView(playerPos);
 			sfRenderWindow_setMouseCursorVisible(window, sfFalse);
 			updateKey();
@@ -100,9 +96,8 @@ int main()
 		{
 			displayView(window);
 			displayGameMap(window, timerAnim); 
-			displayPnj(window);
 			displayPlayer(window);
-			displayBlockText(window);
+			displayPnj(window);
 			displayKey(window);
 			displayChest(window); 
 			displayPorte(window);   

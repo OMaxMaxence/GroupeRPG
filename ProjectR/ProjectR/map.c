@@ -56,10 +56,15 @@ char tileMap[MAP_HEIGHT][MAP_LENGTH]; /* = {
 	{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 }
 };*/
 
-
+int nb_initChests = 0;
 //Fonction d'initialisation de la map
 void initMap()
 {
+
+	initKey();
+	initChest();
+	initPnj();
+	initPlayer();
 	//Application du tileset 
 	tileTextureMap = sfTexture_createFromFile(TEXTURE_PATH"tileset1.png", NULL);
 	tileSpriteMap = sfSprite_create();
@@ -81,7 +86,36 @@ void initMap()
 		fread(tileMap, sizeof(char), 7500, fichier);
 		fclose(fichier);
 	}*/
-	
+
+	for (int y = 0; y < MAP_HEIGHT; y++)
+	{
+		for (int x = 0; x < MAP_LENGTH; x++)
+		{
+			tilePos.x = x * 32;
+			tilePos.y = y * 32;
+
+			switch (tileMap[y][x])
+			{
+			case 6:
+				chests[nb_initChests].chestPos.x = x * 32.0f + 16.0f;
+				chests[nb_initChests].chestPos.y = y * 32.0f + 16.0f;
+				nb_initChests++;
+				break;
+			case 7:
+				//sfSprite_setTextureRect(tileSpriteMap, T_HERBE); // T_PORTE
+				break;
+			case 8:
+				pnjPos.x = x * 32.0f + 16.0f;
+				pnjPos.y = y * 32.0f + 16.0f;
+				sfSprite_setPosition(pnj, pnjPos);
+				break;
+			case 9:
+				playerPos.x = x * 32.0f + 16.0f;
+				playerPos.y = y * 32.0f + 16.0f;
+				break;
+			}
+		}
+	}
 }
 
 
@@ -310,13 +344,13 @@ void displayGameMap(sfRenderWindow* _window, float _t)
 				sfSprite_setTextureRect(tileSpriteMap, T_COFFRE);
 				break;
 			case 7:
-				sfSprite_setTextureRect(tileSpriteMap, T_PORTE);
+				sfSprite_setTextureRect(tileSpriteMap, T_HERBE); // T_PORTE
 				break;
 			case 8:
-				sfSprite_setTextureRect(tileSpriteMap, T_PNJ);
+				sfSprite_setTextureRect(tileSpriteMap, T_HERBE); // T_PNJ
 				break;
 			case 9:
-				sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU);
+				sfSprite_setTextureRect(tileSpriteMap, T_HERBE); // T_DRAPEAU
 				break;
 				/*case 6:
 					if (_t >= 0 && _t < 1) sfSprite_setTextureRect(tileSpriteCoffre, T_FERMER);
