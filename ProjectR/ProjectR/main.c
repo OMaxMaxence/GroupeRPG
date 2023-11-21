@@ -49,7 +49,7 @@ int main()
 			stopMusic();
 			choixJoueurMenu = MENU;
 			initMenu();
-			initMap();
+			//initMap();
 			displayMenuView(window);
 
 		}
