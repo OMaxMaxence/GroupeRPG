@@ -21,6 +21,10 @@
 #define MAP_HEIGHT 75
 #define MAP_LENGTH 100
 
+char tileMap[MAP_HEIGHT][MAP_LENGTH];
+sfVector2f tilePos;
+sfSprite* tileSpriteMap;
+
 typedef enum
 {
 	BAS = 0,

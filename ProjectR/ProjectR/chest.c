@@ -4,8 +4,8 @@ void initChest()
 {
 	for (int i = 0; i < 3; i++)
 	{
-		chests[i].chestPos.x = 30.0f + i*32*2;
-		chests[i].chestPos.y = 100.0f;
+		//chests[i].chestPos.x = 30.0f + i*32*2;
+		//chests[i].chestPos.y = 100.0f;
 		chests[i].chestRect.width = 32;
 		chests[i].chestRect.height = 32;
 		chests[i].chestRect.top = 0;

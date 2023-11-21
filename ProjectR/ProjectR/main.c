@@ -20,15 +20,10 @@ int main()
 	initMusique();
 	initMenu();
 	initMap();
-	initPlayer();
 	initMenuView();
 	initView();
 	initEditView();
-	initPnj();
 	initBlockText();
-	initKey();
-	initChest();
-	initPorte();  
 
 
 	choixJoueurMenu = MENU;
