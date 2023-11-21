@@ -174,7 +174,7 @@ void updateMap(sfRenderWindow* _window, sfView* _view)
 //Fonction de mise à jour de la map du mode jouer
 void updateGameMap(sfRenderWindow* _window, sfView* _view)
 {
-	printf("remove");
+	
 }
 
 //Fonction d'affichage de la map du mode éditeur
