@@ -67,10 +67,9 @@ int main()
 		//Mode jouer
 		else if (choixJoueurMenu == JOUER)
 		{
-			initMap();
 			updateGameMap(window, timerAnim, view); 
-			updatePnj();
 			updatePlayer();
+			updatePnj();
 			updateView(playerPos);
 			sfRenderWindow_setMouseCursorVisible(window, sfFalse);
 			updateKey();
@@ -99,9 +98,8 @@ int main()
 		{
 			displayView(window);
 			displayGameMap(window, timerAnim); 
-			displayPnj(window);
 			displayPlayer(window);
-			displayBlockText(window);
+			displayPnj(window);
 			displayKey(window);
 			displayChest(window);
 		}
