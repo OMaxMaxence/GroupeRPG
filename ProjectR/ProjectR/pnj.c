@@ -53,17 +53,13 @@ void updatePnj()
 	float distanceToPlayer = distanceBetweenTwoPoints(playerPos, pnjPos);
 	if (textAfficher == 0 && sfKeyboard_isKeyPressed(sfKeySpace) && distanceToPlayer < 40 && affichageText >= 1)
 	{
-		printf("yo\n");
 		textAfficher = 1;
-		printf("%d\n", textAfficher);
 		affichageText = 0;
 		
 	}
 	if (textAfficher == 1 && sfKeyboard_isKeyPressed(sfKeySpace) && distanceToPlayer < 40 && affichageText >= 1)
 	{
-		printf("yolo\n");
 		textAfficher = 0;
-		printf("%d\n", textAfficher);
 		affichageText = 0;
 	}
 	
