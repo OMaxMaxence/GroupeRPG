@@ -2,8 +2,8 @@
 
 
 
-int main()
-{
+int main() 
+{  
 	sfVideoMode mode = { 800, 600, 32 };
 
 	char titre[100];
@@ -64,12 +64,13 @@ int main()
 		else if (choixJoueurMenu == JOUER)
 		{
 			updateGameMap(window, timerAnim, view); 
-			updatePnj();
 			updatePlayer();
+			updatePnj();
 			updateView(playerPos);
 			sfRenderWindow_setMouseCursorVisible(window, sfFalse);
 			updateKey();
 			updateChest();
+			updatePorte(); 
 		}
 
 		//Mode Editeur
@@ -94,11 +95,11 @@ int main()
 		{
 			displayView(window);
 			displayGameMap(window, timerAnim); 
-			displayPnj(window);
 			displayPlayer(window);
-			displayBlockText(window);
+			displayPnj(window);
 			displayKey(window);
-			displayChest(window);
+			displayChest(window); 
+			displayPorte(window);   
 		}
 
 		else if (choixJoueurMenu == EDITER)

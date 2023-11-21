@@ -13,5 +13,5 @@ sfVector2f pnjPos;
 
 //Prototype des fonctions utilisé dans pnj.c
 void initPnj(); 
-void updatePnj(); 
+void updatePnj();
 void displayPnj(sfRenderWindow* _window); 

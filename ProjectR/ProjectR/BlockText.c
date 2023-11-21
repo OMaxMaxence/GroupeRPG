@@ -19,7 +19,7 @@ void initBlockText()
 	//sfRectangleShape_setOrigin(rectangle, vector2f(sfSprite_getGlobalBounds(rectangle).width / 2, sfSprite_getGlobalBounds(rectangle).height / 2));
 	//sfRectangleShape_setFillColor(rectangle, sfBlack);
 	consigne = sfText_create();
-	consigneFont = sfFont_createFromFile("..\\Ressources\\Fonts\\The Wild Breath of Zelda.otf");
+	consigneFont = sfFont_createFromFile(FONT_PATH"The Wild Breath of Zelda.otf");
 	/*sfText_setFont(consigne, consigneFont);
 	sfText_setString(consigne, consigneChar);
 	sfText_setScale(consigne, txtsize);*/
@@ -38,10 +38,10 @@ void displayBlockText(sfRenderWindow* _window)
 	sfRectangleShape_setSize(rectangle, rectsize);
 	sfRectangleShape_setOrigin(rectangle, vector2f(sfSprite_getGlobalBounds(rectangle).width / 2, sfSprite_getGlobalBounds(rectangle).height / 2));
 	sfRectangleShape_setPosition(rectangle, rectanglePos);
-	sfRenderWindow_drawRectangleShape(_window, rectangle, NULL);
 	sfText_setFont(consigne, consigneFont);
 	sfText_setString(consigne, consigneChar);
 	sfText_setScale(consigne, txtsize);
 	sfText_setPosition(consigne, txtPos);
+	sfRenderWindow_drawRectangleShape(_window, rectangle, NULL);
 	sfRenderWindow_drawText(_window, consigne, NULL);
 }

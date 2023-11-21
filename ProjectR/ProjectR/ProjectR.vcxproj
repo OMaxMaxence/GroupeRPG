@@ -148,6 +148,7 @@
     <ClCompile Include="musique.c" />
     <ClCompile Include="player.c" />
     <ClCompile Include="pnj.c" />
+    <ClCompile Include="porte.c" />
     <ClCompile Include="tools.c" />
     <ClCompile Include="view.c" />
   </ItemGroup>
@@ -160,6 +161,7 @@
     <ClInclude Include="musique.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="pnj.h" />
+    <ClInclude Include="porte.h" />
     <ClInclude Include="tools.h" />
     <ClInclude Include="view.h" />
   </ItemGroup>

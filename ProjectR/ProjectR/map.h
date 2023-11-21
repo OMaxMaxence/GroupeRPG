@@ -2,7 +2,6 @@
 #include "tools.h"
 
 //Macro pour raccourci des textures
-#define TEXTURE_PATH "../Ressources/Textures/"
 #define T_VIDE (sfIntRect){0,0,32,32}
 #define T_HERBE (sfIntRect){32,0,32,32}
 #define T_TERRE (sfIntRect){64,0,32,32}
