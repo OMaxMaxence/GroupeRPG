@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BlockText.c" />
     <ClCompile Include="chest.c" />
     <ClCompile Include="key.c" />
     <ClCompile Include="main.c" />
@@ -147,10 +148,12 @@
     <ClCompile Include="musique.c" />
     <ClCompile Include="player.c" />
     <ClCompile Include="pnj.c" />
+    <ClCompile Include="porte.c" />
     <ClCompile Include="tools.c" />
     <ClCompile Include="view.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BlockText.h" />
     <ClInclude Include="chest.h" />
     <ClInclude Include="key.h" />
     <ClInclude Include="map.h" />
@@ -158,6 +161,7 @@
     <ClInclude Include="musique.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="pnj.h" />
+    <ClInclude Include="porte.h" />
     <ClInclude Include="tools.h" />
     <ClInclude Include="view.h" />
   </ItemGroup>
