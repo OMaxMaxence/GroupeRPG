@@ -25,7 +25,7 @@ void updatePorte()
 	porteTimer += getDeltaTime();
 	distToPlayerPorte = distanceBetweenTwoPoints(portes.portePos, playerPos);
 
-		if (sfKeyboard_isKeyPressed(sfKeyE) && distToPlayerPorte < 32)
+		if (sfKeyboard_isKeyPressed(sfKeySpace) && distToPlayerPorte < 32) 
 		{
 			portes.openPorte = sfTrue;  
 		}
