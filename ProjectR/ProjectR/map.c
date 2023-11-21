@@ -56,15 +56,17 @@ char tileMap[MAP_HEIGHT][MAP_LENGTH]; /* = {
 	{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 }
 };*/
 
-int nb_initChests = 0;
 //Fonction d'initialisation de la map
 void initMap()
 {
-
 	initKey();
 	initChest();
 	initPnj();
 	initPlayer();
+	initPorte();
+
+	int nb_initChests = 0;
+
 	//Application du tileset 
 	tileTextureMap = sfTexture_createFromFile(TEXTURE_PATH"tileset1.png", NULL);
 	tileSpriteMap = sfSprite_create();
@@ -103,7 +105,9 @@ void initMap()
 				nb_initChests++;
 				break;
 			case 7:
-				//sfSprite_setTextureRect(tileSpriteMap, T_HERBE); // T_PORTE
+				portes.portePos.x = x * 32.0f + 16.0f;
+				portes.portePos.y = y * 32.0f + 16.0f;
+				sfSprite_setPosition(portes.porteSprite, portes.portePos);
 				break;
 			case 8:
 				pnjPos.x = x * 32.0f + 16.0f;
@@ -122,7 +126,7 @@ void initMap()
 
 
 //Fonction de mise à jour de la map du mode éditeur
-void updateMap(sfRenderWindow* _window, float _t, sfView* _view)
+void updateMap(sfRenderWindow* _window, sfView* _view)
 {
 	//Récupération de la position de la souris avec association au bloc à placer
 	mousePos = sfMouse_getPosition(_window);
@@ -168,8 +172,9 @@ void updateMap(sfRenderWindow* _window, float _t, sfView* _view)
 
 }
 //Fonction de mise à jour de la map du mode jouer
-void updateGameMap(sfRenderWindow* _window, float _t, sfView* _view)
+void updateGameMap(sfRenderWindow* _window, sfView* _view)
 {
+	printf("remove");
 }
 
 //Fonction d'affichage de la map du mode éditeur

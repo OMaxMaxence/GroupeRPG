@@ -24,8 +24,6 @@ int main()
 	initView();
 	initEditView();
 	initBlockText();
-	initPorte();
-
 
 	choixJoueurMenu = MENU;
 
@@ -51,7 +49,7 @@ int main()
 			stopMusic();
 			choixJoueurMenu = MENU;
 			initMenu();
-			initKey();
+			initMap();
 			displayMenuView(window);
 
 		}
@@ -64,7 +62,7 @@ int main()
 		//Mode jouer
 		else if (choixJoueurMenu == JOUER)
 		{
-			updateGameMap(window, timerAnim, view); 
+			updateGameMap(window, view); 
 			updatePlayer();
 			updatePnj();
 			updateView(playerPos);
@@ -77,7 +75,7 @@ int main()
 		//Mode Editeur
 		else if (choixJoueurMenu == EDITER)
 		{
-			updateMap(window, timerAnim, view);
+			updateMap(window, view);
 			updateEditView(posEditView);
 		}
 
