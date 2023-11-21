@@ -3,20 +3,19 @@
 
 //Macro pour raccourci des textures
 #define T_VIDE (sfIntRect){0,0,32,32}
-#define T_HERBE (sfIntRect){32,0,32,32}
+#define T_HERBECLAIR (sfIntRect){32,0,32,32}
 #define T_TERRE (sfIntRect){64,0,32,32}
 #define T_BOIS (sfIntRect){96,0,32,32}
-#define T_EAU (sfIntRect){ 128,0,32,32}
-#define T_ARBRE (sfIntRect){160,0,32,32}
+#define T_EAUCLAIR (sfIntRect){ 128,0,32,32}
+#define T_ARBRECLAIR (sfIntRect){160,0,32,32}
 #define T_PIERRE (sfIntRect){192,0,32,32}
 #define T_COFFRE (sfIntRect){224,0,32,32}
 #define T_PORTE (sfIntRect){256,0,32,32} 
 #define T_PNJ (sfIntRect){288,0,32,32} 
-#define T_DRAPEAU (sfIntRect){320,0,32,32} 
-#define T_FERMER (sfIntRect){0,0,32,32}
-#define T_QUART (sfIntRect){32,0,32,32}
-#define T_DEMI (sfIntRect){64,0,32,32}
-#define T_OUVERT (sfIntRect){ 96,0,32,32}
+#define T_DRAPEAU (sfIntRect){320,0,32,32}
+#define T_HERBEFONCE (sfIntRect){352,0,32,32}
+#define T_ARBREFONCE (sfIntRect){384,0,32,32}
+#define T_EAUFONCE (sfIntRect){416,0,32,32}
 //Macro pour la taille de map
 #define MAP_HEIGHT 75
 #define MAP_LENGTH 100

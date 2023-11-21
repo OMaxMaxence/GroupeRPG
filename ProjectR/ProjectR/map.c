@@ -5,7 +5,7 @@
 
 #pragma warning (disable: 4244)
 
-//Déclaration et initialisation des variables nécessaires
+//DÃ©claration et initialisation des variables nÃ©cessaires
 sfSprite* tileSpriteMap;
 sfTexture* tileTextureMap;
 sfVector2f tilePos = { 0.0f, 0.0f };
@@ -18,7 +18,7 @@ float delai;
 sfVector2f worldPos;
 FILE* fichier;
 
-//Génération de la taille de la map
+//GÃ©nÃ©ration de la taille de la map
 char tileMap[MAP_HEIGHT][MAP_LENGTH]; /* = {
 	{4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 4},
 	{ 0,0,4,4,0,0,0,0,0,0,0,0,0,3,0,0,4,4,0,0,0,0,4,4,0,0,0,0,0,0,0,0,0,3,0,0,4,4,0,0,0,0,4,4,0,0,0,0,0,0,0,0,0,3,0,0,4,4,0,0 },
@@ -125,17 +125,17 @@ void initMap()
 }
 
 
-//Fonction de mise à jour de la map du mode éditeur
+//Fonction de mise Ã  jour de la map du mode Ã©diteur
 void updateMap(sfRenderWindow* _window, sfView* _view)
 {
-	//Récupération de la position de la souris avec association au bloc à placer
+	//RÃ©cupÃ©ration de la position de la souris avec association au bloc Ã  placer
 	mousePos = sfMouse_getPosition(_window);
 	worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePos, editView);  
 	blocpos.x = worldPos.x / 32;
 	blocpos.y = worldPos.y / 32;
 	delai += getDeltaTime();
 
-	//Bouton pour changer les blocs à placer dans l'éditeur
+	//Bouton pour changer les blocs Ã  placer dans l'Ã©diteur
 	if (sfKeyboard_isKeyPressed(sfKeyRight) && delai > 0.3f)
 	{
 		delai = 0.0f;
@@ -146,15 +146,15 @@ void updateMap(sfRenderWindow* _window, sfView* _view)
 		delai = 0.0f;
 		bloc = bloc - 1;
 	}
-	if (bloc > 9)
+	if (bloc > 12)
 	{
 		bloc = 0;
 	}
 	else if (bloc < 0)
 	{
-		bloc = 9;
+		bloc = 12;
 	} 
-	//Application du bloc sélectionné sur la map en mode éditeur
+	//Application du bloc sÃ©lectionnÃ© sur la map en mode Ã©diteur
 	else if (sfMouse_isButtonPressed(sfMouseLeft))
 	{
 		if (worldPos.x < 3200 && worldPos.x > 0 && worldPos.y < 2400 && worldPos.y > 0)
@@ -171,19 +171,16 @@ void updateMap(sfRenderWindow* _window, sfView* _view)
 	}
 
 }
-//Fonction de mise à jour de la map du mode jouer
+//Fonction de mise Ã  jour de la map du mode jouer
 void updateGameMap(sfRenderWindow* _window, sfView* _view)
 {
-	updateChest();
-	updatePorte();
-	updatePnj();
-	updatePlayer();
+
 }
 
-//Fonction d'affichage de la map du mode éditeur
-void displayMap(sfRenderWindow* _window)
+//Fonction d'affichage de la map du mode Ã©diteur
+void displayMap(sfRenderWindow* _window, float _t)
 {
-	//Détection du bloc placé sur la map et affichage
+	//DÃ©tection du bloc placÃ© sur la map et affichage
 	if (editeur = sfTrue)
 	{
 		for (int y = 0; y < MAP_HEIGHT; y++)
@@ -198,7 +195,7 @@ void displayMap(sfRenderWindow* _window)
 				switch (tileMap[y][x])
 				{
 				case 0:
-					sfSprite_setTextureRect(tileSpriteMap, T_HERBE);
+					sfSprite_setTextureRect(tileSpriteMap, T_HERBECLAIR);
 					break;
 				case 1:
 					sfSprite_setTextureRect(tileSpriteMap, T_TERRE);
@@ -207,10 +204,10 @@ void displayMap(sfRenderWindow* _window)
 					sfSprite_setTextureRect(tileSpriteMap, T_BOIS);
 					break;
 				case 3:
-					sfSprite_setTextureRect(tileSpriteMap, T_EAU);
+					sfSprite_setTextureRect(tileSpriteMap, T_EAUCLAIR);
 					break;
 				case 4:
-					sfSprite_setTextureRect(tileSpriteMap, T_ARBRE);
+					sfSprite_setTextureRect(tileSpriteMap, T_ARBRECLAIR);
 					break;
 				case 5:
 					sfSprite_setTextureRect(tileSpriteMap, T_PIERRE);
@@ -227,21 +224,28 @@ void displayMap(sfRenderWindow* _window)
 				case 9:
 					sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU);
 					break;
-
+				case 10:
+					sfSprite_setTextureRect(tileSpriteMap, T_HERBEFONCE);
+					break;
+				case 11:
+					sfSprite_setTextureRect(tileSpriteMap, T_ARBREFONCE);
+					break;
+				case 12:
+					sfSprite_setTextureRect(tileSpriteMap, T_EAUFONCE);
+					break;
 				}
-				sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
-
+				 sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
 			}
 		}
 
-		//Affichage du bloc sélectionné à côté du curseur dans le mode éditeur
+		//Affichage du bloc sÃ©lectionnÃ© Ã  cÃ´tÃ© du curseur dans le mode Ã©diteur
 		switch (bloc)
 		{ 
 		case 0:
 			tilePos.x = worldPos.x; 
 			tilePos.y = worldPos.y; 
 			sfSprite_setPosition(tileSpriteMap, tilePos);
-			sfSprite_setTextureRect(tileSpriteMap, T_HERBE);  
+			sfSprite_setTextureRect(tileSpriteMap, T_HERBECLAIR);  
 			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
 			break;
 		case 1:
@@ -262,14 +266,14 @@ void displayMap(sfRenderWindow* _window)
 			tilePos.x = worldPos.x;
 			tilePos.y = worldPos.y;
 			sfSprite_setPosition(tileSpriteMap, tilePos);
-			sfSprite_setTextureRect(tileSpriteMap, T_EAU);
+			sfSprite_setTextureRect(tileSpriteMap, T_EAUCLAIR);
 			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
 			break;
 		case 4:
 			tilePos.x = worldPos.x;
 			tilePos.y = worldPos.y;
 			sfSprite_setPosition(tileSpriteMap, tilePos);
-			sfSprite_setTextureRect(tileSpriteMap, T_ARBRE);
+			sfSprite_setTextureRect(tileSpriteMap, T_ARBRECLAIR);
 			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
 			break;
 		case 5:
@@ -304,7 +308,28 @@ void displayMap(sfRenderWindow* _window)
 			tilePos.x = worldPos.x;
 			tilePos.y = worldPos.y;
 			sfSprite_setPosition(tileSpriteMap, tilePos);
-			sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU);
+			sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU); 
+			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
+			break;
+		case 10:
+			tilePos.x = worldPos.x;
+			tilePos.y = worldPos.y;
+			sfSprite_setPosition(tileSpriteMap, tilePos);
+			sfSprite_setTextureRect(tileSpriteMap, T_HERBEFONCE); 
+			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
+			break;
+		case 11:
+			tilePos.x = worldPos.x;
+			tilePos.y = worldPos.y;
+			sfSprite_setPosition(tileSpriteMap, tilePos);
+			sfSprite_setTextureRect(tileSpriteMap, T_ARBREFONCE); 
+			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
+			break;
+		case 12:
+			tilePos.x = worldPos.x;
+			tilePos.y = worldPos.y;
+			sfSprite_setPosition(tileSpriteMap, tilePos);
+			sfSprite_setTextureRect(tileSpriteMap, T_EAUFONCE); 
 			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
 			break;
 	}
@@ -326,7 +351,7 @@ void displayGameMap(sfRenderWindow* _window)
 			switch (tileMap[y][x])
 			{
 			case 0:
-				sfSprite_setTextureRect(tileSpriteMap, T_HERBE);
+				sfSprite_setTextureRect(tileSpriteMap, T_HERBECLAIR);  
 				break;
 			case 1:
 				sfSprite_setTextureRect(tileSpriteMap, T_TERRE);
@@ -335,10 +360,10 @@ void displayGameMap(sfRenderWindow* _window)
 				sfSprite_setTextureRect(tileSpriteMap, T_BOIS);
 				break;
 			case 3:
-				sfSprite_setTextureRect(tileSpriteMap, T_EAU);
+				sfSprite_setTextureRect(tileSpriteMap, T_EAUCLAIR);
 				break;
 			case 4:
-				sfSprite_setTextureRect(tileSpriteMap, T_ARBRE);
+				sfSprite_setTextureRect(tileSpriteMap, T_ARBRECLAIR);
 				break;
 			case 5:
 				sfSprite_setTextureRect(tileSpriteMap, T_PIERRE);
@@ -347,18 +372,26 @@ void displayGameMap(sfRenderWindow* _window)
 				sfSprite_setTextureRect(tileSpriteMap, T_COFFRE);
 				break;
 			case 7:
-				sfSprite_setTextureRect(tileSpriteMap, T_HERBE); // T_PORTE
+				sfSprite_setTextureRect(tileSpriteMap, T_HERBECLAIR); // T_PORTE
 				break;
 			case 8:
-				sfSprite_setTextureRect(tileSpriteMap, T_HERBE); // T_PNJ
+				sfSprite_setTextureRect(tileSpriteMap, T_HERBECLAIR); // T_PNJ
 				break;
 			case 9:
-				sfSprite_setTextureRect(tileSpriteMap, T_HERBE); // T_DRAPEAU
+				sfSprite_setTextureRect(tileSpriteMap, T_HERBECLAIR); // T_DRAPEAU
 				break;
-
-			} 
+			case 10:
+				sfSprite_setTextureRect(tileSpriteMap, T_HERBEFONCE);
+				break;
+			case 11:
+				sfSprite_setTextureRect(tileSpriteMap, T_ARBREFONCE); 
+				break;
+			case 12:
+				sfSprite_setTextureRect(tileSpriteMap, T_EAUFONCE); 
+				break;
+				
+			}			 
 			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
-
 		}
 	}
 
@@ -370,7 +403,7 @@ void displayGameMap(sfRenderWindow* _window)
 	displayKey(_window);
 }
 
-//Génération des collisions entre certains bloc de la map et le personnage
+//GÃ©nÃ©ration des collisions entre certains bloc de la map et le personnage
 sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f _vitesse)
 {
 
@@ -388,8 +421,8 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
-		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 4 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 8 ||
-			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 4 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 8) // Choix des blocs à collision 
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] > 3 && tileMap[nextPosInTab.y][nextPosInTab.x] < 9 || tileMap[nextPosInTab.y][nextPosInTab.x] > 10 && tileMap[nextPosInTab.y][nextPosInTab.x] < 13 ||
+			tileMap[nextPosInTab2.y][nextPosInTab2.x] > 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 9 || tileMap[nextPosInTab2.y][nextPosInTab2.x] > 10 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 13) // Choix des blocs Ã  collision 
 		{
 
 			return sfTrue;
@@ -410,8 +443,8 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
-		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 4 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 8 ||
-			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 4 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 8) // Choix des blocs à collision 
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] > 3 && tileMap[nextPosInTab.y][nextPosInTab.x] < 9 || tileMap[nextPosInTab.y][nextPosInTab.x] > 10 && tileMap[nextPosInTab.y][nextPosInTab.x] < 13 ||
+			tileMap[nextPosInTab2.y][nextPosInTab2.x] > 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 9 || tileMap[nextPosInTab2.y][nextPosInTab2.x] > 10 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 13) // Choix des blocs Ã  collision 
 		{
 			return sfTrue;
 		}
@@ -431,8 +464,8 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
-		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 4 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 8 ||
-			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 4 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 8) // Choix des blocs à collision
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] > 3 && tileMap[nextPosInTab.y][nextPosInTab.x] < 9 || tileMap[nextPosInTab.y][nextPosInTab.x] > 10 && tileMap[nextPosInTab.y][nextPosInTab.x] < 13 ||
+			tileMap[nextPosInTab2.y][nextPosInTab2.x] > 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 9 || tileMap[nextPosInTab2.y][nextPosInTab2.x] > 10 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 13) // Choix des blocs Ã  collision
 		{
 			return sfTrue;
 		}
@@ -452,8 +485,8 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
-		if (tileMap[nextPosInTab.y][nextPosInTab.x] >= 4 && tileMap[nextPosInTab.y][nextPosInTab.x] <= 8 ||
-			tileMap[nextPosInTab2.y][nextPosInTab2.x] >= 4 && tileMap[nextPosInTab2.y][nextPosInTab2.x] <= 8) // Choix des blocs à collision
+		if (tileMap[nextPosInTab.y][nextPosInTab.x] > 3 && tileMap[nextPosInTab.y][nextPosInTab.x] < 9 || tileMap[nextPosInTab.y][nextPosInTab.x] > 10 && tileMap[nextPosInTab.y][nextPosInTab.x] < 13 || 
+			tileMap[nextPosInTab2.y][nextPosInTab2.x] >3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 9 || tileMap[nextPosInTab2.y][nextPosInTab2.x] > 10 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 13) // Choix des blocs Ã  collision
 		{
 			return sfTrue;
 		}
