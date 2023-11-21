@@ -25,7 +25,10 @@ int main()
 	initView();
 	initEditView();
 	initPnj();
+	initBlockText();
 	initKey();
+	initChest();
+
 
 	choixJoueurMenu = MENU;
 
@@ -71,6 +74,7 @@ int main()
 			updateView(playerPos);
 			sfRenderWindow_setMouseCursorVisible(window, sfFalse);
 			updateKey();
+			updateChest();
 		}
 
 		//Mode Editeur
@@ -97,7 +101,9 @@ int main()
 			displayGameMap(window, timerAnim); 
 			displayPnj(window);
 			displayPlayer(window);
+			displayBlockText(window);
 			displayKey(window);
+			displayChest(window);
 		}
 
 		else if (choixJoueurMenu == EDITER)
@@ -111,3 +117,4 @@ int main()
 
 	return 0;
 }
+
