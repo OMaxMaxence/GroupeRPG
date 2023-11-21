@@ -105,8 +105,9 @@ void initMap()
 				//sfSprite_setTextureRect(tileSpriteMap, T_HERBE); // T_PORTE
 				break;
 			case 8:
-				pnjPos.x = x * 32.0f;
-				pnjPos.y = y * 32.0f;
+				pnjPos.x = x * 32.0f + 16.0f;
+				pnjPos.y = y * 32.0f + 16.0f;
+				sfSprite_setPosition(pnj, pnjPos);
 				break;
 			case 9:
 				playerPos.x = x * 32.0f + 16.0f;
