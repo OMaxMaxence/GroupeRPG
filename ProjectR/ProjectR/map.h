@@ -41,5 +41,5 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 void initMap();
 void updateMap(sfRenderWindow* _window, sfView* _view);
 void updateGameMap(sfRenderWindow* _window, sfView* _view);
-void displayMap(sfRenderWindow* _window, float _t);
-void displayGameMap(sfRenderWindow* _window, float _t);
+void displayMap(sfRenderWindow* _window);
+void displayGameMap(sfRenderWindow* _window);

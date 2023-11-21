@@ -174,11 +174,14 @@ void updateMap(sfRenderWindow* _window, sfView* _view)
 //Fonction de mise à jour de la map du mode jouer
 void updateGameMap(sfRenderWindow* _window, sfView* _view)
 {
-	printf("remove");
+	updateChest();
+	updatePorte();
+	updatePnj();
+	updatePlayer();
 }
 
 //Fonction d'affichage de la map du mode éditeur
-void displayMap(sfRenderWindow* _window, float _t)
+void displayMap(sfRenderWindow* _window)
 {
 	//Détection du bloc placé sur la map et affichage
 	if (editeur = sfTrue)
@@ -224,16 +227,9 @@ void displayMap(sfRenderWindow* _window, float _t)
 				case 9:
 					sfSprite_setTextureRect(tileSpriteMap, T_DRAPEAU);
 					break;
-					/*case 6:
-						if (_t >= 0 && _t < 1) sfSprite_setTextureRect(tileSpriteCoffre, T_FERMER);
-						else if (_t >= 1 && _t < 2) sfSprite_setTextureRect(tileSpriteCoffre, T_QUART);
-						else if (_t >= 2 && _t < 3)sfSprite_setTextureRect(tileSpriteCoffre, T_DEMI);
-						else if (_t >= 3 && _t < 4)sfSprite_setTextureRect(tileSpriteCoffre, T_OUVERT);
-						break;*/
-				}
-				//if (tileMap[y][x] == 5) sfRenderWindow_drawSprite(_window, tileSpriteCoffre, NULL);
 
-				/*else*/ sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
+				}
+				sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL);
 
 			}
 		}
@@ -316,7 +312,7 @@ void displayMap(sfRenderWindow* _window, float _t)
 }
 
 //Fonction d'affichage de la map du mode jouer
-void displayGameMap(sfRenderWindow* _window, float _t)
+void displayGameMap(sfRenderWindow* _window)
 {
 	for (int y = 0; y < MAP_HEIGHT; y++)
 	{
@@ -359,19 +355,19 @@ void displayGameMap(sfRenderWindow* _window, float _t)
 			case 9:
 				sfSprite_setTextureRect(tileSpriteMap, T_HERBE); // T_DRAPEAU
 				break;
-				/*case 6:
-					if (_t >= 0 && _t < 1) sfSprite_setTextureRect(tileSpriteCoffre, T_FERMER);
-					else if (_t >= 1 && _t < 2) sfSprite_setTextureRect(tileSpriteCoffre, T_QUART);
-					else if (_t >= 2 && _t < 3)sfSprite_setTextureRect(tileSpriteCoffre, T_DEMI);
-					else if (_t >= 3 && _t < 4)sfSprite_setTextureRect(tileSpriteCoffre, T_OUVERT);
-					break;*/
-			}
-			//if (tileMap[y][x] == 5) sfRenderWindow_drawSprite(_window, tileSpriteCoffre, NULL);
-			 
-			/*else*/ sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
+
+			} 
+			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
 
 		}
 	}
+
+
+	displayChest(_window);
+	displayPorte(_window);
+	displayPnj(_window);
+	displayPlayer(_window);
+	displayKey(_window);
 }
 
 //Génération des collisions entre certains bloc de la map et le personnage
