@@ -4,12 +4,12 @@
 typedef struct allChests allChests;
 struct allChests
 {
-	int chestCode;
 	sfSprite* chestSprite;
 	sfTexture* chestTexture;
 	sfVector2f chestPos;
 	sfIntRect chestRect;
 	sfBool openChest;
+	sfBool isOpen;
 };
 allChests chests[3];
 

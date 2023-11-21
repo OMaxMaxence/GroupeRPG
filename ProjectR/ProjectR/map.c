@@ -78,8 +78,8 @@ void initMap()
 	//Ouverture de la map via le fichier de sauvegarde
 	/*if (save = 1) 
 	{*/
-		fichier = fopen("savemap1.bin", "rb");
-		fread(tileMap, sizeof(char), 7500, fichier);
+		fichier = fopen("savemap.bin", "r");
+		fread(tileMap, sizeof(char), MAP_HEIGHT * MAP_LENGTH, fichier);
 		fclose(fichier);
 	/* }
 	else if (save = 2)
@@ -165,7 +165,7 @@ void updateMap(sfRenderWindow* _window, sfView* _view)
 	//Bouton de sauvegarde de la map dans un fichier de sauvegarde
 	if (sfKeyboard_isKeyPressed(sfKeyM)) 
 	{ 
-		fichier = fopen("savemap1.bin", "wt"); 
+		fichier = fopen("savemap.bin", "w"); 
 		fwrite(tileMap, sizeof(char), MAP_HEIGHT*MAP_LENGTH, fichier); 
 		fclose(fichier); 
 	}
@@ -174,6 +174,7 @@ void updateMap(sfRenderWindow* _window, sfView* _view)
 //Fonction de mise à jour de la map du mode jouer
 void updateGameMap(sfRenderWindow* _window, sfView* _view)
 {
+
 }
 
 //Fonction d'affichage de la map du mode éditeur
@@ -336,7 +337,7 @@ void displayMap(sfRenderWindow* _window, float _t)
 }
 
 //Fonction d'affichage de la map du mode jouer
-void displayGameMap(sfRenderWindow* _window, float _t)
+void displayGameMap(sfRenderWindow* _window)
 {
 	for (int y = 0; y < MAP_HEIGHT; y++)
 	{
@@ -393,6 +394,13 @@ void displayGameMap(sfRenderWindow* _window, float _t)
 			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
 		}
 	}
+
+
+	displayChest(_window);
+	displayPorte(_window);
+	displayPnj(_window);
+	displayPlayer(_window);
+	displayKey(_window);
 }
 
 //Génération des collisions entre certains bloc de la map et le personnage

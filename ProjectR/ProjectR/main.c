@@ -49,7 +49,7 @@ int main()
 			stopMusic();
 			choixJoueurMenu = MENU;
 			initMenu();
-			initMap();
+			//initMap();
 			displayMenuView(window);
 
 		}
@@ -62,14 +62,10 @@ int main()
 		//Mode jouer
 		else if (choixJoueurMenu == JOUER)
 		{
-			updateGameMap(window, view); 
-			updatePlayer();
-			updatePnj();
+			updateGameMap(window, view);
 			updateView(playerPos);
-			sfRenderWindow_setMouseCursorVisible(window, sfFalse);
 			updateKey();
-			updateChest();
-			updatePorte(); 
+			sfRenderWindow_setMouseCursorVisible(window, sfFalse);
 		}
 
 		//Mode Editeur
@@ -94,11 +90,7 @@ int main()
 		{
 			displayView(window);
 			displayGameMap(window, timerAnim); 
-			displayPlayer(window);
-			displayPnj(window);
-			displayKey(window);
-			displayChest(window); 
-			displayPorte(window);   
+  
 		}
 
 		else if (choixJoueurMenu == EDITER)

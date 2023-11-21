@@ -6,7 +6,7 @@
 #define PLAYER_SCALE 1.0f
 #define PLAYER_LENGTH 17*PLAYER_SCALE
 #define PLAYER_HEIGHT 23*PLAYER_SCALE
-#define PLAYER_SPEED 100.0f
+#define PLAYER_SPEED 130.0f
 
 int frameX;
 int frameY;
