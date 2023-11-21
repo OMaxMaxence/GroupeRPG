@@ -121,7 +121,7 @@ void initEditView()
 }
 
 
-void updateEditView(sfVector2f _viewpos)
+void updateEditView(sfVector2f _viewpos) 
 {
 	// Deplacement editView
 	if (sfKeyboard_isKeyPressed(sfKeyD))
@@ -169,8 +169,27 @@ void updateEditView(sfVector2f _viewpos)
 		}
 	}
 	timerZoom = 0.0f;
-
-
+	/*sfEvent eventzoom; 
+		if (eventzoom.type == sfEvtMouseWheelScrolled)
+		{
+			if (rectEditView.height < 2500.0f)
+			{
+				rectEditView.width *= (1.0f + timerZoom);
+				rectEditView.height *= (1.0f + timerZoom);
+				sfView_reset(editView, rectEditView);
+				sfView_setCenter(editView, posEditView);
+			}
+		}
+		else if (eventzoom.type == sfEvtMouseWheelScrolled)
+		{
+			if (rectEditView.height > 170.0f)
+			{
+				rectEditView.width /= (1.0f + timerZoom);
+				rectEditView.height /= (1.0f + timerZoom);
+				sfView_reset(editView, rectEditView);
+				sfView_setCenter(editView, posEditView);
+			}
+		}*/
 	// Vitesse editView selon le zoom
 	speedEditView.x = rectEditView.height / 1.5f;
 	speedEditView.y = rectEditView.height / 1.5f;
