@@ -20,14 +20,10 @@ int main()
 	initMusique();
 	initMenu();
 	initMap();
-	initPlayer();
 	initMenuView();
 	initView();
 	initEditView();
-	initPnj();
 	initBlockText();
-	initKey();
-	initChest();
 
 
 	choixJoueurMenu = MENU;
@@ -67,7 +63,6 @@ int main()
 		//Mode jouer
 		else if (choixJoueurMenu == JOUER)
 		{
-			initMap();
 			updateGameMap(window, timerAnim, view); 
 			updatePnj();
 			updatePlayer();

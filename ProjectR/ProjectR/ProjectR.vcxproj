@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BlockText.c" />
     <ClCompile Include="chest.c" />
     <ClCompile Include="key.c" />
     <ClCompile Include="main.c" />
@@ -151,6 +152,7 @@
     <ClCompile Include="view.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BlockText.h" />
     <ClInclude Include="chest.h" />
     <ClInclude Include="key.h" />
     <ClInclude Include="map.h" />
