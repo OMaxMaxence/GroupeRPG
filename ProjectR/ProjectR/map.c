@@ -174,6 +174,7 @@ void updateMap(sfRenderWindow* _window, sfView* _view)
 //Fonction de mise à jour de la map du mode jouer
 void updateGameMap(sfRenderWindow* _window, sfView* _view)
 {
+
 }
 
 //Fonction d'affichage de la map du mode éditeur
@@ -336,7 +337,7 @@ void displayMap(sfRenderWindow* _window, float _t)
 }
 
 //Fonction d'affichage de la map du mode jouer
-void displayGameMap(sfRenderWindow* _window, float _t)
+void displayGameMap(sfRenderWindow* _window)
 {
 	for (int y = 0; y < MAP_HEIGHT; y++)
 	{
@@ -393,6 +394,13 @@ void displayGameMap(sfRenderWindow* _window, float _t)
 			sfRenderWindow_drawSprite(_window, tileSpriteMap, NULL); 
 		}
 	}
+
+
+	displayChest(_window);
+	displayPorte(_window);
+	displayPnj(_window);
+	displayPlayer(_window);
+	displayKey(_window);
 }
 
 //Génération des collisions entre certains bloc de la map et le personnage

@@ -9,7 +9,6 @@ int frameKeyY;
 typedef struct allKeys allKeys;
 struct allKeys
 {
-	int keyCode;
 	sfSprite* keySprite;
 	sfTexture* keyTexture;
 	sfVector2f keyPosStruct;
@@ -18,7 +17,6 @@ struct allKeys
 allKeys keys[3];
 
 sfVector2f keyPos;
-//sfIntRect keyRect;
 
 void initKey();
 void updateKey();

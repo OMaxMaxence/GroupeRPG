@@ -17,7 +17,8 @@ void initPlayer()
 	sfSprite_setTexture(player, spritesheet, sfTrue);
 	sfSprite_setScale(player, vector2f(PLAYER_SCALE, PLAYER_SCALE));
 	sfSprite_setOrigin(player, vector2f(8.5f, 11.5f));
-
+	iRect.top = 0;
+	iRect.left = 0;
 	sfSprite_setTextureRect(player, iRect);
 
 	animTime = 0.0f;
@@ -25,9 +26,7 @@ void initPlayer()
 	frameY = 0;
 	isMoving = sfFalse;
 
-	sfVector2f playerpos = vector2f(0.0f, 0.0f);
-
-	sfSprite_setPosition(player, playerpos);
+	sfSprite_setPosition(player, playerPos);
 
 	sfFloatRect frect = sfSprite_getGlobalBounds(player);
 

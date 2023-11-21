@@ -18,14 +18,13 @@ void initPorte()
 }
 
 float porteTimer = 0.0f; 
-float distToPlayerPorte = 0.0f;
 
 void updatePorte()
 {
 	porteTimer += getDeltaTime();
-	distToPlayerPorte = distanceBetweenTwoPoints(portes.portePos, playerPos);
+	float distToPlayerPorte = distanceBetweenTwoPoints(portes.portePos, playerPos);
 
-		if (sfKeyboard_isKeyPressed(sfKeySpace) && distToPlayerPorte < 32) 
+		if (sfKeyboard_isKeyPressed(sfKeySpace) && distToPlayerPorte < 32 && nb_key >= 3) 
 		{
 			portes.openPorte = sfTrue;  
 		}
