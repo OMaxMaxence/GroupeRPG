@@ -379,13 +379,13 @@ void displayGameMap(sfRenderWindow* _window)
 				sfSprite_setTextureRect(tileSpriteMap, T_COFFRE);
 				break;
 			case 7:
-				sfSprite_setTextureRect(tileSpriteMap, T_HERBECLAIR); // T_PORTE
+				sfSprite_setTextureRect(tileSpriteMap, T_HERBECLAIR); // FOND PORTE
 				break;
 			case 8:
-				sfSprite_setTextureRect(tileSpriteMap, T_HERBECLAIR); // T_PNJ
+				sfSprite_setTextureRect(tileSpriteMap, T_HERBECLAIR); // FOND PNJ
 				break;
 			case 9:
-				sfSprite_setTextureRect(tileSpriteMap, T_HERBECLAIR); // T_DRAPEAU
+				sfSprite_setTextureRect(tileSpriteMap, T_HERBECLAIR); // FOND DRAPEAU
 				break;
 			case 10:
 				sfSprite_setTextureRect(tileSpriteMap, T_HERBEFONCE);

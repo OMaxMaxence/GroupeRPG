@@ -14,11 +14,10 @@ sfVector2f playerPos;
 sfVector2f playerSpeed;
 sfSprite* player;
 
-//typedef enum Direction Direction;
-//enum Direction {BAS = 0, DROITE, GAUCHE, HAUT};
 
 
 //prototype fonction
 void initPlayer();
 void updatePlayer();
 void displayPlayer(sfRenderWindow* _window);
+sfBool showSpacebar();

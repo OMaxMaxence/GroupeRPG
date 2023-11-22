@@ -10,6 +10,13 @@ sfBool isMoving;
 sfVector2f playerPos = { 100.0f, 100.0f };
 sfVector2f playerSpeed = { PLAYER_SPEED, PLAYER_SPEED };
 
+sfSprite* spacebar;
+sfTexture* spacebarTexture;
+sfVector2f spacebarPos;
+sfFloatRect spacebarFloatRect;
+float spacebarAngleRotation = 0.0f;
+float spacebarSpeedRotation = 40.0f;
+
 //Fonction initialisation
 void initPlayer()
 {
@@ -30,6 +37,13 @@ void initPlayer()
 	sfSprite_setPosition(player, playerPos);
 
 	sfFloatRect frect = sfSprite_getGlobalBounds(player);
+
+	spacebarTexture = sfTexture_createFromFile(TEXTURE_PATH"spacebar.png", NULL);
+	spacebar = sfSprite_create();
+	sfSprite_setTexture(spacebar, spacebarTexture, sfTrue);
+	sfSprite_setScale(spacebar, vector2f(0.05f, 0.05f));
+	spacebarFloatRect = sfSprite_getGlobalBounds(spacebar);
+	sfSprite_setOrigin(spacebar, vector2f(250.0f, 250.0f));
 
 }
 
@@ -101,6 +115,22 @@ void updatePlayer()
 	}
 
 	sfSprite_setPosition(player, playerPos);
+	
+	if (showSpacebar())
+	{
+		spacebarPos = vector2f(playerPos.x , playerPos.y + 21.0f);
+		sfSprite_setPosition(spacebar, spacebarPos);
+		if (spacebarAngleRotation > 30.0f)
+		{
+			spacebarSpeedRotation = -spacebarSpeedRotation;
+		}
+		else if (spacebarAngleRotation < -30.0f)
+		{
+			spacebarSpeedRotation = -spacebarSpeedRotation;
+		}
+		spacebarAngleRotation += spacebarSpeedRotation * getDeltaTime();
+		sfSprite_setRotation(spacebar, spacebarAngleRotation);
+	}
 
 }
 
@@ -108,4 +138,27 @@ void updatePlayer()
 void displayPlayer(sfRenderWindow* _window)
 {
 	sfRenderWindow_drawSprite(_window, player, NULL);
+
+	if (showSpacebar())
+	{
+		sfRenderWindow_drawSprite(_window, spacebar, NULL);
+	}
+}
+
+// Fonction interraction possible
+sfBool showSpacebar()
+{
+	for (int i = 0; i < 3; i++)
+	{
+		float distanceToChest = distanceBetweenTwoPoints(chests[i].chestPos, playerPos);
+		if (distanceToChest < 40.0f && chests[i].chestRect.left <= 0) return sfTrue;
+	}
+
+	float distanceToPnj = distanceBetweenTwoPoints(pnjPos, playerPos);
+	if (distanceToPnj < 40.0f) return sfTrue;
+
+	float distanceToDoor = distanceBetweenTwoPoints(portes.portePos, playerPos);
+	if (distanceToDoor < 40.0f && portes.porteRect.left <= 0) return sfTrue;
+
+	return sfFalse;
 }

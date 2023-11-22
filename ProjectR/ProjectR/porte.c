@@ -26,7 +26,7 @@ void updatePorte()
 	//Detection de la distance entre le player et la porte
 	float distToPlayerPorte = distanceBetweenTwoPoints(portes.portePos, playerPos);
 	//Bouton interaction
-		if (sfKeyboard_isKeyPressed(sfKeySpace) && distToPlayerPorte < 32 && nb_key >= 3) 
+		if (sfKeyboard_isKeyPressed(sfKeySpace) && distToPlayerPorte < 40.0f && nb_key >= 3) 
 		{
 			portes.openPorte = sfTrue;  
 		}

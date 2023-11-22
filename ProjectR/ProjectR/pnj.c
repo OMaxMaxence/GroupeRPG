@@ -52,13 +52,13 @@ void updatePnj()
 	//Detection de la distance entre le player et le pnj
 	float distanceToPlayer = distanceBetweenTwoPoints(playerPos, pnjPos);
 	//Bouton interaction
-	if (textAfficher == 0 && sfKeyboard_isKeyPressed(sfKeySpace) && distanceToPlayer < 40 && affichageText >= 0.3f)
+	if (textAfficher == 0 && sfKeyboard_isKeyPressed(sfKeySpace) && distanceToPlayer < 40.0f && affichageText >= 0.3f)
 	{
 		textAfficher = 1;
 		affichageText = 0;
 		
 	}
-	if (textAfficher == 1 && sfKeyboard_isKeyPressed(sfKeySpace) && distanceToPlayer < 40 && affichageText >= 0.3f)
+	if (textAfficher == 1 && sfKeyboard_isKeyPressed(sfKeySpace) && distanceToPlayer < 40.0f && affichageText >= 0.3f)
 	{
 		textAfficher = 0;
 		affichageText = 0;
