@@ -27,6 +27,8 @@ void initPnj()
 	framepnjX = 0;
 	framepnjY = 0;
 
+	textAfficher = 0;
+
 	sfSprite_setPosition(pnj, pnjPos); 
 
 }
