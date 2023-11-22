@@ -120,23 +120,16 @@ void updatePlayer()
 	{
 		spacebarPos = vector2f(playerPos.x , playerPos.y + 21.0f);
 		sfSprite_setPosition(spacebar, spacebarPos);
-		//if (spacebarAngleRotation < 40.0f && spacebarAngleRotation >-50.0f)
-		//{
-		//	spacebarAngleRotation += spacebarSpeedRotation * getDeltaTime();
-		//}
 		if (spacebarAngleRotation > 30.0f)
 		{
 			spacebarSpeedRotation = -spacebarSpeedRotation;
-			//spacebarAngleRotation -= spacebarSpeedRotation * getDeltaTime();
 		}
-		if (spacebarAngleRotation < -30.0f)
+		else if (spacebarAngleRotation < -30.0f)
 		{
 			spacebarSpeedRotation = -spacebarSpeedRotation;
 		}
 		spacebarAngleRotation += spacebarSpeedRotation * getDeltaTime();
 		sfSprite_setRotation(spacebar, spacebarAngleRotation);
-		//sfSprite_rotate(spacebar, spacebarAngleRotation);
-
 	}
 
 }
@@ -152,19 +145,20 @@ void displayPlayer(sfRenderWindow* _window)
 	}
 }
 
+// Fonction interraction possible
 sfBool showSpacebar()
 {
 	for (int i = 0; i < 3; i++)
 	{
 		float distanceToChest = distanceBetweenTwoPoints(chests[i].chestPos, playerPos);
-		if (distanceToChest < 40.0f) return sfTrue;
+		if (distanceToChest < 40.0f && chests[i].chestRect.left <= 0) return sfTrue;
 	}
-	float distanceToPnj = distanceBetweenTwoPoints(pnjPos, playerPos);
 
+	float distanceToPnj = distanceBetweenTwoPoints(pnjPos, playerPos);
 	if (distanceToPnj < 40.0f) return sfTrue;
 
 	float distanceToDoor = distanceBetweenTwoPoints(portes.portePos, playerPos);
-	if (distanceToDoor < 40.0f) return sfTrue;
+	if (distanceToDoor < 40.0f && portes.porteRect.left <= 0) return sfTrue;
 
 	return sfFalse;
 }

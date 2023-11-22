@@ -36,7 +36,7 @@ void updateChest()
 		//Detection de la distance entre le player et le coffre
 		distToPlayer = distanceBetweenTwoPoints(chests[i].chestPos, playerPos);
 		//Bouton interaction
-		if (sfKeyboard_isKeyPressed(sfKeySpace) && distToPlayer < 32)
+		if (sfKeyboard_isKeyPressed(sfKeySpace) && distToPlayer < 40.0f)
 		{
 			chests[i].openChest = sfTrue;
 		}
