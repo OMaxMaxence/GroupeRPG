@@ -174,17 +174,17 @@ void updateEditView(sfVector2f _viewpos)
 	}
 
 	//Zoom via molette
-	timerZoom = 0.0f;
+	/*timerZoom = 0.0f;
 	sfMouseWheelScrollEvent eventzoom;
 	eventzoom.delta = 0.0f;    
-		if (eventzoom.delta > 0.0f)    
+		if (eventzoom.delta > 0.0f)     
 		{
-			if (rectEditView.height < 2500.0f)  
+			if (rectEditView.height < 2500.0f)   
 			{
-				rectEditView.width *= (1.0f + timerZoom); 
-				rectEditView.height *= (1.0f + timerZoom); 
-				sfView_reset(editView, rectEditView); 
-				sfView_setCenter(editView, posEditView); 
+				rectEditView.width *= (1.0f + timerZoom);  
+				rectEditView.height *= (1.0f + timerZoom);  
+				sfView_reset(editView, rectEditView);  
+				sfView_setCenter(editView, posEditView);  
 			}
 		}
 		else if (eventzoom.delta < 0.0f)     
@@ -196,7 +196,7 @@ void updateEditView(sfVector2f _viewpos)
 				sfView_reset(editView, rectEditView);
 				sfView_setCenter(editView, posEditView);
 			}
-		}
+		}*/
 
 	// Vitesse editView selon le zoom
 	speedEditView.x = rectEditView.height / 1.5f;
