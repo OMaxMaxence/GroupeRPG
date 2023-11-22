@@ -76,18 +76,18 @@ void initMap()
 	sfSprite_setTexture(tileSpriteCoffre, tileTextureCoffre, sfTrue); 
 
 	//Ouverture de la map via le fichier de sauvegarde
-	/*if (save = 1) 
-	{*/
+	if (choixSave == MAINSAVE) 
+	{
 		fichier = fopen("savemap.bin", "r");
 		fread(tileMap, sizeof(char), MAP_HEIGHT * MAP_LENGTH, fichier);
 		fclose(fichier);
-	/* }
-	else if (save = 2)
+	 }
+	else
 	{
-		fichier = fopen("savemap2.bin", "rb");
-		fread(tileMap, sizeof(char), 7500, fichier);
+		fichier = fopen("savemap2.bin", "r");
+		fread(tileMap, sizeof(char), MAP_HEIGHT * MAP_LENGTH, fichier);
 		fclose(fichier);
-	}*/
+	}
 
 	for (int y = 0; y < MAP_HEIGHT; y++)
 	{
@@ -165,7 +165,7 @@ void updateMap(sfRenderWindow* _window, sfView* _view)
 	//Bouton de sauvegarde de la map dans un fichier de sauvegarde
 	if (sfKeyboard_isKeyPressed(sfKeyM)) 
 	{ 
-		fichier = fopen("savemap.bin", "w"); 
+		fichier = fopen("savemap2.bin", "w"); 
 		fwrite(tileMap, sizeof(char), MAP_HEIGHT*MAP_LENGTH, fichier); 
 		fclose(fichier); 
 	}
@@ -182,7 +182,7 @@ void updateGameMap(sfRenderWindow* _window, sfView* _view)
 }
 
 //Fonction d'affichage de la map du mode éditeur
-void displayMap(sfRenderWindow* _window, float _t)
+void displayMap(sfRenderWindow* _window)
 {
 	//Détection du bloc placé sur la map et affichage
 	if (editeur = sfTrue)

@@ -6,28 +6,28 @@ sfSprite* SpriteBackgroundMenu;
 sfTexture* TextureBackgroundMenu;
 sfVector2f origin = { 400.0f, 300.0f };
 sfVector2f pos = { 400.0f, 300.0f };
-float angle = 0.0f;
+
 sfSprite* SpritePlayMenu;
 sfTexture* TexturePlayMenu;
 sfVector2f posPlay = { 100.0f, 450.0f };
-sfVector2i mousePosMenu; 
 sfFloatRect rectPlay;
+
 sfSprite* SpriteEditMenu;
 sfTexture* TextureEditMenu;
 sfVector2f posEdit = { 400.0f, 450.0f };
-sfVector2i mousePosMenu;
 sfFloatRect rectEdit;
+
 sfSprite* SpriteQuitterMenu;
 sfTexture* TextureQuitterMenu;
 sfVector2f posQuitter = { 700.0f, 450.0f };
-sfVector2i mousePosMenu;
 sfFloatRect rectQuitter;
+
 sfSprite* SpriteTitreMenu;
 sfTexture* TextureTitreMenu;
 sfVector2f posTitre = { 400.0f, 200.0f };
 float delai = 0.0f;
 
-
+sfVector2i mousePosMenu;
 
 
 void initMenu()
@@ -38,7 +38,6 @@ void initMenu()
 	sfSprite_setTexture(SpriteBackgroundMenu, TextureBackgroundMenu, sfTrue);
 	sfSprite_setOrigin(SpriteBackgroundMenu, origin);
 	sfSprite_setPosition(SpriteBackgroundMenu, pos);
-	sfSprite_setRotation(SpriteBackgroundMenu, angle);
 
 	SpritePlayMenu = sfSprite_create();
 	TexturePlayMenu = sfTexture_createFromFile(TEXTURE_PATH"BlockPlay.png", NULL);
@@ -75,15 +74,12 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 	rectPlay = sfSprite_getGlobalBounds(SpritePlayMenu);
 	rectEdit = sfSprite_getGlobalBounds(SpriteEditMenu);
 	rectQuitter = sfSprite_getGlobalBounds(SpriteQuitterMenu);
-	//worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePosMenu, _view);
 	if (sfFloatRect_contains(&rectPlay, mousePosMenu.x, mousePosMenu.y))
 	{
 		if (sfMouse_isButtonPressed(sfMouseLeft) && delai > 0.5f)
 		{
 			delai = 0.0f;
-			musiqueJouer = MUSICJOUER;
-			stopMusic();
-			updateMusique();
+			choixSave = 0;
 			choixJoueurMenu = JOUER;
 		}
 	}
@@ -125,7 +121,6 @@ void displayMenu(sfRenderWindow* _window)
 	sfSprite_setPosition(SpriteEditMenu, posEdit);
 	sfSprite_setPosition(SpriteQuitterMenu, posQuitter);
 	sfSprite_setPosition(SpriteTitreMenu, posTitre);
-	sfSprite_setRotation(SpriteBackgroundMenu, angle);
 	sfRenderWindow_drawSprite(_window, SpriteBackgroundMenu, NULL);
 	sfRenderWindow_drawSprite(_window, SpritePlayMenu, NULL);
 	sfRenderWindow_drawSprite(_window, SpriteEditMenu, NULL);

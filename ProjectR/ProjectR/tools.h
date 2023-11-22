@@ -18,6 +18,7 @@
 #include "key.h"
 #include "chest.h"
 #include "porte.h"
+#include "MenuJouer.h"
 #define TEXTURE_PATH "../Ressources/Textures/" 
 #define MUSIC_PATH "../Ressources/Musics/"
 #define SOUND_PATH "../Ressources/SoundsFX/"
@@ -32,6 +33,14 @@ enum Menu
 	QUITTER
 };
 
+typedef enum MenuJouer MenuJouer;
+enum MenuJouer
+{
+	PASCHOISIS = 0,
+	MAINSAVE = 1,
+	CUSTOMSAVE
+};
+
 typedef enum Musique Musique;
 enum Musique
 {
@@ -42,6 +51,7 @@ enum Musique
 };
 
 Menu choixJoueurMenu;
+MenuJouer choixSave;
 //sfRenderWindow* window;
 
 void initTools();
