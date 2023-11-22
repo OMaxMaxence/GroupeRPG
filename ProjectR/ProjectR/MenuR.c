@@ -90,11 +90,9 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 		if (sfMouse_isButtonPressed(sfMouseLeft) && delai > 0.5f)
 		{
 			delai = 0.0f;
-			editeur = sfTrue;
-			musiqueJouer = MUSICEDITER;
-			stopMusic();
-			updateMusique();
 			choixJoueurMenu = EDITER;
+			choixContinue = PASACCEPTER;
+			
 		}
 	}
 

@@ -27,9 +27,11 @@ int main()
 	initEditView();
 	initBlockText();
 	initMenuJouer();
+	initMenuEdit();
 
 	choixJoueurMenu = MENU;
 	choixSave = PASCHOISIS;
+	choixContinue = 0;
 	//Boucle de jeu
 	while (sfRenderWindow_isOpen(window))
 	{
@@ -80,9 +82,17 @@ int main()
 		//Mode Editeur
 		else if (choixJoueurMenu == EDITER)
 		{
-			choixSave = CUSTOMSAVE;
-			updateMap(window, view);
-			updateEditView(posEditView);
+			if (choixContinue == PASACCEPTER)
+			{
+				updateMenuEdit(window);
+			}
+			else 
+			{
+				choixSave = CUSTOMSAVE;
+				updateMap(window, view);
+				updateEditView(posEditView);
+			}
+			
 		}
 
 		
@@ -114,9 +124,17 @@ int main()
 
 		else if (choixJoueurMenu == EDITER)
 		{
-			choixSave = CUSTOMSAVE;
-			displayMap(window);
-			displayEditView(window);
+			if (choixContinue == PASACCEPTER)
+			{
+				displayMenuEdit(window);
+			}
+			else 
+			{
+				choixSave = CUSTOMSAVE;
+				displayMap(window);
+				displayEditView(window);
+			}
+			
 		}
 		
 		sfRenderWindow_display(window);
