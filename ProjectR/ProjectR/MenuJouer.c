@@ -25,8 +25,8 @@ sfVector2i mousePosMenuJouer;
 void initMenuJouer()
 {
 	SpriteBackgroundMenuJouer = sfSprite_create();
-	TextureBackgroundMenuJouer = sfTexture_createFromFile(TEXTURE_PATH"MenuJouerBackgroundRPG.jpg", NULL);
-	sfSprite_setTexture(SpriteBackgroundMenuJouer, TextureBackgroundMenuJouer, sfTrue);
+	TextureMainSaveMenuJouer = sfTexture_createFromFile(TEXTURE_PATH"MenuJouerBackgroundRPG.jpg", NULL);
+	sfSprite_setTexture(SpriteBackgroundMenuJouer, TextureMainSaveMenuJouer, sfTrue);
 	sfSprite_setOrigin(SpriteBackgroundMenuJouer, vector2f(sfSprite_getGlobalBounds(SpriteBackgroundMenuJouer).width / 2, sfSprite_getGlobalBounds(SpriteBackgroundMenuJouer).height / 2));
 	sfSprite_setPosition(SpriteBackgroundMenuJouer, posMenuJouer);
 
