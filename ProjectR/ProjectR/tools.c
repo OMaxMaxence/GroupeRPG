@@ -36,3 +36,4 @@ float distanceBetweenTwoPoints(sfVector2f _pos1, sfVector2f _pos2)
 	return d;
 }
 
+

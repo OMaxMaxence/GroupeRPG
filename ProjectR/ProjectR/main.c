@@ -15,6 +15,7 @@ int main()
 
 	float timer = 0;
 	float timerAnim = 0;
+
 	
 	//Initialisation
 	initTools();
@@ -25,9 +26,10 @@ int main()
 	initView();
 	initEditView();
 	initBlockText();
+	initMenuJouer();
 
 	choixJoueurMenu = MENU;
-
+	choixSave = PASCHOISIS;
 	//Boucle de jeu
 	while (sfRenderWindow_isOpen(window))
 	{
@@ -48,9 +50,8 @@ int main()
 			timer = 0.0f;
 			sfRenderWindow_setMouseCursorVisible(window, sfTrue);
 			stopMusic();
-			choixJoueurMenu = MENU;
+			choixJoueurMenu = PASCHOISIS;
 			initMenu();
-			//initMap();
 			displayMenuView(window);
 
 		}
@@ -63,15 +64,23 @@ int main()
 		//Mode jouer
 		else if (choixJoueurMenu == JOUER)
 		{
-			updateGameMap(window, view);
-			updateView(playerPos);
-			updateKey();
-			sfRenderWindow_setMouseCursorVisible(window, sfFalse);
+			if (choixSave == 0)
+			{
+				updateMenuJouer(window);
+			}
+			else 
+			{
+				updateGameMap(window, view);
+				updateView(playerPos);
+				updateKey();
+				sfRenderWindow_setMouseCursorVisible(window, sfFalse);
+			}
 		}
 
 		//Mode Editeur
 		else if (choixJoueurMenu == EDITER)
 		{
+			choixSave = CUSTOMSAVE;
 			updateMap(window, view);
 			updateEditView(posEditView);
 		}
@@ -89,14 +98,24 @@ int main()
 
 		else if (choixJoueurMenu == JOUER)
 		{
-			displayView(window);
-			displayGameMap(window, timerAnim); 
+			if (choixSave == 0)
+			{
+				displayMenuJouer(window);
+				displayMenuView(window);
+			}
+			else
+			{
+				displayView(window);
+				displayGameMap(window);
+			}
+			
   
 		}
 
 		else if (choixJoueurMenu == EDITER)
 		{
-			displayMap(window, timerAnim);
+			choixSave = CUSTOMSAVE;
+			displayMap(window);
 			displayEditView(window);
 		}
 		
