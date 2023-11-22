@@ -18,6 +18,7 @@ allKeys keys[3];
 
 sfVector2f keyPos;
 
+//prototype fonction
 void initKey();
 void updateKey();
 void displayKey(sfRenderWindow* _window);

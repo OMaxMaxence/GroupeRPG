@@ -1,7 +1,7 @@
 #pragma once
 #include "tools.h"
 
-//Macro pour raccourci des textures
+//Macro pour les textures
 #define T_VIDE (sfIntRect){0,0,32,32}
 #define T_HERBECLAIR (sfIntRect){32,0,32,32}
 #define T_TERRE (sfIntRect){64,0,32,32}
@@ -16,7 +16,7 @@
 #define T_HERBEFONCE (sfIntRect){352,0,32,32}
 #define T_ARBREFONCE (sfIntRect){384,0,32,32}
 #define T_EAUFONCE (sfIntRect){416,0,32,32}
-//Macro pour la taille de map
+//Macro taille de map
 #define MAP_HEIGHT 75
 #define MAP_LENGTH 100
 
@@ -24,6 +24,7 @@ char tileMap[MAP_HEIGHT][MAP_LENGTH];
 sfVector2f tilePos;
 sfSprite* tileSpriteMap;
 
+//Direction du player
 typedef enum
 {
 	BAS = 0,
@@ -40,5 +41,5 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 void initMap();
 void updateMap(sfRenderWindow* _window, sfView* _view);
 void updateGameMap(sfRenderWindow* _window, sfView* _view);
-void displayMap(sfRenderWindow* _window);
+void displayMap(sfRenderWindow* _window);  
 void displayGameMap(sfRenderWindow* _window);

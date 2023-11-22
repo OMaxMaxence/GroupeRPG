@@ -1,6 +1,7 @@
 #pragma once
 #include "tools.h"
 
+//Structure pour créer les portes
 typedef struct allPortes allPortes;
 struct allPortes
 {
@@ -13,6 +14,7 @@ struct allPortes
 };
 allPortes portes; 
 
+//prototype fonction
 void initPorte();
 void updatePorte();
 void displayPorte(sfRenderWindow* _window);

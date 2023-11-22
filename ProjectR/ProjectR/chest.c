@@ -1,7 +1,9 @@
 #include "chest.h"
 
+//Fonction initialisation
 void initChest()
 {
+	//Création des 3 sprites de coffres et application texture
 	for (int i = 0; i < 3; i++)
 	{
 		//chests[i].chestPos.x = 30.0f + i*32*2;
@@ -21,6 +23,7 @@ void initChest()
 	}
 }
 
+//Fonction mise à jour
 float chestTimer = 0.0f;
 float distToPlayer = 0.0f;
 void updateChest()
@@ -30,12 +33,14 @@ void updateChest()
 
 	for (int  i = 0; i < 3; i++)
 	{
+		//Detection de la distance entre le player et le coffre
 		distToPlayer = distanceBetweenTwoPoints(chests[i].chestPos, playerPos);
-
+		//Bouton interaction
 		if (sfKeyboard_isKeyPressed(sfKeySpace) && distToPlayer < 32)
 		{
 			chests[i].openChest = sfTrue;
 		}
+		//Animation du coffre
 		if (chestTimer > 1.0f && chests[i].openChest == sfTrue && chests[i].chestRect.left < 96)
 		{
 			chests[i].chestRect.left += 32;
@@ -43,6 +48,7 @@ void updateChest()
 			sfSprite_setPosition(chests[i].chestSprite, chests[i].chestPos);
 			chestTimer = 0;
 		}
+		//Obtention de la clé
 		if (chests[i].chestRect.left >= 96)
 		{
 			chests[i].isOpen = sfTrue;
@@ -52,6 +58,7 @@ void updateChest()
 
 }
 
+//Fonction affichage
 void displayChest(sfRenderWindow* _window)
 {
 	for (int i = 0; i < 3; i++)

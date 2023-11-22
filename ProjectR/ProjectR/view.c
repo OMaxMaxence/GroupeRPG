@@ -5,6 +5,7 @@
 sfVector2f posMenuView = { 400.0f,300.0f };
 sfFloatRect rectMenuView = { 800.0f, 600.0f, 800.0f, 600.0f };
 
+//Fonction initialisation view menu
 void initMenuView()
 {
 	menuView = sfView_create();
@@ -12,6 +13,7 @@ void initMenuView()
 	sfView_setCenter(menuView, posMenuView);
 }
 
+//Fonction affichage view menu
 void displayMenuView(sfRenderWindow* _window)
 {
 	sfRenderWindow_setView(_window, menuView);
@@ -22,13 +24,14 @@ void displayMenuView(sfRenderWindow* _window)
 sfVector2f posView = { 480.0f, 240.0f };
 sfFloatRect rectView = { 800.0f, 600.0f, VIEW_HEIGHT, VIEW_LENGTH };
 
+//Fonction initialisation view jeu
 void initView()
 {
 	view = sfView_create();
 	sfView_reset(view, rectView);
 	sfView_setCenter(view, posView);
 }
-
+//Fonction mise à jour view jeu
 void updateView(sfVector2f _playerpos)
 {
 	// Upper Left CORNER
@@ -98,6 +101,7 @@ void updateView(sfVector2f _playerpos)
 	}
 }
 
+//Fonction affichage view jeu
 void displayView(sfRenderWindow* _window)
 {
 	sfRenderWindow_setView(_window, view);
@@ -111,8 +115,8 @@ sfVector2f posEditView = { 100.0f, 100.0f };
 sfFloatRect rectEditView = { 800.0f,600.0f, 1150.0f, 850.0f };
 sfVector2f speedEditView = { 200.0f, 200.0f };
 
+//Fonction initialisation view editeur
 float timerZoom = 0.0f;
-
 void initEditView()
 {
 	editView = sfView_create();
@@ -120,7 +124,7 @@ void initEditView()
 	sfView_setCenter(editView, posEditView);
 }
 
-
+//Fonction mise à jour view editeur
 void updateEditView(sfVector2f _viewpos) 
 {
 	// Deplacement editView
@@ -168,19 +172,22 @@ void updateEditView(sfVector2f _viewpos)
 			sfView_setCenter(editView, posEditView);
 		}
 	}
+
+	//Zoom via molette
 	timerZoom = 0.0f;
-	/*sfEvent eventzoom; 
-		if (eventzoom.type == sfEvtMouseWheelScrolled)
+	sfMouseWheelScrollEvent eventzoom;
+	eventzoom.delta = 0.0f;    
+		if (eventzoom.delta > 0.0f)    
 		{
-			if (rectEditView.height < 2500.0f)
+			if (rectEditView.height < 2500.0f)  
 			{
-				rectEditView.width *= (1.0f + timerZoom);
-				rectEditView.height *= (1.0f + timerZoom);
-				sfView_reset(editView, rectEditView);
-				sfView_setCenter(editView, posEditView);
+				rectEditView.width *= (1.0f + timerZoom); 
+				rectEditView.height *= (1.0f + timerZoom); 
+				sfView_reset(editView, rectEditView); 
+				sfView_setCenter(editView, posEditView); 
 			}
 		}
-		else if (eventzoom.type == sfEvtMouseWheelScrolled)
+		else if (eventzoom.delta < 0.0f)     
 		{
 			if (rectEditView.height > 170.0f)
 			{
@@ -189,12 +196,14 @@ void updateEditView(sfVector2f _viewpos)
 				sfView_reset(editView, rectEditView);
 				sfView_setCenter(editView, posEditView);
 			}
-		}*/
+		}
+
 	// Vitesse editView selon le zoom
 	speedEditView.x = rectEditView.height / 1.5f;
 	speedEditView.y = rectEditView.height / 1.5f;
 }
 
+//Fonction affichage view editeur
 void displayEditView(sfRenderWindow* _window)
 {
 	sfRenderWindow_setView(_window, editView);

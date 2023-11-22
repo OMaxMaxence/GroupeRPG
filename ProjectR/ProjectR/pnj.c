@@ -12,7 +12,6 @@ int textAfficher = 0;
 sfVector2f pnjPos = { 40.0f, 250.0f };
 
 //Fonction d'initialisation du pnj
-
 void initPnj()
 {
 	//Application de la texture et de sa position 
@@ -50,7 +49,9 @@ void updatePnj()
 	}
 
 	//sfSprite_setPosition(pnj, pnjPos);
+	//Detection de la distance entre le player et le pnj
 	float distanceToPlayer = distanceBetweenTwoPoints(playerPos, pnjPos);
+	//Bouton interaction
 	if (textAfficher == 0 && sfKeyboard_isKeyPressed(sfKeySpace) && distanceToPlayer < 40 && affichageText >= 0.3f)
 	{
 		textAfficher = 1;
