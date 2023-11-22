@@ -135,6 +135,7 @@ void updateMap(sfRenderWindow* _window, sfView* _view)
 	worldPos = sfRenderWindow_mapPixelToCoords(_window, mousePos, editView);  
 	blocpos.x = worldPos.x / 32;
 	blocpos.y = worldPos.y / 32;
+	delai_menu += getDeltaTime();
 	delai += getDeltaTime();
 
 	//Bouton pour changer les blocs à placer dans l'éditeur
@@ -158,7 +159,7 @@ void updateMap(sfRenderWindow* _window, sfView* _view)
 		bloc = 12;
 	} 
 	//Application du bloc sélectionné sur la map en mode éditeur
-	else if (sfMouse_isButtonPressed(sfMouseLeft))
+	else if (sfMouse_isButtonPressed(sfMouseLeft) && delai_menu > 1.0f)
 	{
 		if (worldPos.x < 3200 && worldPos.x > 0 && worldPos.y < 2400 && worldPos.y > 0)
 		{
@@ -166,8 +167,9 @@ void updateMap(sfRenderWindow* _window, sfView* _view)
 		}
 	}
 	//Bouton de sauvegarde de la map dans un fichier de sauvegarde
-	if (sfKeyboard_isKeyPressed(sfKeyM)) 
+	if (sfKeyboard_isKeyPressed(sfKeyM) && delai > 0.5f)
 	{ 
+		delai = 0.0f;
 		fichier = fopen("savemap2.bin", "w"); 
 		fwrite(tileMap, sizeof(char), MAP_HEIGHT*MAP_LENGTH, fichier); 
 		fclose(fichier); 

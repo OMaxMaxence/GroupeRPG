@@ -9,6 +9,7 @@ sfVector2f keyPos = { 0.0f, 0.0f };
 //Fonction initialisation
 void initKey()
 {
+	nb_key = 0;
 	//Création des 3 sprites de clés et application texture
 	for (int i = 0; i < 3; i++)
 	{

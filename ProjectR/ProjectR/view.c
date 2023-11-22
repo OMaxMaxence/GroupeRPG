@@ -115,8 +115,9 @@ sfVector2f posEditView = { 100.0f, 100.0f };
 sfFloatRect rectEditView = { 800.0f,600.0f, 1150.0f, 850.0f };
 sfVector2f speedEditView = { 200.0f, 200.0f };
 
-//Fonction initialisation view editeur
 float timerZoom = 0.0f;
+
+//Fonction initialisation view editeur
 void initEditView()
 {
 	editView = sfView_create();
@@ -127,6 +128,8 @@ void initEditView()
 //Fonction mise à jour view editeur
 void updateEditView(sfVector2f _viewpos) 
 {
+	timerZoom = 0.0f;
+
 	// Deplacement editView
 	if (sfKeyboard_isKeyPressed(sfKeyD))
 	{
@@ -174,17 +177,17 @@ void updateEditView(sfVector2f _viewpos)
 	}
 
 	//Zoom via molette
-	timerZoom = 0.0f;
+	/*timerZoom = 0.0f;
 	sfMouseWheelScrollEvent eventzoom;
 	eventzoom.delta = 0.0f;    
-		if (eventzoom.delta > 0.0f)    
+		if (eventzoom.delta > 0.0f)     
 		{
-			if (rectEditView.height < 2500.0f)  
+			if (rectEditView.height < 2500.0f)   
 			{
-				rectEditView.width *= (1.0f + timerZoom); 
-				rectEditView.height *= (1.0f + timerZoom); 
-				sfView_reset(editView, rectEditView); 
-				sfView_setCenter(editView, posEditView); 
+				rectEditView.width *= (1.0f + timerZoom);  
+				rectEditView.height *= (1.0f + timerZoom);  
+				sfView_reset(editView, rectEditView);  
+				sfView_setCenter(editView, posEditView);  
 			}
 		}
 		else if (eventzoom.delta < 0.0f)     
@@ -196,7 +199,7 @@ void updateEditView(sfVector2f _viewpos)
 				sfView_reset(editView, rectEditView);
 				sfView_setCenter(editView, posEditView);
 			}
-		}
+		}*/
 
 	// Vitesse editView selon le zoom
 	speedEditView.x = rectEditView.height / 1.5f;

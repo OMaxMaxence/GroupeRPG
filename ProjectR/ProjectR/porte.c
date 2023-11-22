@@ -10,6 +10,7 @@ void initPorte()
 	portes.porteRect.top = 0;
 	portes.porteRect.left = 0;
 	portes.porteCode = 0; 
+	portes.openPorte = sfFalse;
 	portes.porteSprite = sfSprite_create(); 
 	portes.porteTexture = sfTexture_createFromFile(TEXTURE_PATH"porte.png", NULL);
 	sfSprite_setTexture(portes.porteSprite, portes.porteTexture, sfTrue); 
