@@ -26,6 +26,7 @@ sfSprite* SpriteTitreMenu;
 sfTexture* TextureTitreMenu;
 sfVector2f posTitre = { 400.0f, 200.0f };
 float delai = 0.0f;
+float delai_menu = 0.0f;
 
 sfVector2i mousePosMenu;
 
@@ -71,6 +72,7 @@ void initMenu()
 void updateMenu(sfRenderWindow* _window, sfView* _view)
 {
 	delai += getDeltaTime();
+	delai_menu = 0.0f;
 	mousePosMenu = sfMouse_getPosition(_window);
 	rectPlay = sfSprite_getGlobalBounds(SpritePlayMenu);
 	rectEdit = sfSprite_getGlobalBounds(SpriteEditMenu);

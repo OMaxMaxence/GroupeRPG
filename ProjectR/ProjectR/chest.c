@@ -1,5 +1,9 @@
 #include "chest.h"
 
+
+float chestTimer = 0.0f;
+float distToPlayer = 0.0f;
+
 //Fonction initialisation
 void initChest()
 {
@@ -12,8 +16,8 @@ void initChest()
 		chests[i].chestRect.height = 32;
 		chests[i].chestRect.top = 0;
 		chests[i].chestRect.left = 0;
-		//chests[i].openChest = sfFalse;
-		//chests[i].isOpen = sfFalse;
+		chests[i].openChest = sfFalse;
+		chests[i].isOpen = sfFalse;
 		chests[i].chestSprite = sfSprite_create();
 		chests[i].chestTexture = sfTexture_createFromFile(TEXTURE_PATH"coffre32.png", NULL);
 		sfSprite_setTexture(chests[i].chestSprite, chests[i].chestTexture, sfTrue);
@@ -24,8 +28,7 @@ void initChest()
 }
 
 //Fonction mise à jour
-float chestTimer = 0.0f;
-float distToPlayer = 0.0f;
+
 void updateChest()
 {
 	chestTimer += getDeltaTime();

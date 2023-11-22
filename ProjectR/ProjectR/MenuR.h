@@ -2,6 +2,7 @@
 #include "tools.h"
 sfBool editeur;
 int musiqueJouer;
+float delai_menu;
 
 //prototype fonction
 void initMenu();
