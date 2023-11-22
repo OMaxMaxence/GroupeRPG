@@ -115,8 +115,9 @@ sfVector2f posEditView = { 100.0f, 100.0f };
 sfFloatRect rectEditView = { 800.0f,600.0f, 1150.0f, 850.0f };
 sfVector2f speedEditView = { 200.0f, 200.0f };
 
-//Fonction initialisation view editeur
 float timerZoom = 0.0f;
+
+//Fonction initialisation view editeur
 void initEditView()
 {
 	editView = sfView_create();
@@ -127,6 +128,8 @@ void initEditView()
 //Fonction mise à jour view editeur
 void updateEditView(sfVector2f _viewpos) 
 {
+	timerZoom = 0.0f;
+
 	// Deplacement editView
 	if (sfKeyboard_isKeyPressed(sfKeyD))
 	{
