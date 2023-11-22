@@ -10,6 +10,7 @@ sfBool isMoving;
 sfVector2f playerPos = { 100.0f, 100.0f };
 sfVector2f playerSpeed = { PLAYER_SPEED, PLAYER_SPEED };
 
+//Fonction initialisation
 void initPlayer()
 {
 	spritesheet = sfTexture_createFromFile(TEXTURE_PATH"link.png", NULL); 
@@ -33,7 +34,7 @@ void initPlayer()
 }
 
 
-
+//Fonction mise à jour
 void updatePlayer()
 {
 	frect = sfSprite_getGlobalBounds(player);
@@ -103,6 +104,7 @@ void updatePlayer()
 
 }
 
+//Fonction affichage
 void displayPlayer(sfRenderWindow* _window)
 {
 	sfRenderWindow_drawSprite(_window, player, NULL);

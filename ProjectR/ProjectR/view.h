@@ -10,6 +10,7 @@ sfView* menuView;
 sfVector2f posMenuView;
 sfFloatRect rectMenuView;
 
+//prototype fonction
 void initMenuView();
 void displayMenuView(sfRenderWindow* _window);
 
@@ -23,6 +24,7 @@ sfFloatRect rectView;
 sfVector2i pixelPos;
 sfVector2f worldPos;
 
+//prototype fonction
 void initView();
 void updateView(sfVector2f _playerpos);
 void displayView(sfRenderWindow* _window);
@@ -36,6 +38,7 @@ sfFloatRect rectEditView;
 sfVector2i pixelEditPos;
 sfVector2f worldEditPos;
 
+//prototype fonction
 void initEditView();
 void updateEditView(sfVector2f _viewpos);
 void displayEditView(sfRenderWindow* _window);

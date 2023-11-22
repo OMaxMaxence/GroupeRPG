@@ -29,7 +29,7 @@ float delai = 0.0f;
 
 
 
-
+//Fonction initialisation
 void initMenu()
 {
 
@@ -68,6 +68,7 @@ void initMenu()
 	
 }
 
+//Fonction Mise à jour
 void updateMenu(sfRenderWindow* _window, sfView* _view)
 {
 	delai += getDeltaTime();
@@ -113,6 +114,7 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 
 }
 
+//Fonction Affichage
 void displayMenu(sfRenderWindow* _window)
 {
 	sfSprite_setOrigin(SpriteBackgroundMenu, origin);
