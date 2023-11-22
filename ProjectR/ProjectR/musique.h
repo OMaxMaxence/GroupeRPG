@@ -7,6 +7,7 @@ sfMusic* musicJouer;
 sfSound* soudBoutonMenu;
 sfSoundBuffer* soundBuffer;
 
+//prototype fonction
 void initMusique();
 void updateMusique();
 void stopMusic();

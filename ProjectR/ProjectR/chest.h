@@ -1,6 +1,7 @@
 #pragma once
 #include "tools.h"
 
+//Structure pour créer les coffres
 typedef struct allChests allChests;
 struct allChests
 {
@@ -13,6 +14,7 @@ struct allChests
 };
 allChests chests[3];
 
+//prototype fonction
 void initChest();
 void updateChest();
 void displayChest(sfRenderWindow* _window);

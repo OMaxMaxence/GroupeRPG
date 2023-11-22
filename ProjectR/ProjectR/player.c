@@ -17,6 +17,7 @@ sfFloatRect spacebarFloatRect;
 float spacebarAngleRotation = 0.0f;
 float spacebarSpeedRotation = 40.0f;
 
+//Fonction initialisation
 void initPlayer()
 {
 	spritesheet = sfTexture_createFromFile(TEXTURE_PATH"link.png", NULL); 
@@ -47,7 +48,7 @@ void initPlayer()
 }
 
 
-
+//Fonction mise à jour
 void updatePlayer()
 {
 	frect = sfSprite_getGlobalBounds(player);
@@ -140,6 +141,7 @@ void updatePlayer()
 
 }
 
+//Fonction affichage
 void displayPlayer(sfRenderWindow* _window)
 {
 	sfRenderWindow_drawSprite(_window, player, NULL);

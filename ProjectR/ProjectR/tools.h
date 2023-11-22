@@ -23,6 +23,7 @@
 #define SOUND_PATH "../Ressources/SoundsFX/"
 #define FONT_PATH "../Ressources/Fonts/"
 
+//Menu
 typedef enum Menu Menu;
 enum Menu
 {
@@ -32,6 +33,7 @@ enum Menu
 	QUITTER
 };
 
+//Musique
 typedef enum Musique Musique;
 enum Musique
 {
@@ -42,8 +44,8 @@ enum Musique
 };
 
 Menu choixJoueurMenu;
-//sfRenderWindow* window;
 
+//Prototype fonction
 void initTools();
 float getDeltaTime();
 void restartClock();

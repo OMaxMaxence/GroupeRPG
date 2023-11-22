@@ -89,6 +89,7 @@ void initMap()
 		fclose(fichier);
 	}*/
 
+	//Affichage de la map
 	for (int y = 0; y < MAP_HEIGHT; y++)
 	{
 		for (int x = 0; x < MAP_LENGTH; x++)
@@ -96,6 +97,7 @@ void initMap()
 			tilePos.x = x * 32;
 			tilePos.y = y * 32;
 
+			//Parcours la map pour detecter le nombre de coffre, porte, pnj, player
 			switch (tileMap[y][x])
 			{
 			case 6:
@@ -146,6 +148,7 @@ void updateMap(sfRenderWindow* _window, sfView* _view)
 		delai = 0.0f;
 		bloc = bloc - 1;
 	}
+	//Rotation infini du choix des blocs
 	if (bloc > 12)
 	{
 		bloc = 0;
@@ -182,9 +185,9 @@ void updateGameMap(sfRenderWindow* _window, sfView* _view)
 }
 
 //Fonction d'affichage de la map du mode éditeur
-void displayMap(sfRenderWindow* _window, float _t)
+void displayMap(sfRenderWindow* _window)
 {
-	//Détection du bloc placé sur la map et affichage
+	//Detection du bloc placé sur la map et affichage
 	if (editeur = sfTrue)
 	{
 		for (int y = 0; y < MAP_HEIGHT; y++)
@@ -413,6 +416,7 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 	
 	if (_direction == HAUT)
 	{
+		//Collision ralentissement
 		sfVector2i nextPosInTab = { _sprite.left / 32, (_sprite.top - _vitesse.y * getDeltaTime()) / 32 };
 		sfVector2i nextPosInTab2 = { (_sprite.left + _sprite.width) / 32, (_sprite.top - _vitesse.y * getDeltaTime()) / 32 };
 		if (tileMap[nextPosInTab.y][nextPosInTab.x] == 3 || tileMap[nextPosInTab2.y][nextPosInTab2.x] == 3) // Player in water
@@ -425,10 +429,12 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
+		//Franchissement de la porte
 		if ((tileMap[nextPosInTab.y][nextPosInTab.x] == 7 || tileMap[nextPosInTab2.y][nextPosInTab2.x] == 7) && portes.porteRect.left >= 96) // Player opens the door
 		{
 			return sfFalse;
 		}
+		//Collision type mur 
 		if (tileMap[nextPosInTab.y][nextPosInTab.x] > 3 && tileMap[nextPosInTab.y][nextPosInTab.x] < 9 || tileMap[nextPosInTab.y][nextPosInTab.x] > 10 && tileMap[nextPosInTab.y][nextPosInTab.x] < 13 ||
 			tileMap[nextPosInTab2.y][nextPosInTab2.x] > 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 9 || tileMap[nextPosInTab2.y][nextPosInTab2.x] > 10 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 13) // Choix des blocs à collision 
 		{
@@ -438,6 +444,7 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 
 	else if (_direction == BAS)
 	{
+		//Collision ralentissement
 		sfVector2i nextPosInTab = { _sprite.left / 32, (_sprite.top + _sprite.height + _vitesse.y * getDeltaTime()) / 32 };
 		sfVector2i nextPosInTab2 = { (_sprite.left + _sprite.width) / 32, (_sprite.top + _sprite.height + _vitesse.y * getDeltaTime()) / 32 };
 		if (tileMap[nextPosInTab.y][nextPosInTab.x] == 3 || tileMap[nextPosInTab2.y][nextPosInTab2.x] == 3) // Player in water
@@ -450,10 +457,12 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
+		//Franchissement de la porte
 		if ((tileMap[nextPosInTab.y][nextPosInTab.x] == 7 || tileMap[nextPosInTab2.y][nextPosInTab2.x] == 7) && portes.porteRect.left >= 96) // Player opens the door
 		{
 			return sfFalse;
 		}
+		//Collision type mur
 		if (tileMap[nextPosInTab.y][nextPosInTab.x] > 3 && tileMap[nextPosInTab.y][nextPosInTab.x] < 9 || tileMap[nextPosInTab.y][nextPosInTab.x] > 10 && tileMap[nextPosInTab.y][nextPosInTab.x] < 13 ||
 			tileMap[nextPosInTab2.y][nextPosInTab2.x] > 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 9 || tileMap[nextPosInTab2.y][nextPosInTab2.x] > 10 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 13) // Choix des blocs à collision 
 		{
@@ -463,6 +472,7 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 
 	else if (_direction == GAUCHE)
 	{
+		//Collision ralentissement
 		sfVector2i nextPosInTab = { (_sprite.left - _vitesse.x * getDeltaTime()) / 32, (_sprite.top) / 32 };
 		sfVector2i nextPosInTab2 = { (_sprite.left - _vitesse.x * getDeltaTime()) / 32, (_sprite.top + _sprite.height) / 32 };
 		if (tileMap[nextPosInTab.y][nextPosInTab.x] == 3 || tileMap[nextPosInTab2.y][nextPosInTab2.x] == 3) // Player in water
@@ -475,6 +485,7 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
+		//Collision type mur
 		if (tileMap[nextPosInTab.y][nextPosInTab.x] > 3 && tileMap[nextPosInTab.y][nextPosInTab.x] < 9 || tileMap[nextPosInTab.y][nextPosInTab.x] > 10 && tileMap[nextPosInTab.y][nextPosInTab.x] < 13 ||
 			tileMap[nextPosInTab2.y][nextPosInTab2.x] > 3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 9 || tileMap[nextPosInTab2.y][nextPosInTab2.x] > 10 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 13) // Choix des blocs à collision
 		{
@@ -484,6 +495,7 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 
 	else if (_direction == DROITE)
 	{
+		//Collision ralentissement
 		sfVector2i nextPosInTab = { (_sprite.left + _sprite.width + _vitesse.x * getDeltaTime()) / 32, _sprite.top / 32 };
 		sfVector2i nextPosInTab2 = { (_sprite.left + _sprite.width + _vitesse.x * getDeltaTime()) / 32, (_sprite.top + _sprite.height) / 32 };
 		if (tileMap[nextPosInTab.y][nextPosInTab.x] == 3 || tileMap[nextPosInTab2.y][nextPosInTab2.x] == 3) // Player in water
@@ -496,6 +508,7 @@ sfBool collisionMapPlayer(sfFloatRect _sprite, Direction _direction, sfVector2f 
 			playerSpeed.x = PLAYER_SPEED;
 			playerSpeed.y = PLAYER_SPEED;
 		}
+		//Collision type mur
 		if (tileMap[nextPosInTab.y][nextPosInTab.x] > 3 && tileMap[nextPosInTab.y][nextPosInTab.x] < 9 || tileMap[nextPosInTab.y][nextPosInTab.x] > 10 && tileMap[nextPosInTab.y][nextPosInTab.x] < 13 || 
 			tileMap[nextPosInTab2.y][nextPosInTab2.x] >3 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 9 || tileMap[nextPosInTab2.y][nextPosInTab2.x] > 10 && tileMap[nextPosInTab2.y][nextPosInTab2.x] < 13) // Choix des blocs à collision
 		{
