@@ -1,6 +1,7 @@
 #include "BlockText.h"
 #include "pnj.h"
 
+//Déclaration et initialisation variable
 sfRectangleShape* rectangle;
 sfText* consigne;
 char* consigneChar = "Bonjour aventurier, \ntrouve les coffres sacres  \nainsi, tu reuniras les 3 fragements de la cle du temps, \npour ouvrir la porte millenaire, \nqui liberera la princesse clefda";
@@ -10,6 +11,7 @@ sfVector2f rectanglePos = { 0.0f, 0.0f };
 sfVector2f txtsize = {0.15f, 0.15f };
 sfVector2f txtPos = { 0.0f, 0.0f};
 
+//Fonction initialisation
 void initBlockText()
 {
 	rectangle = sfRectangleShape_create();
@@ -25,11 +27,13 @@ void initBlockText()
 	sfText_setScale(consigne, txtsize);*/
 }
 
+//Fonction update
 void updateBlockText()
 {
 
 }
 
+//Fonction affichage
 void displayBlockText(sfRenderWindow* _window)
 {
 	sfVector2f rectanglePos = { pnjPos.x, pnjPos.y - 40};

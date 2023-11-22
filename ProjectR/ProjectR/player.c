@@ -10,6 +10,14 @@ sfBool isMoving;
 sfVector2f playerPos = { 100.0f, 100.0f };
 sfVector2f playerSpeed = { PLAYER_SPEED, PLAYER_SPEED };
 
+sfSprite* spacebar;
+sfTexture* spacebarTexture;
+sfVector2f spacebarPos;
+sfFloatRect spacebarFloatRect;
+float spacebarAngleRotation = 0.0f;
+float spacebarSpeedRotation = 40.0f;
+
+//Fonction initialisation
 void initPlayer()
 {
 	spritesheet = sfTexture_createFromFile(TEXTURE_PATH"link.png", NULL); 
@@ -30,10 +38,17 @@ void initPlayer()
 
 	sfFloatRect frect = sfSprite_getGlobalBounds(player);
 
+	spacebarTexture = sfTexture_createFromFile(TEXTURE_PATH"spacebar.png", NULL);
+	spacebar = sfSprite_create();
+	sfSprite_setTexture(spacebar, spacebarTexture, sfTrue);
+	sfSprite_setScale(spacebar, vector2f(0.05f, 0.05f));
+	spacebarFloatRect = sfSprite_getGlobalBounds(spacebar);
+	sfSprite_setOrigin(spacebar, vector2f(250.0f, 250.0f));
+
 }
 
 
-
+//Fonction mise à jour
 void updatePlayer()
 {
 	frect = sfSprite_getGlobalBounds(player);
@@ -100,10 +115,56 @@ void updatePlayer()
 	}
 
 	sfSprite_setPosition(player, playerPos);
+	
+	if (showSpacebar())
+	{
+		spacebarPos = vector2f(playerPos.x , playerPos.y + 21.0f);
+		sfSprite_setPosition(spacebar, spacebarPos);
+		//if (spacebarAngleRotation < 40.0f && spacebarAngleRotation >-50.0f)
+		//{
+		//	spacebarAngleRotation += spacebarSpeedRotation * getDeltaTime();
+		//}
+		if (spacebarAngleRotation > 30.0f)
+		{
+			spacebarSpeedRotation = -spacebarSpeedRotation;
+			//spacebarAngleRotation -= spacebarSpeedRotation * getDeltaTime();
+		}
+		if (spacebarAngleRotation < -30.0f)
+		{
+			spacebarSpeedRotation = -spacebarSpeedRotation;
+		}
+		spacebarAngleRotation += spacebarSpeedRotation * getDeltaTime();
+		sfSprite_setRotation(spacebar, spacebarAngleRotation);
+		//sfSprite_rotate(spacebar, spacebarAngleRotation);
+
+	}
 
 }
 
+//Fonction affichage
 void displayPlayer(sfRenderWindow* _window)
 {
 	sfRenderWindow_drawSprite(_window, player, NULL);
+
+	if (showSpacebar())
+	{
+		sfRenderWindow_drawSprite(_window, spacebar, NULL);
+	}
+}
+
+sfBool showSpacebar()
+{
+	for (int i = 0; i < 3; i++)
+	{
+		float distanceToChest = distanceBetweenTwoPoints(chests[i].chestPos, playerPos);
+		if (distanceToChest < 40.0f) return sfTrue;
+	}
+	float distanceToPnj = distanceBetweenTwoPoints(pnjPos, playerPos);
+
+	if (distanceToPnj < 40.0f) return sfTrue;
+
+	float distanceToDoor = distanceBetweenTwoPoints(portes.portePos, playerPos);
+	if (distanceToDoor < 40.0f) return sfTrue;
+
+	return sfFalse;
 }

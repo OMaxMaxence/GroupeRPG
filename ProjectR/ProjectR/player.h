@@ -1,7 +1,7 @@
 #pragma once
 
 #include "tools.h"
-
+// Macro pour les caractéristiques du player
 #define ANIM_SPEED 0.08f
 #define PLAYER_SCALE 1.0f
 #define PLAYER_LENGTH 17*PLAYER_SCALE
@@ -14,11 +14,10 @@ sfVector2f playerPos;
 sfVector2f playerSpeed;
 sfSprite* player;
 
-//typedef enum Direction Direction;
-//enum Direction {BAS = 0, DROITE, GAUCHE, HAUT};
 
 
-
+//prototype fonction
 void initPlayer();
 void updatePlayer();
 void displayPlayer(sfRenderWindow* _window);
+sfBool showSpacebar();

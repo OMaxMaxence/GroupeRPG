@@ -17,6 +17,7 @@ int main()
 	float timerAnim = 0;
 
 	
+	//Initialisation
 	initTools();
 	initMusique();
 	initMenu();
@@ -54,7 +55,7 @@ int main()
 			displayMenuView(window);
 
 		}
-
+		//Menu principal
 		if (choixJoueurMenu == MENU)
 		{
 			updateMenu(window, view);

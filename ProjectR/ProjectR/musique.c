@@ -1,6 +1,6 @@
 #include "musique.h"
 
-
+//Fonction initialisation
 void initMusique()
 {
 	musicMenu = sfMusic_createFromFile(MUSIC_PATH"Medieval-II-Total-War-Main-Menu-Background-in-4K-with-Music.ogg");   
@@ -12,6 +12,7 @@ void initMusique()
 
 }
 
+//Fonction mise à jour
 void updateMusique()
 {
 	if (musiqueJouer == MUSICMENU) 
@@ -36,6 +37,7 @@ void updateMusique()
 	}
 }
 
+//Fonction affichage
 void stopMusic()
 {
 	sfMusic_stop(musicMenu);
