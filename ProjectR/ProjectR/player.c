@@ -158,7 +158,7 @@ sfBool showSpacebar()
 	if (distanceToPnj < 40.0f) return sfTrue;
 
 	float distanceToDoor = distanceBetweenTwoPoints(portes.portePos, playerPos);
-	if (distanceToDoor < 40.0f && portes.porteRect.left <= 0) return sfTrue;
+	if (distanceToDoor < 40.0f && portes.porteRect.left <= 0 && nb_key >= 3) return sfTrue;
 
 	return sfFalse;
 }
