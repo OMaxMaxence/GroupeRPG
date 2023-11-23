@@ -200,6 +200,12 @@ void updateGameMap(sfRenderWindow* _window, sfView* _view)
 //Fonction d'affichage de la map du mode éditeur
 void displayMap(sfRenderWindow* _window)
 {
+	if (choixSave != CUSTOMSAVE)
+	{
+		choixSave = CUSTOMSAVE;
+		initMap();
+	}
+
 	//Detection du bloc placé sur la map et affichage
 	if (editeur = sfTrue)
 	{
