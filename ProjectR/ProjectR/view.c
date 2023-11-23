@@ -111,7 +111,7 @@ void displayView(sfRenderWindow* _window)
 
 // EDIT VIEW
 
-sfVector2f posEditView = { 100.0f, 100.0f };
+sfVector2f posEditView = { 664.0f, 464.0f };
 sfFloatRect rectEditView = { 800.0f,600.0f, 1150.0f, 850.0f };
 sfVector2f speedEditView = { 200.0f, 200.0f };
 
@@ -131,22 +131,22 @@ void updateEditView(sfVector2f _viewpos)
 	timerZoom = 0.0f;
 
 	// Deplacement editView
-	if (sfKeyboard_isKeyPressed(sfKeyD))
+	if (sfKeyboard_isKeyPressed(sfKeyD) && posEditView.x <= MAP_LENGTH * 32 - 32 * 3 /*3104.0f*/  )
 	{
 		posEditView.x += speedEditView.x * getDeltaTime();
 		sfView_setCenter(editView, posEditView);
 	}
-	else if (sfKeyboard_isKeyPressed(sfKeyZ))
+	else if (sfKeyboard_isKeyPressed(sfKeyZ) && posEditView.y >= 64.0f)
 	{
 		posEditView.y -= speedEditView.y * getDeltaTime();
 		sfView_setCenter(editView, posEditView);
 	}
-	else if (sfKeyboard_isKeyPressed(sfKeyQ))
+	else if (sfKeyboard_isKeyPressed(sfKeyQ) && posEditView.x >= 96.0f)
 	{
 		posEditView.x -= speedEditView.x * getDeltaTime();
 		sfView_setCenter(editView, posEditView);
 	}
-	else if (sfKeyboard_isKeyPressed(sfKeyS))
+	else if (sfKeyboard_isKeyPressed(sfKeyS) && posEditView.y <= MAP_HEIGHT * 32 - 32 * 2 /*2336.0f*/)
 	{
 		posEditView.y += speedEditView.y * getDeltaTime();
 		sfView_setCenter(editView, posEditView);

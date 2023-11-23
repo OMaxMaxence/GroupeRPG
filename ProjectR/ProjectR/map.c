@@ -104,7 +104,7 @@ void initMap()
 				chests[nb_initChests].chestPos.x = x * 32.0f + 16.0f;
 				chests[nb_initChests].chestPos.y = y * 32.0f + 16.0f;
 				sfSprite_setPosition(chests[nb_initChests].chestSprite, chests[nb_initChests].chestPos);
-				nb_initChests++;
+				nb_initChests++; 
 				break;
 			case 7:
 				portes.portePos.x = x * 32.0f + 16.0f;
