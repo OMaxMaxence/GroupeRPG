@@ -11,6 +11,8 @@ int main()
 
 	sfRenderWindow* window;
 	window = sfRenderWindow_create(mode, titre, sfDefaultStyle, NULL);
+	//sfUint8* icon = sfImage_createFromFile("..\\Ressources\\icon32.ico");
+	//sfRenderWindow_setIcon(window, 32, 32, icon);
 	sfEvent event;
 
 	float timer = 0;
