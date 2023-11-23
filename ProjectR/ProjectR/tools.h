@@ -70,3 +70,4 @@ float getDeltaTime();
 void restartClock();
 sfVector2f vector2f(float _x, float _y);
 float distanceBetweenTwoPoints(sfVector2f _pos1, sfVector2f _pos2);
+sfSprite* creaSprite(sfSprite* _sprite, sfTexture* _texture, sfVector2f _posSprite);

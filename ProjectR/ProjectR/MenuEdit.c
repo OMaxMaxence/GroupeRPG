@@ -13,29 +13,23 @@ sfTexture* TextureMenuEditContinue;
 sfVector2f posContinue = { 400.0f, 500.0f };
 sfFloatRect rectContinue;
 
+
+
 float delaiMenuEdit = 0.0f;
 sfVector2i mousePosMenuEdit;
 
 void initMenuEdit()
 {
-	SpriteBackgroundMenuEdit = sfSprite_create();
 	TextureBackgroundMenuEdit = sfTexture_createFromFile(TEXTURE_PATH"MenuJouerBackgroundRPG.jpg", NULL);
-	sfSprite_setTexture(SpriteBackgroundMenuEdit, TextureBackgroundMenuEdit, sfTrue);
-	sfSprite_setOrigin(SpriteBackgroundMenuEdit, vector2f(sfSprite_getGlobalBounds(SpriteBackgroundMenuEdit).width / 2, sfSprite_getGlobalBounds(SpriteBackgroundMenuEdit).height / 2));
-	sfSprite_setPosition(SpriteBackgroundMenuEdit, posMenuEdit);
+	SpriteBackgroundMenuEdit = creaSprite(SpriteBackgroundMenuEdit, TextureBackgroundMenuEdit, posMenuEdit);
+	
 
-	SpriteMenuEditCondition = sfSprite_create();
 	TextureMenuEditCondition = sfTexture_createFromFile(TEXTURE_PATH"BlockMenuEditCondition.png", NULL);
-	sfSprite_setTexture(SpriteMenuEditCondition, TextureMenuEditCondition, sfTrue);
-	sfSprite_setOrigin(SpriteMenuEditCondition, vector2f(sfSprite_getGlobalBounds(SpriteMenuEditCondition).width / 2, sfSprite_getGlobalBounds(SpriteMenuEditCondition).height / 2));
-	sfSprite_setPosition(SpriteMenuEditCondition, posCondition);
+	SpriteMenuEditCondition = creaSprite(SpriteMenuEditCondition, TextureMenuEditCondition, posCondition);
 
-	SpriteMenuEditContinue = sfSprite_create();
+
 	TextureMenuEditContinue = sfTexture_createFromFile(TEXTURE_PATH"BlockContinue.png", NULL);
-	sfSprite_setTexture(SpriteMenuEditContinue, TextureMenuEditContinue, sfTrue);
-	sfSprite_setOrigin(SpriteMenuEditContinue, vector2f(sfSprite_getGlobalBounds(SpriteMenuEditContinue).width / 2, sfSprite_getGlobalBounds(SpriteMenuEditContinue).height / 2));
-	sfSprite_setPosition(SpriteMenuEditContinue, posContinue);
-
+	SpriteMenuEditContinue = creaSprite(SpriteMenuEditContinue, TextureMenuEditContinue, posContinue);
 
 }
 
