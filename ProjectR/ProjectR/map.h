@@ -43,3 +43,4 @@ void updateMap(sfRenderWindow* _window, sfView* _view);
 void updateGameMap(sfRenderWindow* _window, sfView* _view);
 void displayMap(sfRenderWindow* _window);  
 void displayGameMap(sfRenderWindow* _window);
+sfBool validSave();
