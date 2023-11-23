@@ -24,29 +24,17 @@ sfVector2i mousePosMenuJouer;
 
 void initMenuJouer()
 {
-	SpriteBackgroundMenuJouer = sfSprite_create();
-	TextureMainSaveMenuJouer = sfTexture_createFromFile(TEXTURE_PATH"MenuJouerBackgroundRPG.jpg", NULL);
-	sfSprite_setTexture(SpriteBackgroundMenuJouer, TextureMainSaveMenuJouer, sfTrue);
-	sfSprite_setOrigin(SpriteBackgroundMenuJouer, vector2f(sfSprite_getGlobalBounds(SpriteBackgroundMenuJouer).width / 2, sfSprite_getGlobalBounds(SpriteBackgroundMenuJouer).height / 2));
-	sfSprite_setPosition(SpriteBackgroundMenuJouer, posMenuJouer);
+	TextureBackgroundMenuJouer = sfTexture_createFromFile(TEXTURE_PATH"MenuJouerBackgroundRPG.jpg", NULL);
+	SpriteBackgroundMenuJouer = creaSprite(SpriteBackgroundMenuJouer, TextureBackgroundMenuJouer, posMenuJouer);
 
-	SpriteMainSaveMenuJouer = sfSprite_create();
-	TextureBackgroundMenuJouer = sfTexture_createFromFile(TEXTURE_PATH"BlockSavePrincipal.png", NULL);
-	sfSprite_setTexture(SpriteMainSaveMenuJouer, TextureBackgroundMenuJouer, sfTrue);
-	sfSprite_setOrigin(SpriteMainSaveMenuJouer, vector2f(sfSprite_getGlobalBounds(SpriteMainSaveMenuJouer).width / 2, sfSprite_getGlobalBounds(SpriteMainSaveMenuJouer).height / 2));
-	sfSprite_setPosition(SpriteMainSaveMenuJouer, posMainSave);
+	TextureMainSaveMenuJouer = sfTexture_createFromFile(TEXTURE_PATH"BlockSavePrincipal.png", NULL);
+	SpriteMainSaveMenuJouer = creaSprite(SpriteMainSaveMenuJouer, TextureMainSaveMenuJouer, posMainSave);
 
-	SpriteCustomSaveMenuJouer = sfSprite_create();
 	TextureCustomSaveMenuJouer = sfTexture_createFromFile(TEXTURE_PATH"BlockSaveCustom.png", NULL);
-	sfSprite_setTexture(SpriteCustomSaveMenuJouer, TextureCustomSaveMenuJouer, sfTrue);
-	sfSprite_setOrigin(SpriteCustomSaveMenuJouer, vector2f(sfSprite_getGlobalBounds(SpriteCustomSaveMenuJouer).width / 2, sfSprite_getGlobalBounds(SpriteCustomSaveMenuJouer).height / 2));
-	sfSprite_setPosition(SpriteCustomSaveMenuJouer, posCustomSave);
+	SpriteCustomSaveMenuJouer = creaSprite(SpriteCustomSaveMenuJouer, TextureCustomSaveMenuJouer, posCustomSave);
 
-	SpriteTitreMenuJouer = sfSprite_create();
 	TextureTitreMenuJouer = sfTexture_createFromFile(TEXTURE_PATH"BlockTitreMenuJouer.png", NULL);
-	sfSprite_setTexture(SpriteTitreMenuJouer, TextureTitreMenuJouer, sfTrue);
-	sfSprite_setOrigin(SpriteTitreMenuJouer, vector2f(sfSprite_getGlobalBounds(SpriteTitreMenuJouer).width / 2, sfSprite_getGlobalBounds(SpriteTitreMenuJouer).height / 2));
-	sfSprite_setPosition(SpriteTitreMenuJouer, posTitreMenuJouer);
+	SpriteTitreMenuJouer = creaSprite(SpriteTitreMenuJouer, TextureTitreMenuJouer, posTitreMenuJouer);
 }
 
 void updateMenuJouer(sfRenderWindow* _window)

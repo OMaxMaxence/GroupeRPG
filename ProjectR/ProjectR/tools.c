@@ -37,3 +37,11 @@ float distanceBetweenTwoPoints(sfVector2f _pos1, sfVector2f _pos2)
 }
 
 
+sfSprite* creaSprite(sfSprite* _sprite, sfTexture* _texture, sfVector2f _posSprite)
+{
+	_sprite = sfSprite_create();
+	sfSprite_setTexture(_sprite, _texture, sfTrue);
+	sfSprite_setOrigin(_sprite, vector2f(sfSprite_getGlobalBounds(_sprite).width / 2, sfSprite_getGlobalBounds(_sprite).height / 2));
+	sfSprite_setPosition(_sprite, _posSprite);
+	return _sprite;
+}
