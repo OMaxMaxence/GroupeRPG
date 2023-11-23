@@ -108,7 +108,7 @@ int main()
 
 		else if (choixJoueurMenu == JOUER)
 		{
-			if (choixSave == 0)
+			if (choixSave == PASCHOISIS)
 			{
 				displayMenuJouer(window);
 				displayMenuView(window);
@@ -130,7 +130,6 @@ int main()
 			}
 			else 
 			{
-				choixSave = CUSTOMSAVE;
 				displayMap(window);
 				displayEditView(window);
 			}
