@@ -170,9 +170,20 @@ void updateMap(sfRenderWindow* _window, sfView* _view)
 	if (sfKeyboard_isKeyPressed(sfKeyM) && delai > 0.5f)
 	{ 
 		delai = 0.0f;
-		fichier = fopen("savemap2.bin", "w"); 
-		fwrite(tileMap, sizeof(char), MAP_HEIGHT*MAP_LENGTH, fichier); 
-		fclose(fichier); 
+		if (validSave() == sfTrue)
+		{
+			fichier = fopen("savemap2.bin", "w");
+			fwrite(tileMap, sizeof(char), MAP_HEIGHT * MAP_LENGTH, fichier);
+			fclose(fichier);
+		}
+		else
+		{
+			choixJoueurMenu = EDITER;
+			choixContinue = PASACCEPTER;
+			delaiMenuEdit = 0.0f;
+			delai_menu = 0.0f;
+			displayMenuView(_window);
+		}
 	}
 
 }
@@ -410,6 +421,46 @@ void displayGameMap(sfRenderWindow* _window)
 	displayPnj(_window);
 	displayPlayer(_window);
 	displayKey(_window);
+}
+
+sfBool validSave()
+{
+	int chest_count = 0;
+	int door_count = 0;
+	int pnj_count = 0;
+	int flag_count = 0;
+
+	for (int y = 0; y < MAP_HEIGHT; y++)
+	{
+		for (int x = 0; x < MAP_LENGTH; x++)
+		{
+			tilePos.x = x * 32;
+			tilePos.y = y * 32;
+
+			switch (tileMap[y][x])
+			{
+			case 6:
+				chest_count++;
+				break;
+			case 7:
+				door_count++;
+				break;
+			case 8:
+				pnj_count++;
+				break;
+			case 9:
+				flag_count++;
+				break;
+			default:
+				break;
+			}
+		}
+	}
+	if (chest_count == 3 && door_count == 1 && pnj_count == 1 && flag_count == 1)
+	{
+		return sfTrue;
+	}
+	else return sfFalse;
 }
 
 //Génération des collisions entre certains bloc de la map et le personnage
