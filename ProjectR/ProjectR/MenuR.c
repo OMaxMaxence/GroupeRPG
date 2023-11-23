@@ -24,7 +24,7 @@ sfFloatRect rectQuitter;
 sfSprite* SpriteTitreMenu;
 sfTexture* TextureTitreMenu;
 sfVector2f posTitre = { 400.0f, 200.0f };
-float delai = 0.0f;
+float delai_menuJouer = 0.0f;
 float delai_menu = 0.0f;
 
 sfVector2i mousePosMenu;
@@ -58,7 +58,7 @@ void initMenu()
 //Fonction Mise à jour
 void updateMenu(sfRenderWindow* _window, sfView* _view)
 {
-	delai += getDeltaTime();
+	delai_menuJouer += getDeltaTime();
 	delai_menu = 0.0f;
 	mousePosMenu = sfMouse_getPosition(_window);
 	rectPlay = sfSprite_getGlobalBounds(SpritePlayMenu);
@@ -66,9 +66,9 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 	rectQuitter = sfSprite_getGlobalBounds(SpriteQuitterMenu);
 	if (sfFloatRect_contains(&rectPlay, mousePosMenu.x, mousePosMenu.y))
 	{
-		if (sfMouse_isButtonPressed(sfMouseLeft) && delai > 0.5f)
+		if (sfMouse_isButtonPressed(sfMouseLeft) && delai_menuJouer > 0.5f)
 		{
-			delai = 0.0f;
+			delai_menuJouer = 0.0f;
 			choixSave = 0;
 			choixJoueurMenu = JOUER;
 		}
@@ -76,16 +76,16 @@ void updateMenu(sfRenderWindow* _window, sfView* _view)
 
 	else if (sfFloatRect_contains(&rectEdit, mousePosMenu.x, mousePosMenu.y))
 	{
-		if (sfMouse_isButtonPressed(sfMouseLeft) && delai > 0.5f)
+		if (sfMouse_isButtonPressed(sfMouseLeft) && delai_menuJouer > 0.5f)
 		{
-			delai = 0.0f;
+			delai_menuJouer = 0.0f;
 			choixJoueurMenu = EDITER;
 			choixContinue = PASACCEPTER;
 			
 		}
 	}
 
-	else if (sfFloatRect_contains(&rectQuitter, mousePosMenu.x, mousePosMenu.y) && delai > 0.3f)
+	else if (sfFloatRect_contains(&rectQuitter, mousePosMenu.x, mousePosMenu.y) && delai_menuJouer > 0.3f)
 	{
 		if (sfMouse_isButtonPressed(sfMouseLeft))
 		{

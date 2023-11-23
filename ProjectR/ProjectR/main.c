@@ -28,6 +28,7 @@ int main()
 	initBlockText();
 	initMenuJouer();
 	initMenuEdit();
+	initMenuCredits();
 
 	choixJoueurMenu = MENU;
 	choixSave = PASCHOISIS;
@@ -50,6 +51,7 @@ int main()
 		if (sfKeyboard_isKeyPressed(sfKeyEscape) && choixJoueurMenu != MENU && timer > 1.0f)
 		{
 			timer = 0.0f;
+			delaiMenuJouer = 0.0f;
 			sfRenderWindow_setMouseCursorVisible(window, sfTrue);
 			stopMusic();
 			choixJoueurMenu = PASCHOISIS;
@@ -72,10 +74,10 @@ int main()
 			}
 			else 
 			{
+				sfRenderWindow_setMouseCursorVisible(window, sfFalse);
 				updateGameMap(window, view);
 				updateView(playerPos);
 				updateKey();
-				sfRenderWindow_setMouseCursorVisible(window, sfFalse);
 			}
 		}
 
@@ -95,6 +97,10 @@ int main()
 			
 		}
 
+		else if (choixJoueurMenu == CREDITS)
+		{
+			updateMenuCredits(window);
+		}
 		
 
 		//Affichage
@@ -134,6 +140,12 @@ int main()
 				displayEditView(window);
 			}
 			
+		}
+
+		else if (choixJoueurMenu == CREDITS)
+		{
+			displayMenuView(window);
+			displayMenuCredits(window);
 		}
 		
 		sfRenderWindow_display(window);
