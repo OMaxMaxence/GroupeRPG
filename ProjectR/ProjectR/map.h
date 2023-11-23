@@ -23,6 +23,8 @@
 char tileMap[MAP_HEIGHT][MAP_LENGTH];
 sfVector2f tilePos;
 sfSprite* tileSpriteMap;
+char actualTile[MAP_HEIGHT][MAP_LENGTH];
+int tile;
 
 //Direction du player
 typedef enum

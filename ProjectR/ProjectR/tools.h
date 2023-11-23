@@ -20,6 +20,7 @@
 #include "porte.h"
 #include "MenuJouer.h"
 #include "MenuEdit.h"
+#include "MenuCredits.h"
 #define TEXTURE_PATH "../Ressources/Textures/" 
 #define MUSIC_PATH "../Ressources/Musics/"
 #define SOUND_PATH "../Ressources/SoundsFX/"
@@ -32,7 +33,8 @@ enum Menu
 	MENU = 0,
 	JOUER = 1,
 	EDITER,
-	QUITTER
+	QUITTER,
+	CREDITS
 };
 
 typedef enum MenuJouer MenuJouer;
@@ -59,9 +61,17 @@ enum Musique
 	MUSICEDITER
 };
 
+typedef enum MenuCredits MenuCredits;
+enum MenuCredits
+{
+	PASQUITTER = 1,
+	QUITTERCREDITS
+};
+
 Menu choixJoueurMenu;
 MenuEdit choixContinue;
 MenuJouer choixSave;
+MenuCredits choixQuitter;
 //sfRenderWindow* window;
 
 //Prototype fonction
