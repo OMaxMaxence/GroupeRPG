@@ -144,6 +144,7 @@
     <ClCompile Include="key.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="map.c" />
+    <ClCompile Include="MenuCredits.c" />
     <ClCompile Include="MenuEdit.c" />
     <ClCompile Include="MenuJouer.c" />
     <ClCompile Include="MenuR.c" />
@@ -159,6 +160,7 @@
     <ClInclude Include="chest.h" />
     <ClInclude Include="key.h" />
     <ClInclude Include="map.h" />
+    <ClInclude Include="MenuCredits.h" />
     <ClInclude Include="MenuEdit.h" />
     <ClInclude Include="MenuJouer.h" />
     <ClInclude Include="MenuR.h" />

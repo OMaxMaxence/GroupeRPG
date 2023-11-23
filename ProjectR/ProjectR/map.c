@@ -17,6 +17,7 @@ sfVector2i blocpos = { 0.0f, 0.0f };
 float delai;
 sfVector2f worldPos;
 FILE* fichier;
+int tile = 0;
 
 //Génération de la taille de la map
 char tileMap[MAP_HEIGHT][MAP_LENGTH]; /* = {
@@ -195,6 +196,14 @@ void updateGameMap(sfRenderWindow* _window, sfView* _view)
 	updatePnj();
 	updatePlayer();
 	updateKey();
+
+	tile = tileMap[(int)playerPos.y / 32][(int)playerPos.x / 32];
+	if (tile == 7)
+	{
+		choixJoueurMenu = CREDITS;
+		sfRenderWindow_setMouseCursorVisible(_window, sfTrue);
+		updateMenuCredits(_window);
+	}
 }
 
 //Fonction d'affichage de la map du mode éditeur
@@ -427,6 +436,13 @@ void displayGameMap(sfRenderWindow* _window)
 	displayPnj(_window);
 	displayPlayer(_window);
 	displayKey(_window);
+
+	tile = tileMap[(int)playerPos.y / 32][(int)playerPos.x / 32];
+	if (tile == 7)
+	{
+		//displayMenuView(_window);
+		displayMenuCredits(_window);
+	}
 }
 
 sfBool validSave()

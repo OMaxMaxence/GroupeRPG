@@ -3,6 +3,7 @@
 sfBool editeur;
 int musiqueJouer;
 float delai_menu;
+float delai_menuJouer;
 
 //prototype fonction
 void initMenu();
