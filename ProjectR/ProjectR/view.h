@@ -14,6 +14,8 @@ sfFloatRect rectMenuView;
 void initMenuView();
 void displayMenuView(sfRenderWindow* _window);
 
+
+
 // GAME VIEW
 
 sfView* view;
@@ -28,6 +30,8 @@ sfVector2f worldPos;
 void initView();
 void updateView(sfVector2f _playerpos);
 void displayView(sfRenderWindow* _window);
+
+
 
 // EDIT VIEW
 

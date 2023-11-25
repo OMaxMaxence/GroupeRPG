@@ -1,7 +1,7 @@
 #pragma once
 #include "tools.h"
 
-//Structure pour créer les portes
+//Structure pour créer les portes (possibilté d'ajouter des portes plus facilement)
 typedef struct allPortes allPortes;
 struct allPortes
 {
