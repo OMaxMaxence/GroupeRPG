@@ -54,6 +54,7 @@ void updatePlayer()
 	frect = sfSprite_getGlobalBounds(player);
 	isMoving = sfFalse;
 
+	// Directions
 	if (sfKeyboard_isKeyPressed(sfKeyD) && playerPos.x < MAP_LENGTH*32 - PLAYER_LENGTH/2)
 	{
 		frameY = DROITE;
@@ -116,6 +117,7 @@ void updatePlayer()
 
 	sfSprite_setPosition(player, playerPos);
 	
+	// Fait touner la barre Espace sur elle-même pour indiquer une interraction
 	if (showSpacebar())
 	{
 		spacebarPos = vector2f(playerPos.x , playerPos.y + 21.0f);
@@ -139,6 +141,7 @@ void displayPlayer(sfRenderWindow* _window)
 {
 	sfRenderWindow_drawSprite(_window, player, NULL);
 
+	// Affiche la barre Espace
 	if (showSpacebar())
 	{
 		sfRenderWindow_drawSprite(_window, spacebar, NULL);

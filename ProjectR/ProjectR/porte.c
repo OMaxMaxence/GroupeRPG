@@ -1,5 +1,7 @@
 #include "porte.h"
 
+float porteTimer = 0.0f;
+
 //Fonction initialisation
 void initPorte()
 {
@@ -20,25 +22,24 @@ void initPorte()
 }
 
 //Fonction Mise à jour
-float porteTimer = 0.0f; 
 void updatePorte()
 {
 	porteTimer += getDeltaTime();
 	//Detection de la distance entre le player et la porte
 	float distToPlayerPorte = distanceBetweenTwoPoints(portes.portePos, playerPos);
 	//Bouton interaction
-		if (sfKeyboard_isKeyPressed(sfKeySpace) && distToPlayerPorte < 40.0f && nb_key >= 3) 
-		{
-			portes.openPorte = sfTrue;  
-		}
-		//Animation de la porte
-		if (porteTimer > 1.0f && portes.openPorte == sfTrue && portes.porteRect.left < 96) 
-		{
-			portes.porteRect.left += 32; 
-			sfSprite_setTextureRect(portes.porteSprite, portes.porteRect); 
-			sfSprite_setPosition(portes.porteSprite, portes.portePos); 
-			porteTimer = 0;  
-		}
+	if (sfKeyboard_isKeyPressed(sfKeySpace) && distToPlayerPorte < 40.0f && nb_key >= 3) 
+	{
+		portes.openPorte = sfTrue;  
+	}
+	//Animation de la porte
+	if (porteTimer > 1.0f && portes.openPorte == sfTrue && portes.porteRect.left < 96) 
+	{
+		portes.porteRect.left += 32; 
+		sfSprite_setTextureRect(portes.porteSprite, portes.porteRect); 
+		sfSprite_setPosition(portes.porteSprite, portes.portePos); 
+		porteTimer = 0;  
+	}
 }
 
 //Fonction affichage

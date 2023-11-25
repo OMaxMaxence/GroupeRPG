@@ -72,7 +72,6 @@ Menu choixJoueurMenu;
 MenuEdit choixContinue;
 MenuJouer choixSave;
 MenuCredits choixQuitter;
-//sfRenderWindow* window;
 
 //Prototype fonction
 void initTools();

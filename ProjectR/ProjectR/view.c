@@ -19,6 +19,8 @@ void displayMenuView(sfRenderWindow* _window)
 	sfRenderWindow_setView(_window, menuView);
 }
 
+
+
 // GAME VIEW
 
 sfVector2f posView = { 480.0f, 240.0f };
@@ -92,6 +94,7 @@ void updateView(sfVector2f _playerpos)
 		keyPos.x = MAP_LENGTH * 32 - 115.0f;
 		keyPos.y = _playerpos.y;
 	}
+
 	// MIDDLE
 	else
 	{
@@ -131,7 +134,7 @@ void updateEditView(sfVector2f _viewpos)
 	timerZoom = 0.0f;
 
 	// Deplacement editView
-	if (sfKeyboard_isKeyPressed(sfKeyD) && posEditView.x <= MAP_LENGTH * 32 - 32 * 3 /*3104.0f*/  )
+	if (sfKeyboard_isKeyPressed(sfKeyD) && posEditView.x <= MAP_LENGTH * 32 - 32 * 3)
 	{
 		posEditView.x += speedEditView.x * getDeltaTime();
 		sfView_setCenter(editView, posEditView);
@@ -146,7 +149,7 @@ void updateEditView(sfVector2f _viewpos)
 		posEditView.x -= speedEditView.x * getDeltaTime();
 		sfView_setCenter(editView, posEditView);
 	}
-	else if (sfKeyboard_isKeyPressed(sfKeyS) && posEditView.y <= MAP_HEIGHT * 32 - 32 * 2 /*2336.0f*/)
+	else if (sfKeyboard_isKeyPressed(sfKeyS) && posEditView.y <= MAP_HEIGHT * 32 - 32 * 2)
 	{
 		posEditView.y += speedEditView.y * getDeltaTime();
 		sfView_setCenter(editView, posEditView);
@@ -175,31 +178,6 @@ void updateEditView(sfVector2f _viewpos)
 			sfView_setCenter(editView, posEditView);
 		}
 	}
-
-	//Zoom via molette
-	/*timerZoom = 0.0f;
-	sfMouseWheelScrollEvent eventzoom;
-	eventzoom.delta = 0.0f;    
-		if (eventzoom.delta > 0.0f)     
-		{
-			if (rectEditView.height < 2500.0f)   
-			{
-				rectEditView.width *= (1.0f + timerZoom);  
-				rectEditView.height *= (1.0f + timerZoom);  
-				sfView_reset(editView, rectEditView);  
-				sfView_setCenter(editView, posEditView);  
-			}
-		}
-		else if (eventzoom.delta < 0.0f)     
-		{
-			if (rectEditView.height > 170.0f)
-			{
-				rectEditView.width /= (1.0f + timerZoom);
-				rectEditView.height /= (1.0f + timerZoom);
-				sfView_reset(editView, rectEditView);
-				sfView_setCenter(editView, posEditView);
-			}
-		}*/
 
 	// Vitesse editView selon le zoom
 	speedEditView.x = rectEditView.height / 1.5f;
