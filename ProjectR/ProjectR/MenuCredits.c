@@ -56,6 +56,9 @@ void updateMenuCredits(sfRenderWindow* _window)
 		if (sfMouse_isButtonPressed(sfMouseLeft) && delaiMenuCredits > 0.5f && rectCredits.left >= 3200)
 		{
 			delaiMenuCredits = 0.0f;
+			musiqueJouer = MUSICMENU;
+			stopMusic();
+			updateMusique();
 			choixJoueurMenu = MENU;
 			initMenuCredits();
 		}
