@@ -42,8 +42,14 @@ void updateChest()
 			chests[i].openChest = sfTrue;
 		}
 		//Animation du coffre
-		if (chestTimer > 1.0f && chests[i].openChest == sfTrue && chests[i].chestRect.left < 96)
+		if (chestTimer > 0.3f && chests[i].openChest == sfTrue && chests[i].chestRect.left < 96)
 		{
+			if (chests[i].chestRect.left == 0)
+			{
+				// Joue le son d'ouverture une seule fois
+				sfSound_play(soundChestOpening);
+			}
+
 			chests[i].chestRect.left += 32;
 			sfSprite_setTextureRect(chests[i].chestSprite, chests[i].chestRect);
 			sfSprite_setPosition(chests[i].chestSprite, chests[i].chestPos);

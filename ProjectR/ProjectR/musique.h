@@ -6,6 +6,8 @@ sfMusic* musicEdit;
 sfMusic* musicJouer;
 sfSound* soudBoutonMenu;
 sfSoundBuffer* soundBuffer;
+sfSound* soundChestOpening;
+sfSoundBuffer* chestSoundBuffer;
 
 //prototype fonction
 void initMusique();
