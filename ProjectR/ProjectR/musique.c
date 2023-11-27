@@ -12,7 +12,6 @@ void initMusique()
 	soundChestOpening = sfSound_create();
 	chestSoundBuffer = sfSoundBuffer_createFromFile(SOUND_PATH"Chest-Opening.ogg");
 	sfSound_setBuffer(soundChestOpening, chestSoundBuffer);
-
 }
 
 //Fonction mise à jour
