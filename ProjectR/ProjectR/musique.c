@@ -9,6 +9,9 @@ void initMusique()
 	soudBoutonMenu = sfSound_create();
 	soundBuffer = sfSoundBuffer_createFromFile(SOUND_PATH"Clic Sound.ogg");
 	sfSound_setBuffer(soudBoutonMenu, soundBuffer);
+	soundChestOpening = sfSound_create();
+	chestSoundBuffer = sfSoundBuffer_createFromFile(SOUND_PATH"Chest-Opening.ogg");
+	sfSound_setBuffer(soundChestOpening, chestSoundBuffer);
 
 }
 
