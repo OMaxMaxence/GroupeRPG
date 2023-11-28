@@ -44,15 +44,15 @@ void initMap()
 	//Ouverture de la map via le fichier de sauvegarde
 	if (choixSave == MAINSAVE) 
 	{
-		fichier = fopen("savemap.bin", "r");
-		fread(tileMap, sizeof(char), MAP_HEIGHT * MAP_LENGTH, fichier);
-		fclose(fichier);
+		fichier = fopen("..\\ProjectR\\savemap.bin", "r"); 
+		fread(tileMap, sizeof(char), MAP_HEIGHT * MAP_LENGTH, fichier); 
+		fclose(fichier); 
 	 }
 	else
 	{
-		fichier = fopen("savemap2.bin", "r");
-		fread(tileMap, sizeof(char), MAP_HEIGHT * MAP_LENGTH, fichier);
-		fclose(fichier);
+		fichier = fopen("..\\ProjectR\\savemap2.bin", "r");  
+		fread(tileMap, sizeof(char), MAP_HEIGHT * MAP_LENGTH, fichier); 
+		fclose(fichier); 
 	}
 
 	//Affichage de la map
